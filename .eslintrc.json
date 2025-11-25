@@ -1,5 +1,13 @@
 {
   "extends": [
-    "@rocketseat/eslint-config/react"
-  ]
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier"
+  ],
+  "plugins": ["react-hooks", "react-refresh"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }
