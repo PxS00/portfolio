@@ -94,8 +94,8 @@ body::after {
     background-color 0.12s ease;
 }
 
-.site-nav .nav-text:hover,
-.site-nav .nav-text:focus {
+.site-nav .nav-text:not(.active):hover,
+.site-nav .nav-text:not(.active):focus-visible {
   color: var(--nav-text-hover);
   background-color: var(--nav-hover-bg);
 }
