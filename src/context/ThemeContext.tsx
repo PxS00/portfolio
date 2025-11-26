@@ -8,11 +8,8 @@ function getSystemTheme(): 'light' | 'dark' {
 }
 
 function getInitialTheme(): Theme {
-  const savedTheme = localStorage.getItem('theme') as Theme | null
-  if (!savedTheme) {
-    return 'system'
-  }
-  return savedTheme
+  // Always default to system — do not read persisted theme
+  return 'system'
 }
 
 export function useTheme() {
@@ -29,18 +26,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     const initial = getInitialTheme()
     return initial === 'system' ? getSystemTheme() : initial
   })
-
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem('theme') as Theme | null
-      if (saved === 'dark') {
-        localStorage.removeItem('theme')
-        setThemeState('system')
-      }
-    } catch {
-      // ignore storage errors
-    }
-  }, [])
 
   useEffect(() => {
     const newResolvedTheme = theme === 'system' ? getSystemTheme() : theme
@@ -65,12 +50,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, [theme])
 
   const setTheme = (newTheme: Theme) => {
+    // Do not persist user choice — always follow system by default
     setThemeState(newTheme)
-    if (newTheme === 'system') {
-      localStorage.removeItem('theme')
-    } else {
-      localStorage.setItem('theme', newTheme)
-    }
   }
 
   const toggleTheme = () => {
