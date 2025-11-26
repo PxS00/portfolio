@@ -5,9 +5,11 @@
 :root {
   /* darker "light" theme with visible glow */
   --bg-color: #e9e7ef; /* slightly desaturated purple-tinted light */
+  /* single accent color (rgb) used by decorative gradients */
+  --accent-rgb: 124, 58, 237;
   --grid-color: rgba(0, 0, 0, 0.05);
-  --glow-start: rgba(120, 90, 255, 0.14);
-  --glow-mid: rgba(180, 100, 255, 0.12);
+  --glow-start: rgba(var(--accent-rgb), 0.14);
+  --glow-mid: rgba(var(--accent-rgb), 0.12);
   /* logo accent color (adjustable) */
   --logo-color: rgba(88, 22, 202, 0.993); /* default purple for logo */
   --overlay-opacity: 0.75;
@@ -19,15 +21,15 @@
   --nav-text: #0b0d12;
   --nav-text-hover: #000000;
   /* stronger purple oval on hover */
-  --nav-hover-bg: rgba(94, 24, 216, 0.28);
+  --nav-hover-bg: rgba(var(--accent-rgb), 0.28);
 }
 
 html.dark {
   /* stronger dark theme glow */
   --bg-color: #0a0a0a; /* dark background */
   --grid-color: rgba(255, 255, 255, 0.06);
-  --glow-start: rgba(80, 60, 200, 0.35);
-  --glow-mid: rgba(140, 80, 255, 0.32);
+  --glow-start: rgba(var(--accent-rgb), 0.35);
+  --glow-mid: rgba(var(--accent-rgb), 0.32);
   --overlay-opacity: 0.5;
   --text-color: #f3f4f6;
   --title-color: #f3f4f6;
@@ -35,7 +37,7 @@ html.dark {
   --nav-bg: rgba(0, 0, 0, 0.2);
   --nav-text: #f3f4f6;
   --nav-text-hover: #ffffff;
-  --nav-hover-bg: rgba(140, 80, 255, 0.22);
+  --nav-hover-bg: rgba(var(--accent-rgb), 0.22);
 }
 
 body {
@@ -71,17 +73,8 @@ body::before {
 
 /* center glow */
 body::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 70vw;
-  height: 70vw;
-  z-index: 0;
-  pointer-events: none;
-  background: radial-gradient(circle, var(--glow-start) 0%, var(--glow-mid) 40%, transparent 70%);
-  opacity: var(--overlay-opacity);
+  /* removed central purple smoke; keep pseudo-element disabled */
+  display: none;
 }
 
 /* Scoped utilities for nav/footer text using the CSS variables.

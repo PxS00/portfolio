@@ -1,6 +1,11 @@
+import GridPattern from '../../components/GridPattern/GridPattern'
+import ShadowEffect from '../../components/ShadowEffect/ShadowEffect'
+
 export default function Home() {
   return (
     <section className="relative z-30 flex min-h-[75vh] flex-col items-center justify-center py-24 text-center">
+      <GridPattern />
+      <ShadowEffect />
       <h1 className="mb-6 text-6xl font-extrabold text-(--title-color) md:text-7xl">
         Lucas Rossoni
       </h1>
