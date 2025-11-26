@@ -6,8 +6,8 @@ export default function SocialLink({ href, ariaLabel, icon, className = '' }: So
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`opacity-70 transition-opacity hover:opacity-100 ${className}`}
       aria-label={ariaLabel}
+      className={`${className} rounded-full text-(--nav-text) transition-colors hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover)`}
     >
       {icon}
     </a>

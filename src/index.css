@@ -1,10 +1,52 @@
 @import 'tailwindcss';
 
+/* CSS variables for light/dark theming. The ThemeContext toggles
+   the `dark` class on the root element (html.dark). */
+:root {
+  /* fundo igual ao GridPattern no light mode */
+  --bg-color: #f3f4f6;
+  /* single accent color (rgb) used by decorative gradients */
+  --accent-rgb: 124, 58, 237;
+  --grid-color: rgba(0, 0, 0, 0.05);
+  --glow-start: rgba(var(--accent-rgb), 0.14);
+  --glow-mid: rgba(var(--accent-rgb), 0.12);
+  /* logo accent color (adjustable) */
+  --logo-color: rgba(88, 22, 202, 0.993); /* default purple for logo */
+  --overlay-opacity: 0.75;
+  --text-color: #0b1220;
+  --title-color: #0b1220;
+  --muted-color: #6b7280;
+  --nav-bg: rgba(13, 15, 20, 0.06); /* subtle gray surface for navbar in light mode */
+  /* nav/footer text color (hex) */
+  --nav-text: #0b0d12;
+  --nav-text-hover: #000000;
+  /* stronger purple oval on hover */
+  --nav-hover-bg: rgba(var(--accent-rgb), 0.28);
+}
+
+html.dark {
+  /* stronger dark theme glow */
+  --bg-color: #0a0a0a; /* dark background */
+  --grid-color: rgba(255, 255, 255, 0.06);
+  --glow-start: rgba(var(--accent-rgb), 0.35);
+  --glow-mid: rgba(var(--accent-rgb), 0.32);
+  --overlay-opacity: 0.5;
+  --text-color: #f3f4f6;
+  --title-color: #f3f4f6;
+  --muted-color: #9ca3af;
+  --nav-bg: rgba(0, 0, 0, 0.2);
+  --nav-text: #f3f4f6;
+  --nav-text-hover: #ffffff;
+  --nav-hover-bg: rgba(var(--accent-rgb), 0.22);
+}
+
 body {
-  background-color: #0a0a0a;
+  background-color: var(--bg-color);
   min-height: 100vh;
   position: relative;
 }
+
+/* subtle grid pattern */
 body::before {
   content: '';
   position: absolute;
@@ -14,36 +56,63 @@ body::before {
   background:
     repeating-linear-gradient(
       0deg,
-      rgba(255, 255, 255, 0.05) 0px,
-      rgba(255, 255, 255, 0.05) 1px,
+      var(--grid-color) 0px,
+      var(--grid-color) 1px,
       transparent 1px,
       transparent 70px
     ),
     repeating-linear-gradient(
       90deg,
-      rgba(255, 255, 255, 0.05) 0px,
-      rgba(255, 255, 255, 0.05) 1px,
+      var(--grid-color) 0px,
+      var(--grid-color) 1px,
       transparent 1px,
       transparent 70px
     );
-  opacity: 0.05;
+  opacity: calc(var(--overlay-opacity) * 0.05);
 }
 
+/* center glow */
 body::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 70vw;
-  height: 70vw;
-  z-index: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    circle,
-    rgba(60, 80, 255, 0.25) 0%,
-    rgba(140, 80, 255, 0.25) 40%,
-    transparent 70%
-  );
-  opacity: 0.25;
+  /* removed central purple smoke; keep pseudo-element disabled */
+  display: none;
+}
+
+/* Scoped utilities for nav/footer text using the CSS variables.
+   These rules are placed after Tailwind so they override utility classes when necessary. */
+.site-nav .nav-text,
+.footer-nav .nav-text {
+  color: var(--nav-text);
+  transition:
+    color 0.12s ease,
+    background-color 0.12s ease;
+}
+
+.site-nav .nav-text:not(.active):hover,
+.site-nav .nav-text:not(.active):focus-visible {
+  color: var(--nav-text-hover);
+  background-color: var(--nav-hover-bg);
+}
+
+/* Active nav item (persistent selected state) */
+.site-nav .nav-text.active {
+  color: var(--nav-text-hover);
+  background-color: var(--nav-hover-bg);
+  opacity: 1;
+}
+
+.site-nav .nav-text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px; /* small gap for a compact oval */
+  border-radius: 9999px; /* pill/oval */
+  background-color: transparent;
+  line-height: 1;
+}
+
+/* logo styles removed - logo is now plain text in Navbar */
+
+/* smaller sizing for icon-only nav items when nav-text is applied */
+.site-nav .nav-text.rounded-full {
+  padding: 6px; /* keep social icons compact */
 }
