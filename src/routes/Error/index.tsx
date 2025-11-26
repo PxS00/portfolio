@@ -1,8 +1,10 @@
 export default function Error() {
-    return (
-        <section className="flex flex-col items-center justify-center min-h-[75vh] text-center py-24">
-            <h1 className="text-6xl md:text-7xl font-extrabold text-white mb-6">Oops! 404</h1>
-            <p className="text-gray-400 text-xl mb-10">Something went wrong. The page you are looking for does not exist.</p>
-        </section>
-    );
+  return (
+    <section className="flex min-h-[75vh] flex-col items-center justify-center py-24 text-center">
+      <h1 className="mb-6 text-6xl font-extrabold text-white md:text-7xl">Oops! 404</h1>
+      <p className="mb-10 text-xl text-gray-400">
+        Something went wrong. The page you are looking for does not exist.
+      </p>
+    </section>
+  )
 }

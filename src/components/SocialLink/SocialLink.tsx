@@ -1,4 +1,4 @@
-import type { SocialLinkType } from '../../types/social';
+import type { SocialLinkType } from '../../types/social'
 
 export default function SocialLink({ href, ariaLabel, icon, className = '' }: SocialLinkType) {
   return (
@@ -6,10 +6,10 @@ export default function SocialLink({ href, ariaLabel, icon, className = '' }: So
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`opacity-70 hover:opacity-100 transition-opacity ${className}`}
+      className={`opacity-70 transition-opacity hover:opacity-100 ${className}`}
       aria-label={ariaLabel}
     >
       {icon}
     </a>
-  );
+  )
 }
