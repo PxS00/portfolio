@@ -1,1 +1,49 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+body {
+  background-color: #0a0a0a;
+  min-height: 100vh;
+  position: relative;
+}
+body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.05) 0px,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px,
+      transparent 70px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05) 0px,
+      rgba(255, 255, 255, 0.05) 1px,
+      transparent 1px,
+      transparent 70px
+    );
+  opacity: 0.05;
+}
+
+body::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 70vw;
+  height: 70vw;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle,
+    rgba(60, 80, 255, 0.25) 0%,
+    rgba(140, 80, 255, 0.25) 40%,
+    transparent 70%
+  );
+  opacity: 0.25;
+}
