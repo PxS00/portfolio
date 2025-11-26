@@ -10,8 +10,8 @@ export default {
     extend: {
       colors: {
         background: {
-          DEFAULT: '#0D0F14',
-          alt: '#0F1117',
+          DEFAULT: '#0a0a0a',
+          alt: '#0c0c0c',
         },
         text: {
           DEFAULT: '#F3F4F6',
