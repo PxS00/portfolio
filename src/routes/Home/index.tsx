@@ -1,11 +1,14 @@
 export default function Home() {
   return (
-    <section className="flex min-h-[75vh] flex-col items-center justify-center py-24 text-center">
-      <h1 className="mb-6 text-6xl font-extrabold text-white md:text-7xl">
-        Welcome to the Portfolio
+    <section className="relative z-30 flex min-h-[75vh] flex-col items-center justify-center py-24 text-center">
+      <h1 className="mb-6 text-6xl font-extrabold text-(--title-color) md:text-7xl">
+        Lucas Rossoni
       </h1>
-      <p className="mb-10 text-xl text-gray-400">
-        This is the home page. Start building your sections!
+      <h1 className="mb-6 text-6xl font-extrabold text-(--title-color) md:text-7xl">
+        Full-Stack Developer
+      </h1>
+      <p className="mb-10 text-xl font-semibold text-(--muted-color)">
+        Explore my projects and get to know more about me.
       </p>
     </section>
   )
