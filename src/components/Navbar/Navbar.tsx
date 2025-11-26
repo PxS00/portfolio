@@ -31,7 +31,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 z-50 flex w-full items-center justify-center bg-black/20 px-8 py-4 text-white/70 backdrop-blur-md">
+    <nav className="bg-navbar-light fixed top-0 left-0 z-50 flex w-full items-center justify-center px-8 py-4 text-gray-700 backdrop-blur-md dark:bg-black/20 dark:text-white/70">
       <div className="flex w-full max-w-7xl items-center justify-between">
         <div className="flex items-center gap-8">
           <div className="text-2xl font-extrabold">P</div>
@@ -39,25 +39,25 @@ export default function Navbar() {
             <div className="flex gap-2">
               <a
                 href="/about"
-                className="rounded-full px-4 py-2 opacity-70 transition-all hover:bg-white/10 hover:text-white hover:opacity-100"
+                className="rounded-full px-4 py-2 text-gray-700 opacity-70 transition-all hover:bg-gray-200 hover:text-black hover:opacity-100 dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white"
               >
                 About
               </a>
               <a
                 href="/projects"
-                className="rounded-full px-4 py-2 opacity-70 transition-all hover:bg-white/10 hover:text-white hover:opacity-100"
+                className="rounded-full px-4 py-2 text-gray-700 opacity-70 transition-all hover:bg-gray-200 hover:text-black hover:opacity-100 dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white"
               >
                 Projects
               </a>
               <a
                 href="#contact"
-                className="rounded-full px-4 py-2 opacity-70 transition-all hover:bg-white/10 hover:text-white hover:opacity-100"
+                className="rounded-full px-4 py-2 text-gray-700 opacity-70 transition-all hover:bg-gray-200 hover:text-black hover:opacity-100 dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white"
               >
                 Contact
               </a>
               <a
                 href="#stacks"
-                className="rounded-full px-4 py-2 opacity-70 transition-all hover:bg-white/10 hover:text-white hover:opacity-100"
+                className="rounded-full px-4 py-2 text-gray-700 opacity-70 transition-all hover:bg-gray-200 hover:text-black hover:opacity-100 dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white"
               >
                 Stacks
               </a>

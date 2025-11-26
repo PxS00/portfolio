@@ -4,7 +4,7 @@ import Navbar from './components/Navbar/Navbar'
 
 export default function App() {
   return (
-    <div className="relative flex min-h-screen flex-col bg-[#0a0a0a]">
+    <div className="bg-background-light relative flex min-h-screen flex-col dark:bg-[#0a0a0a]">
       <Navbar />
       <main className="w-full flex-1">
         <Outlet />
