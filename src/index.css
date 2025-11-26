@@ -3,8 +3,8 @@
 /* CSS variables for light/dark theming. The ThemeContext toggles
    the `dark` class on the root element (html.dark). */
 :root {
-  /* darker "light" theme with visible glow */
-  --bg-color: #e9e7ef; /* slightly desaturated purple-tinted light */
+  /* fundo igual ao GridPattern no light mode */
+  --bg-color: #f3f4f6;
   /* single accent color (rgb) used by decorative gradients */
   --accent-rgb: 124, 58, 237;
   --grid-color: rgba(0, 0, 0, 0.05);

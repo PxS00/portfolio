@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
 import type { Theme, ThemeContextProps } from '../types/theme'
 
-const ThemeContext = createContext<ThemeContextProps | undefined>(undefined)
+export const ThemeContext = createContext<ThemeContextProps | undefined>(undefined)
 
 function getSystemTheme(): 'light' | 'dark' {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
