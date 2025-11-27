@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier"
+  ],
+  "plugins": ["react-hooks", "react-refresh"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
