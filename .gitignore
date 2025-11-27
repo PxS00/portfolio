@@ -30,3 +30,4 @@ package-lock.json
 .github
 .vercel
 .env
+.env*.local
