@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { TypewriterOptions } from '../types/typewriter'
 /**
  * Hook para efeito de digitação tipo "typewriter".
@@ -16,32 +16,31 @@ export function useTypewriter({
   onDone,
 }: TypewriterOptions) {
   const [index, setIndex] = useState<number>(0)
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
-    let intervalId: ReturnType<typeof setInterval> | undefined
-    const startTimeoutId: ReturnType<typeof setTimeout> = setTimeout(() => {
-      setIndex(0)
-      intervalId = setInterval(() => {
+    setIndex(0)
+    if (intervalRef.current) clearInterval(intervalRef.current)
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    timeoutRef.current = setTimeout(() => {
+      intervalRef.current = setInterval(() => {
         setIndex((prev) => {
           if (prev < text.length) {
             return prev + 1
           } else {
-            clearInterval(intervalId)
-            if (onDone) {
-              onDone()
-            }
+            if (intervalRef.current) clearInterval(intervalRef.current)
+            if (onDone) onDone()
             if (loop) {
-              setTimeout(() => {
+              timeoutRef.current = setTimeout(() => {
                 setIndex(0)
-                intervalId = setInterval(() => {
+                intervalRef.current = setInterval(() => {
                   setIndex((prevLoop) => {
                     if (prevLoop < text.length) {
                       return prevLoop + 1
                     } else {
-                      clearInterval(intervalId)
-                      if (onDone) {
-                        onDone()
-                      }
+                      if (intervalRef.current) clearInterval(intervalRef.current)
+                      if (onDone) onDone()
                       return prevLoop
                     }
                   })
@@ -54,14 +53,10 @@ export function useTypewriter({
       }, delay)
     }, startDelay)
     return () => {
-      if (intervalId) {
-        clearInterval(intervalId)
-      }
-      if (startTimeoutId) {
-        clearTimeout(startTimeoutId)
-      }
+      if (intervalRef.current) clearInterval(intervalRef.current)
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
     }
-  }, [text, delay, startDelay, loop, onDone])
+  }, [text, delay, startDelay, loop])
 
   return text.slice(0, index)
 }
