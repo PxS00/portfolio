@@ -15,7 +15,7 @@ export default function ShadowEffect() {
       className="absolute top-10 left-[calc(50%-4rem)] -z-10 transform-gpu blur-3xl sm:left-[calc(50%-18rem)] lg:top-[calc(50%-30rem)] lg:left-48 xl:left-[calc(50%-24rem)]"
     >
       <div
-        className="aspect-1108/632 w-[69.25rem]"
+        className="aspect-1108/632 w-277"
         style={{
           background,
           clipPath:
