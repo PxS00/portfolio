@@ -30,7 +30,7 @@ export default function HeroSection() {
         )}
       </h1>
       <p className="mb-10 text-xl font-semibold text-(--muted-color)">
-        Explore my projects and get to know more about me.
+        Dive into my work and get to know the developer behind the code.
       </p>
     </section>
   )
