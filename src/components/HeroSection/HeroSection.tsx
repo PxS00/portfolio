@@ -15,10 +15,10 @@ export default function HeroSection() {
     <section className="relative z-30 flex min-h-[75vh] flex-col items-center justify-center py-24 text-center">
       <GridPattern />
       <ShadowEffect />
-      <h1 className="mb-6 text-6xl font-extrabold text-(--title-color) md:text-7xl">
+      <h1 className="mb-6 text-[clamp(2.4rem,6vw,4.5rem)] font-extrabold text-(--title-color)">
         Lucas Rossoni
       </h1>
-      <h1 className="mb-6 text-6xl font-extrabold text-(--title-color) md:text-7xl">
+      <h1 className="mb-6 text-[clamp(2.3rem,5.8vw,4.5rem)] font-extrabold text-(--title-color)">
         {title}
         {showCursor && (
           <span
