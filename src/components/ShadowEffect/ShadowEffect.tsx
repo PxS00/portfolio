@@ -4,11 +4,12 @@ import { ThemeContext } from '../../context/ThemeContext'
 export default function ShadowEffect() {
   const themeCtx = useContext(ThemeContext)
   const resolvedTheme = themeCtx?.resolvedTheme || 'dark'
-  // Use a darker shadow in light mode
+
   const background =
     resolvedTheme === 'light'
       ? 'linear-gradient(90deg, rgba(var(--accent-rgb), 0.38), rgba(var(--accent-rgb), 0.22))'
       : 'linear-gradient(90deg, rgba(var(--accent-rgb), 0.20), rgba(var(--accent-rgb), 0.12))'
+
   return (
     <div
       aria-hidden="true"
