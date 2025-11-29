@@ -1,32 +1,27 @@
 @import 'tailwindcss';
 
-/* CSS variables for light/dark theming. The ThemeContext toggles
-   the `dark` class on the root element (html.dark). */
+/* ==============================
+   THEME VARIABLES
+============================== */
 :root {
-  /* fundo igual ao GridPattern no light mode */
   --bg-color: #f3f4f6;
-  /* single accent color (rgb) used by decorative gradients */
   --accent-rgb: 124, 58, 237;
   --grid-color: rgba(0, 0, 0, 0.05);
   --glow-start: rgba(var(--accent-rgb), 0.14);
   --glow-mid: rgba(var(--accent-rgb), 0.12);
-  /* logo accent color (adjustable) */
-  --logo-color: rgba(88, 22, 202, 0.993); /* default purple for logo */
+  --logo-color: rgba(88, 22, 202, 0.993);
   --overlay-opacity: 0.75;
   --text-color: #0b1220;
   --title-color: #0b1220;
   --muted-color: #6b7280;
-  --nav-bg: rgba(13, 15, 20, 0.06); /* subtle gray surface for navbar in light mode */
-  /* nav/footer text color (hex) */
+  --nav-bg: rgba(13, 15, 20, 0.06);
   --nav-text: #0b0d12;
   --nav-text-hover: #000000;
-  /* stronger purple oval on hover */
   --nav-hover-bg: rgba(var(--accent-rgb), 0.28);
 }
 
 html.dark {
-  /* stronger dark theme glow */
-  --bg-color: #0a0a0a; /* dark background */
+  --bg-color: #0a0a0a;
   --grid-color: rgba(255, 255, 255, 0.06);
   --glow-start: rgba(var(--accent-rgb), 0.35);
   --glow-mid: rgba(var(--accent-rgb), 0.32);
@@ -40,13 +35,16 @@ html.dark {
   --nav-hover-bg: rgba(var(--accent-rgb), 0.22);
 }
 
+/* ==============================
+   BASE
+============================== */
 body {
   background-color: var(--bg-color);
   min-height: 100vh;
   position: relative;
 }
 
-/* subtle grid pattern */
+/* grid pattern */
 body::before {
   content: '';
   position: absolute;
@@ -71,14 +69,14 @@ body::before {
   opacity: calc(var(--overlay-opacity) * 0.05);
 }
 
-/* center glow */
+/* central glow desativado originalmente */
 body::after {
-  /* removed central purple smoke; keep pseudo-element disabled */
   display: none;
 }
 
-/* Scoped utilities for nav/footer text using the CSS variables.
-   These rules are placed after Tailwind so they override utility classes when necessary. */
+/* ==============================
+   NAV + FOOTER (sem alteração)
+============================== */
 .site-nav .nav-text,
 .footer-nav .nav-text {
   color: var(--nav-text);
@@ -87,13 +85,12 @@ body::after {
     background-color 0.12s ease;
 }
 
-.site-nav .nav-text:not(.active):hover,
-.site-nav .nav-text:not(.active):focus-visible {
+.site-nav .nav-text:hover:not(.active),
+.site-nav .nav-text:focus-visible:not(.active) {
   color: var(--nav-text-hover);
   background-color: var(--nav-hover-bg);
 }
 
-/* Active nav item (persistent selected state) */
 .site-nav .nav-text.active {
   color: var(--nav-text-hover);
   background-color: var(--nav-hover-bg);
@@ -104,15 +101,62 @@ body::after {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 10px; /* small gap for a compact oval */
-  border-radius: 9999px; /* pill/oval */
+  padding: 6px 10px;
+  border-radius: 9999px;
   background-color: transparent;
   line-height: 1;
 }
 
-/* logo styles removed - logo is now plain text in Navbar */
-
-/* smaller sizing for icon-only nav items when nav-text is applied */
 .site-nav .nav-text.rounded-full {
-  padding: 6px; /* keep social icons compact */
+  padding: 6px;
+}
+
+/* ==============================
+   BREAKPOINTS RESTAURADOS
+============================== */
+
+/* Base */
+.component-base {
+  padding: 4px;
+  font-size: 0.95rem;
+}
+
+/* sm */
+@media (min-width: 640px) {
+  .component-sm {
+    padding: 8px;
+    font-size: 1rem;
+  }
+}
+
+/* md */
+@media (min-width: 768px) {
+  .component-md {
+    padding: 16px;
+    font-size: 1.25rem;
+  }
+}
+
+/* lg */
+@media (min-width: 1024px) {
+  .component-lg {
+    padding: 20px;
+    font-size: 1.5rem;
+  }
+}
+
+/* xl */
+@media (min-width: 1280px) {
+  .component-xl {
+    padding: 24px;
+    font-size: 1.25rem;
+  }
+}
+
+/* 2xl */
+@media (min-width: 1536px) {
+  .component-2xl {
+    padding: 32px;
+    font-size: 1.35rem;
+  }
 }
