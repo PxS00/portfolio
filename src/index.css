@@ -167,17 +167,26 @@ body::after {
 ============================== */
 
 @keyframes fadeAndSlide {
-  from { opacity: 0; transform: translateY(-10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-fadeAndSlide {
-  animation: fadeAndSlide .35s cubic-bezier(.25, .8, .25, 1) forwards;
+  animation: fadeAndSlide 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
 }
 
 /* Hover/press dos botões */
 .nav-text {
-  transition: transform .35s cubic-bezier(.25, .8, .25, 1), background-color .25s, color .25s;
+  transition:
+    transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1),
+    background-color 0.25s,
+    color 0.25s;
 }
 
 .nav-text:hover {
@@ -185,5 +194,25 @@ body::after {
 }
 
 .nav-text:active {
-  transform: scale(.95);
+  transform: scale(0.95);
+}
+
+/* ===== Botão Menu com rotação suave ===== */
+.icon-spin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+  transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transform: rotate(0deg);
+  will-change: transform;
+}
+
+.icon-spin svg {
+  display: block;
+}
+
+/* Quando ativa → gira e aumenta levemente */
+.icon-spin.active {
+  transform: rotate(180deg) scale(1.12);
 }

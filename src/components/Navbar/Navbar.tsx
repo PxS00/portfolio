@@ -10,7 +10,6 @@ export default function Navbar() {
   const isHome = location.pathname === '/'
   const { resolvedTheme, toggleTheme } = useTheme()
   const [mobileOpen, setMobileOpen] = useState(false)
-
   useEffect(() => setMobileOpen(false), [location.pathname, location.hash])
 
   return (
@@ -57,10 +56,16 @@ export default function Navbar() {
             />
           ))}
           <button
-            onClick={toggleTheme}
-            className="nav-text rounded-full p-2 transition-all duration-300 hover:scale-[1.12] hover:bg-(--nav-hover-bg) active:scale-95"
+            onClick={(e) => {
+              e.stopPropagation()
+              toggleTheme()
+            }}
+            aria-label="Toggle theme"
+            className="nav-text pointer-events-auto relative z-50 rounded-full p-2 transition-all duration-300 hover:scale-[1.12] hover:bg-(--nav-hover-bg) active:scale-95"
           >
-            {resolvedTheme === 'dark' ? <FiSun size={22} /> : <FiMoon size={22} />}
+            <span className={`icon-spin ${resolvedTheme === 'dark' ? 'active' : ''}`}>
+              {resolvedTheme === 'dark' ? <FiSun size={22} /> : <FiMoon size={22} />}
+            </span>
           </button>
         </div>
 
@@ -70,14 +75,18 @@ export default function Navbar() {
             onClick={() => setMobileOpen((s) => !s)}
             className="nav-text rounded-full p-2 duration-300 hover:scale-[1.12] hover:bg-(--nav-hover-bg) active:scale-95"
           >
-            {mobileOpen ? <FiX size={22} /> : <FiMenu size={22} />}
+            <span className={`icon-spin ${mobileOpen ? 'active' : ''}`}>
+              {mobileOpen ? <FiX size={22} /> : <FiMenu size={22} />}
+            </span>
           </button>
 
           <button
             onClick={toggleTheme}
             className="nav-text rounded-full p-2 duration-300 hover:scale-[1.12] hover:bg-(--nav-hover-bg) active:scale-95"
           >
-            {resolvedTheme === 'dark' ? <FiSun size={22} /> : <FiMoon size={22} />}
+            <span className={`icon-spin ${resolvedTheme === 'dark' ? 'active' : ''}`}>
+              {resolvedTheme === 'dark' ? <FiSun size={22} /> : <FiMoon size={22} />}
+            </span>
           </button>
         </div>
       </div>
