@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App'
 import { ThemeProvider } from './app/providers/ThemeContext'
-import './styles/global.css'
 import Error from './app/routes/Error'
 import Home from './app/routes/Home'
+import './styles/global.css'
 
 const router = createBrowserRouter([
   {
