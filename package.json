@@ -12,7 +12,7 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,json,md}\"",
     "clean": "del /q /s dist node_modules .turbo .cache .parcel-cache .eslintcache .stylelintcache",
-    "tailwind:build": "tailwindcss -c tailwind.config.js -i ./src/index.css -o ./public/tailwind.css --minify"
+    "tailwind:build": "tailwindcss -c tailwind.config.js -i ./src/styles/global.css -o ./public/tailwind.css --minify"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",

@@ -21,16 +21,24 @@ export function useTypewriter({
 
   useEffect(() => {
     setIndex(0)
-    if (intervalRef.current) clearInterval(intervalRef.current)
-    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current)
+    }
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
     timeoutRef.current = setTimeout(() => {
       intervalRef.current = setInterval(() => {
         setIndex((prev) => {
           if (prev < text.length) {
             return prev + 1
           } else {
-            if (intervalRef.current) clearInterval(intervalRef.current)
-            if (onDone) onDone()
+            if (intervalRef.current) {
+              clearInterval(intervalRef.current)
+            }
+            if (onDone) {
+              onDone()
+            }
             if (loop) {
               timeoutRef.current = setTimeout(() => {
                 setIndex(0)
@@ -39,8 +47,12 @@ export function useTypewriter({
                     if (prevLoop < text.length) {
                       return prevLoop + 1
                     } else {
-                      if (intervalRef.current) clearInterval(intervalRef.current)
-                      if (onDone) onDone()
+                      if (intervalRef.current) {
+                        clearInterval(intervalRef.current)
+                      }
+                      if (onDone) {
+                        onDone()
+                      }
                       return prevLoop
                     }
                   })
@@ -53,8 +65,12 @@ export function useTypewriter({
       }, delay)
     }, startDelay)
     return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current)
-      if (timeoutRef.current) clearTimeout(timeoutRef.current)
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
     }
   }, [text, delay, startDelay, loop])
 
