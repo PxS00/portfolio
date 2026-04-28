@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi'
 import { useLocation } from 'react-router-dom'
 import { SOCIAL_LINKS } from '../../constants/socialLinks'
-import { useTheme } from '../../context/ThemeContext'
+import { useTheme } from '../../../app/providers/ThemeContext'
 import SocialLink from '../SocialLink/SocialLink'
 
 export default function Navbar() {

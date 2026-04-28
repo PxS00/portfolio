@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import GridPattern from '../../components/GridPattern/GridPattern'
-import ShadowEffect from '../../components/ShadowEffect/ShadowEffect'
-import { useTypewriter } from '../../hooks/useTypewriter'
+import GridPattern from '../../../../shared/components/GridPattern/GridPattern'
+import ShadowEffect from '../../../../shared/components/ShadowEffect/ShadowEffect'
+import { useTypewriter } from '../../../../shared/hooks/useTypewriter'
 
 export default function HeroSection() {
   const [showCursor, setShowCursor] = useState(true)
