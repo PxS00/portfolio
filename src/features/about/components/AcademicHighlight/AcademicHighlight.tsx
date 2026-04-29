@@ -20,11 +20,11 @@ export default function AcademicHighlight() {
         <div>
           <h3 className="mb-3 text-2xl font-bold text-(--title-color)">Destaque Acadêmico</h3>
           <p className="text-lg leading-relaxed text-(--muted-color)">
-            Durante minha formação na FIAP, fui selecionado entre os 10 melhores grupos do curso de
-            Análise e Desenvolvimento de Sistemas para apresentar um projeto na feira
-            <strong> FIAP NEXT</strong>. Participei do desenvolvimento de uma solução tecnológica
-            voltada ao Hospital das Clínicas (HC), atuando em equipe multidisciplinar e contribuindo
-            na criação de uma solução para um problema real, conectando tecnologia e impacto social.
+            Selecionado entre os 10 melhores projetos do curso de Análise e Desenvolvimento de
+            Sistemas da FIAP para apresentação no <strong>FIAP NEXT</strong>. Atuou no
+            desenvolvimento de uma solução tecnológica para o Hospital das Clínicas, em colaboração
+            com uma equipe multidisciplinar, contribuindo na resolução de um problema real por meio
+            da aplicação de engenharia de software.
           </p>
         </div>
       </div>
