@@ -1,5 +1,5 @@
-import AboutSection from '../../../features/home/components/AboutSection/AboutSection'
-import HeroSection from '../../../features/home/components/HeroSection/HeroSection'
+import AboutSection from '../../../features/about/components/AboutSection/AboutSection'
+import HeroSection from '../../../features/hero/components/HeroSection/HeroSection'
 
 export default function Home() {
   return (
