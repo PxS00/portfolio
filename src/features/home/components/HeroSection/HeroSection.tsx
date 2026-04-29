@@ -6,7 +6,7 @@ import { useTypewriter } from '../../../../shared/hooks/useTypewriter'
 export default function HeroSection() {
   const [showCursor, setShowCursor] = useState(true)
   const title = useTypewriter({
-    text: 'Full-Stack Developer',
+    text: 'Software Engineer',
     delay: 80,
     startDelay: 400,
     onDone: () => setShowCursor(false),
