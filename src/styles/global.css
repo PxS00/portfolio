@@ -5,6 +5,10 @@
 ============================== */
 :root {
   --bg-color: #f3f4f6;
+  --bg-color-alt: #ffffff;
+  --border-color: #e5e7eb;
+  --primary-color: #7c3aed;
+  --secondary-color: #ec4899;
   --accent-rgb: 124, 58, 237;
   --grid-color: rgba(0, 0, 0, 0.05);
   --glow-start: rgba(var(--accent-rgb), 0.14);
@@ -22,6 +26,10 @@
 
 html.dark {
   --bg-color: #0a0a0a;
+  --bg-color-alt: #171717;
+  --border-color: #262626;
+  --primary-color: #8b5cf6;
+  --secondary-color: #f472b6;
   --grid-color: rgba(255, 255, 255, 0.06);
   --glow-start: rgba(var(--accent-rgb), 0.35);
   --glow-mid: rgba(var(--accent-rgb), 0.32);
