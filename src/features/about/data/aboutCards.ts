@@ -11,25 +11,25 @@ export const aboutCards: AboutCardData[] = [
   {
     title: 'Backend & APIs',
     description:
-      'Desenvolvimento de APIs REST com Java e Spring Boot, focando na implementação de regras de negócio.',
+      'Desenvolvimento de APIs REST estruturadas, com foco na organização de serviços, validação de dados e implementação consistente de regras de negócio.',
     icon: Server,
   },
   {
     title: 'Dados & Persistência',
     description:
-      'Modelagem de banco de dados e persistência avançada utilizando PostgreSQL, MySQL, Oracle e JPA/Hibernate.',
+      'Experiência na modelagem de dados e construção de camadas de persistência eficientes, garantindo integridade, performance e organização das informações.',
     icon: Database,
   },
   {
     title: 'Arquitetura & Boas Práticas',
     description:
-      'Aplicação de SOLID, Clean Code e Arquitetura em camadas (MVC) para garantir sistemas sustentáveis.',
+      'Aplicação de princípios como SOLID e Clean Code para criação de sistemas organizados, de fácil manutenção e preparados para evolução contínua.',
     icon: Layers,
   },
   {
     title: 'Integração & Sistemas',
     description:
-      'Integração de sistemas, comunicação entre serviços e processamento eficiente de dados em larga escala.',
+      'Atuação na integração entre sistemas e serviços, buscando comunicação eficiente, confiabilidade e consistência no fluxo de dados.',
     icon: Network,
   },
 ]
