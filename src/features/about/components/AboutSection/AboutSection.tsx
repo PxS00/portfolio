@@ -1,3 +1,4 @@
+import TechCarousel from '../../../stacks/components/TechCarousel'
 import { aboutCards } from '../../data/aboutCards'
 import AboutCard from '../AboutCard/AboutCard'
 import AcademicHighlight from '../AcademicHighlight/AcademicHighlight'
@@ -13,8 +14,19 @@ export default function AboutSection() {
         </p>
       </div>
 
+      {/* Tech Carousel */}
+      <div className="mb-20">
+        <div className="mb-8 text-center">
+          <h3 className="mb-2 text-2xl font-bold text-(--title-color)">Tecnologias</h3>
+          <p className="text-sm text-(--muted-color)">
+            Ferramentas e tecnologias que utilizo no dia a dia
+          </p>
+        </div>
+        <TechCarousel />
+      </div>
+
       {/* Specialization Cards */}
-      <div className="mb-20 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+      <div className="mb-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
         {aboutCards.map((card, index) => (
           <AboutCard
             key={card.title}

@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
-import { Database, Layers, Network, Server } from 'lucide-react'
+import { Cloud, Database, Layers, Server } from 'lucide-react'
 
 export interface AboutCardData {
   title: string
@@ -11,25 +11,25 @@ export const aboutCards: AboutCardData[] = [
   {
     title: 'Backend & APIs',
     description:
-      'Desenvolvimento de APIs REST estruturadas, com foco na organização de serviços, validação de dados e implementação consistente de regras de negócio.',
+      'Construção de APIs utilizando Java e Spring Boot, com foco na organização de serviços, implementação de regras de negócio e definição de arquitetura em camadas.',
     icon: Server,
   },
   {
     title: 'Dados & Persistência',
     description:
-      'Experiência na modelagem de dados e construção de camadas de persistência eficientes, garantindo integridade, performance e organização das informações.',
+      'Modelagem e persistência de dados com JPA/Hibernate, garantindo integridade, performance e consistência das informações.',
     icon: Database,
   },
   {
-    title: 'Arquitetura & Boas Práticas',
+    title: 'Arquitetura & Boas\u00A0Práticas',
     description:
-      'Aplicação de princípios como SOLID e Clean Code para criação de sistemas organizados, de fácil manutenção e preparados para evolução contínua.',
+      'Aplicação de SOLID, Clean Code e padrões arquiteturais para construção de sistemas sustentáveis e de fácil manutenção.',
     icon: Layers,
   },
   {
-    title: 'Integração & Sistemas',
+    title: 'Cloud & Infraestrutura',
     description:
-      'Atuação na integração entre sistemas e serviços, buscando comunicação eficiente, confiabilidade e consistência no fluxo de dados.',
-    icon: Network,
+      'Utilização de ambientes em nuvem e conteinerização com Docker, com foco em deploy e escalabilidade.',
+    icon: Cloud,
   },
 ]
