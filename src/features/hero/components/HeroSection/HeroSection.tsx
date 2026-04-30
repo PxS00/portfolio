@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { FiDownload } from 'react-icons/fi'
 import GridPattern from '../../../../shared/components/GridPattern/GridPattern'
 import ShadowEffect from '../../../../shared/components/ShadowEffect/ShadowEffect'
 import { useTypewriter } from '../../../../shared/hooks/useTypewriter'
@@ -32,6 +33,15 @@ export default function HeroSection() {
       <p className="mb-10 text-xl font-semibold text-(--muted-color)">
         Dive into my work and get to know the developer behind the code.
       </p>
+      <a
+        href="/cv/lucas_rossoni_dieder.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative z-50 pointer-events-auto group flex items-center gap-2 rounded-full bg-purple-600 px-6 py-3 font-semibold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:scale-105 hover:bg-purple-700 active:scale-95"
+      >
+        <FiDownload className="transition-transform duration-300 group-hover:translate-y-1" size={20} />
+        Get resume
+      </a>
     </section>
   )
 }
