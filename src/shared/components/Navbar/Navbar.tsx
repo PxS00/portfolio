@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi'
 import { useLocation } from 'react-router-dom'
-import { SOCIAL_LINKS } from '../../constants/socialLinks'
 import { useTheme } from '../../../app/providers/ThemeContext'
+import { SOCIAL_LINKS } from '../../constants/socialLinks'
 import SocialLink from '../SocialLink/SocialLink'
 
 export default function Navbar() {
@@ -20,8 +20,8 @@ export default function Navbar() {
           {isHome && (
             <div className="hidden gap-2 md:flex">
               <a
-                href="/about"
-                className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/about' ? 'active' : ''}`}
+                href="#about"
+                className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#about' ? 'active' : ''}`}
               >
                 About
               </a>
@@ -37,12 +37,7 @@ export default function Navbar() {
               >
                 Contact
               </a>
-              <a
-                href="#stacks"
-                className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#stacks' ? 'active' : ''}`}
-              >
-                Stacks
-              </a>
+
             </div>
           )}
         </div>
@@ -99,8 +94,8 @@ export default function Navbar() {
         >
           <div className="flex flex-col gap-1">
             <a
-              href="/about"
-              className={`nav-text px-3 py-2 duration-300 hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/about' ? 'active' : ''}`}
+              href="#about"
+              className={`nav-text px-3 py-2 duration-300 hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#about' ? 'active' : ''}`}
             >
               About
             </a>
@@ -116,12 +111,7 @@ export default function Navbar() {
             >
               Contact
             </a>
-            <a
-              href="#stacks"
-              className={`nav-text px-3 py-2 duration-300 hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#stacks' ? 'active' : ''}`}
-            >
-              Stacks
-            </a>
+
           </div>
         </div>
       )}
