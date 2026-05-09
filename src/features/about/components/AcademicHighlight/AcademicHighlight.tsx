@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Award, Cloud } from 'lucide-react'
+import { Award } from 'lucide-react'
 
 export default function AcademicHighlight() {
   return (
@@ -44,20 +44,29 @@ export default function AcademicHighlight() {
         <div className="absolute bottom-0 left-0 -mb-16 -ml-16 h-64 w-64 rounded-full bg-(--secondary-color)/5 blur-3xl" />
 
         <div className="relative z-10 flex flex-col items-start gap-8 md:flex-row md:items-center">
-          <div className="group flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-(--primary-color)/10 text-(--primary-color) border-2 border-dashed border-(--primary-color)/30">
-            {/* Aqui você pode substituir o ícone da Cloud pela tag <img> da sua badge OCI */}
-            <Cloud className="h-10 w-10 transition-transform group-hover:scale-110" />
+          <div className="group flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-(--primary-color)/10 border-2 border-(--primary-color)/30">
+            <img src="/certs/OCI25FNDCFA.jpeg" alt="Oracle Cloud Infrastructure Foundations Associate 2025 Badge" className="h-full w-full object-cover transition-transform group-hover:scale-110" />
           </div>
-          <div>
-            <h3 className="mb-3 text-2xl font-bold text-(--title-color)">Certificação em Progresso</h3>
+          <div className="flex-1">
+            <h3 className="mb-3 text-2xl font-bold text-(--title-color)">Oracle Cloud Infrastructure Foundations Associate 2025</h3>
             <p className="text-lg leading-relaxed text-(--muted-color)">
-              Em preparação para certificação Oracle Cloud Infrastructure (OCI), com foco em
-              arquitetura, segurança e soluções escaláveis em nuvem.
+              Certificação concluída pela <strong>Oracle University</strong>.
               <br />
-              <span className="mt-3 inline-block rounded-full bg-(--primary-color)/10 px-3 py-1 text-sm font-medium text-(--primary-color)">
-                Em andamento
-              </span>
+              Competências: OCI, Compute, Networking, Storage, Security, IAM, Compartments, VCNs e Cloud Architecture.
             </p>
+            <div className="mt-4 flex flex-wrap items-center gap-4">
+              <span className="inline-block rounded-full bg-(--primary-color)/10 px-3 py-1 text-sm font-medium text-(--primary-color)">
+                Concluída
+              </span>
+              <a 
+                href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=E63998027E057F05952B3E9B77916904361B1492B6DAF2EC28A3040227D2891D" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-(--primary-color) hover:underline"
+              >
+                Ver credencial oficial
+              </a>
+            </div>
           </div>
         </div>
       </motion.div>
