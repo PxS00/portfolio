@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
-import { Cloud, Database, Layers, Server } from 'lucide-react'
+import { Cloud, Database, Layers, Server, Layout } from 'lucide-react'
 
 export interface AboutCardData {
   title: string
@@ -31,5 +31,11 @@ export const aboutCards: AboutCardData[] = [
     description:
       'Utilização de ambientes em nuvem e conteinerização com Docker, com foco em deploy e escalabilidade.',
     icon: Cloud,
+  },
+  {
+    title: 'Frontend & UI',
+    description:
+      'Experiência com desenvolvimento frontend utilizando HTML puro (WordPress) e frameworks modernos como React e Angular. Compreensão profunda do processo de integração (merge) entre o backend e frontend.',
+    icon: Layout,
   },
 ]
