@@ -44,8 +44,8 @@ export default function AcademicHighlight() {
         <div className="absolute bottom-0 left-0 -mb-16 -ml-16 h-64 w-64 rounded-full bg-(--secondary-color)/5 blur-3xl" />
 
         <div className="relative z-10 flex flex-col items-start gap-8 md:flex-row md:items-center">
-          <div className="group flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-(--primary-color)/10 border-2 border-(--primary-color)/30">
-            <img src="/certs/OCI25FNDCFA.jpeg" alt="Oracle Cloud Infrastructure Foundations Associate 2025 Badge" className="h-full w-full object-cover transition-transform group-hover:scale-110" />
+          <div className="group flex h-24 w-24 shrink-0 items-center justify-center overflow-visible">
+            <img src="/certs/OCI25FNDCFA.png" alt="Oracle Cloud Infrastructure Foundations Associate 2025 Badge" className="h-full w-full object-contain scale-[2.5] transition-transform duration-300 group-hover:scale-[2.8] drop-shadow-xl" />
           </div>
           <div className="flex-1">
             <h3 className="mb-3 text-2xl font-bold text-(--title-color)">Oracle Cloud Infrastructure Foundations Associate 2025</h3>
@@ -64,7 +64,16 @@ export default function AcademicHighlight() {
                 rel="noopener noreferrer"
                 className="text-sm font-medium text-(--primary-color) hover:underline"
               >
-                Ver credencial oficial
+                Credencial Oficial
+              </a>
+              <span className="text-(--muted-color)">•</span>
+              <a 
+                href="/certs/OCI-associateCertificate.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-(--primary-color) hover:underline"
+              >
+                Visualizar PDF
               </a>
             </div>
           </div>

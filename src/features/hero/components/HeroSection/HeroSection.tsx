@@ -7,7 +7,7 @@ import { useTypewriter } from '../../../../shared/hooks/useTypewriter'
 export default function HeroSection() {
   const [showCursor, setShowCursor] = useState(true)
   const title = useTypewriter({
-    text: 'Backend Software Engineer 3',
+    text: 'Backend Software Engineer',
     delay: 80,
     startDelay: 400,
     onDone: () => setShowCursor(false),
@@ -31,7 +31,7 @@ export default function HeroSection() {
         )}
       </h1>
       <p className="mb-10 text-xl font-semibold text-(--muted-color)">
-        Dive into my work and get to know the developer behind the code.
+        Desenvolvendo arquiteturas escaláveis para soluções digitais modernas.
       </p>
       <a
         href="/cv/lucas_rossoni_dieder_cv_pt_backend.pdf"
@@ -40,7 +40,7 @@ export default function HeroSection() {
         className="relative z-50 pointer-events-auto group flex items-center gap-2 rounded-full bg-purple-600 px-6 py-3 font-semibold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:scale-105 hover:bg-purple-700 active:scale-95"
       >
         <FiDownload className="transition-transform duration-300 group-hover:translate-y-1" size={20} />
-        Get resume
+        Baixar currículo
       </a>
     </section>
   )

@@ -23,19 +23,19 @@ export default function Navbar() {
                 href="#about"
                 className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#about' ? 'active' : ''}`}
               >
-                About
+                Sobre
               </a>
               <a
                 href="/projects"
                 className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/projects' ? 'active' : ''}`}
               >
-                Projects
+                Projetos
               </a>
               <a
                 href="#contact"
                 className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#contact' ? 'active' : ''}`}
               >
-                Contact
+                Contato
               </a>
 
             </div>
@@ -97,19 +97,19 @@ export default function Navbar() {
               href="#about"
               className={`nav-text px-3 py-2 duration-300 hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#about' ? 'active' : ''}`}
             >
-              About
+              Sobre
             </a>
             <a
               href="/projects"
               className={`nav-text px-3 py-2 duration-300 hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/projects' ? 'active' : ''}`}
             >
-              Projects
+              Projetos
             </a>
             <a
               href="#contact"
               className={`nav-text px-3 py-2 duration-300 hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#contact' ? 'active' : ''}`}
             >
-              Contact
+              Contato
             </a>
 
           </div>
