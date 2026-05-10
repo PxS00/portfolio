@@ -6,6 +6,7 @@ import { ThemeProvider } from './app/providers/ThemeContext'
 import Error from './app/routes/Error'
 import Home from './app/routes/Home'
 import Projects from './app/routes/Projects'
+import Contact from './app/routes/Contact'
 import ProjectDetail from './features/projects/components/ProjectDetail/ProjectDetail'
 import './styles/global.css'
 
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       { path: '/', element: <Home /> },
       { path: '/projects', element: <Projects /> },
       { path: '/projects/:repoName', element: <ProjectDetail /> },
+      { path: '/contact', element: <Contact /> },
     ],
   },
 ])
