@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion'
-import { ArrowLeft, ExternalLink, Github, FolderGit2 } from 'lucide-react'
-import { Link, useParams } from 'react-router-dom'
+import { ArrowLeft, ExternalLink, FolderGit2, Github } from 'lucide-react'
 import Markdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
+import { Link, useParams } from 'react-router-dom'
 import rehypeRaw from 'rehype-raw'
+import remarkGfm from 'remark-gfm'
 import { useProjectDetail } from '../../hooks/useProjectDetail'
-import { getLanguageColor, formatRepoDate } from '../../utils/projectHelpers'
+import { formatRepoDate, getLanguageColor, getLanguageIcon } from '../../utils/projectHelpers'
 import './ProjectDetail.css'
 
 export default function ProjectDetail() {
@@ -100,10 +100,18 @@ export default function ProjectDetail() {
           )}
           <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-(--text-color)/70">
             <div className="flex items-center gap-2">
-              <span
-                className="h-3 w-3 rounded-full"
-                style={{ backgroundColor: getLanguageColor(repo.language) }}
-              />
+              {getLanguageIcon(repo.language) ? (
+                <img 
+                  src={getLanguageIcon(repo.language)!} 
+                  alt={repo.language || 'Language'} 
+                  className="h-4 w-4" 
+                />
+              ) : (
+                <span
+                  className="h-3 w-3 rounded-full"
+                  style={{ backgroundColor: getLanguageColor(repo.language) }}
+                />
+              )}
               <span>{repo.language || 'N/A'}</span>
             </div>
             <div className="flex items-center gap-1.5">

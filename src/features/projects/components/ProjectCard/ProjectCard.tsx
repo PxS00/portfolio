@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
-import { Github, FolderGit2, ArrowRight } from 'lucide-react'
+import { ArrowRight, FolderGit2, Github } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import type { GithubRepo } from '../../types/github.types'
-import { getLanguageColor, formatRepoDate } from '../../utils/projectHelpers'
+import { formatRepoDate, getLanguageColor, getLanguageIcon } from '../../utils/projectHelpers'
 
 interface ProjectCardProps {
   repo: GithubRepo
@@ -36,10 +36,18 @@ export default function ProjectCard({ repo, index = 0 }: ProjectCardProps) {
 
         <div className="mt-auto flex flex-wrap items-center justify-between gap-4 text-xs font-medium text-(--text-color)/70">
           <div className="flex items-center gap-2">
-            <span
-              className="h-3 w-3 rounded-full"
-              style={{ backgroundColor: getLanguageColor(repo.language) }}
-            />
+            {getLanguageIcon(repo.language) ? (
+              <img 
+                src={getLanguageIcon(repo.language)!} 
+                alt={repo.language || 'Language'} 
+                className="h-3.5 w-3.5" 
+              />
+            ) : (
+              <span
+                className="h-3 w-3 rounded-full"
+                style={{ backgroundColor: getLanguageColor(repo.language) }}
+              />
+            )}
             <span>{repo.language || 'N/A'}</span>
           </div>
 
