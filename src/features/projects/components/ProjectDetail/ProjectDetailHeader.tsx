@@ -8,7 +8,7 @@ interface ProjectDetailHeaderProps {
 
 // Displays repo name, description, language icon, and update date
 export default function ProjectDetailHeader({ repo }: ProjectDetailHeaderProps) {
-  const language = getDisplayLanguage(repo.language)
+  const language = getDisplayLanguage(repo.language, repo.name)
   const languageIcon = getLanguageIcon(language)
 
   return (

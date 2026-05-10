@@ -10,7 +10,7 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ repo, index = 0 }: ProjectCardProps) {
-  const language = getDisplayLanguage(repo.language)
+  const language = getDisplayLanguage(repo.language, repo.name)
   const languageIcon = getLanguageIcon(language)
 
   return (

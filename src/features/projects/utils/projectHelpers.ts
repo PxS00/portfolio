@@ -13,6 +13,7 @@ export const LANGUAGE_COLORS: Record<string, string> = {
   'C++': '#f34b7d',
   'C#': '#178600',
   Markdown: '#083fa1',
+  'Jupyter Notebook': '#DA5B0B',
 }
 
 const DEFAULT_COLOR = '#8b949e'
@@ -41,6 +42,7 @@ export const LANGUAGE_ICONS: Record<string, string> = {
   Swift: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swift/swift-original.svg',
   Kotlin: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg',
   Markdown: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/markdown/markdown-original.svg',
+  'Jupyter Notebook': 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jupyter/jupyter-original.svg',
 }
 
 export const getLanguageIcon = (language: string | null): string | null => {
@@ -48,9 +50,14 @@ export const getLanguageIcon = (language: string | null): string | null => {
   return LANGUAGE_ICONS[language] || null
 }
 
-// Returns a user-friendly language name, defaulting null to Markdown
-export const getDisplayLanguage = (language: string | null): string => {
-  return language || 'Markdown'
+const GITHUB_USERNAME = 'PxS00'
+
+// Returns a user-friendly language name
+// Only the profile README repo (same name as username) defaults to Markdown
+export const getDisplayLanguage = (language: string | null, repoName?: string): string => {
+  if (language) return language
+  if (repoName === GITHUB_USERNAME) return 'Markdown'
+  return 'N/A'
 }
 
 // Resolves relative image paths in README to absolute GitHub raw URLs
