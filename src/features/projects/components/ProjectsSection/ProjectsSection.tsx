@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom'
 import { ArrowRight, Terminal } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import ErrorState from '../../../../shared/components/ErrorState/ErrorState'
 import { useFeaturedRepos } from '../../hooks/useFeaturedRepos'
 import ProjectCard from '../ProjectCard/ProjectCard'
 import ProjectCardSkeleton from '../ProjectCard/ProjectCardSkeleton'
@@ -33,15 +34,7 @@ export default function ProjectsSection() {
         </div>
 
         {error ? (
-          <div className="flex flex-col items-center justify-center rounded-2xl bg-red-500/5 p-12 text-center border border-red-500/10">
-            <p className="mb-4 text-red-400">{error}</p>
-            <button
-              onClick={retry}
-              className="rounded-lg bg-red-500/20 px-6 py-2 text-sm font-semibold text-red-400 transition-colors hover:bg-red-500/30"
-            >
-              Tentar novamente
-            </button>
-          </div>
+          <ErrorState message={error} onRetry={retry} />
         ) : (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {loading

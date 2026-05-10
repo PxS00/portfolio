@@ -1,7 +1,8 @@
+import { FolderGit2 } from 'lucide-react'
+import ErrorState from '../../../../shared/components/ErrorState/ErrorState'
 import { useGithubRepos } from '../../hooks/useGithubRepos'
 import ProjectCard from '../ProjectCard/ProjectCard'
 import ProjectCardSkeleton from '../ProjectCard/ProjectCardSkeleton'
-import { FolderGit2 } from 'lucide-react'
 
 export default function ProjectsGrid() {
   const { repos, loading, error, retry } = useGithubRepos()
@@ -18,15 +19,7 @@ export default function ProjectsGrid() {
       </div>
 
       {error ? (
-        <div className="flex flex-col items-center justify-center rounded-2xl bg-red-500/5 p-12 text-center border border-red-500/10">
-          <p className="mb-4 text-red-400">{error}</p>
-          <button
-            onClick={retry}
-            className="rounded-lg bg-red-500/20 px-6 py-2 text-sm font-semibold text-red-400 transition-colors hover:bg-red-500/30"
-          >
-            Tentar novamente
-          </button>
-        </div>
+        <ErrorState message={error} onRetry={retry} />
       ) : (
         <>
           <div className="mb-8 flex items-center justify-between text-sm font-medium text-(--text-color)/70">
@@ -35,7 +28,7 @@ export default function ProjectsGrid() {
               {loading ? (
                 <span>Carregando repositórios...</span>
               ) : (
-                <span>Exibindo {repos.length} repositórios originais</span>
+                <span>Exibindo {repos.length} repositórios</span>
               )}
             </div>
           </div>

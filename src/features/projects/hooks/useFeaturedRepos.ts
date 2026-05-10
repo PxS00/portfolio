@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback } from 'react'
-import type { GithubRepo } from '../types/github.types'
-import { githubService } from '../services/github.service'
+import { useCallback, useEffect, useState } from 'react'
 import { FEATURED_REPOS } from '../data/featuredRepos'
+import { githubService } from '../services/github.service'
+import type { GithubRepo } from '../types/github.types'
 
 export const useFeaturedRepos = () => {
   const [repos, setRepos] = useState<GithubRepo[]>([])
@@ -17,8 +17,17 @@ export const useFeaturedRepos = () => {
         githubService.fetchRepoByName(repoName)
       )
       
-      const results = await Promise.all(promises)
-      setRepos(results)
+      // Use allSettled to gracefully handle partial failures
+      const results = await Promise.allSettled(promises)
+      const fulfilled = results
+        .filter((r): r is PromiseFulfilledResult<GithubRepo> => r.status === 'fulfilled')
+        .map(r => r.value)
+
+      setRepos(fulfilled)
+
+      if (fulfilled.length === 0) {
+        setError('Não foi possível carregar os projetos em destaque.')
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load featured repositories')
     } finally {

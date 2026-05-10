@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from 'react'
-import type { GithubRepo } from '../types/github.types'
+import { useCallback, useEffect, useState } from 'react'
 import { githubService } from '../services/github.service'
+import type { GithubRepo } from '../types/github.types'
 
 export const useGithubRepos = () => {
   const [repos, setRepos] = useState<GithubRepo[]>([])
@@ -13,12 +13,11 @@ export const useGithubRepos = () => {
       setError(null)
       const allRepos = await githubService.fetchAllPublicRepos()
       
-      // Filter out forks and sort by recently updated just to be safe
-      const originalRepos = allRepos
-        .filter((repo) => !repo.fork)
+      // Sort by recently updated
+      const sortedRepos = allRepos
         .sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime())
         
-      setRepos(originalRepos)
+      setRepos(sortedRepos)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load repositories')
     } finally {
