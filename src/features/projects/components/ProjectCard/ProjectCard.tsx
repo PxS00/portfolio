@@ -17,11 +17,11 @@ export default function ProjectCard({ repo, index = 0 }: ProjectCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
     >
       <Link
         to={`/projects/${repo.name}`}
-        className="group flex h-full flex-col rounded-2xl bg-(--secondary-color)/5 p-6 border border-white/5 shadow-lg transition-all hover:-translate-y-2 hover:bg-(--secondary-color)/10 hover:shadow-xl hover:shadow-(--primary-color)/5"
+        className="group flex h-full flex-col rounded-2xl bg-(--secondary-color)/5 p-6 border border-white/5 shadow-lg backdrop-blur-xl transition-all duration-200 hover:-translate-y-2 hover:bg-(--secondary-color)/10 hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.12)]"
       >
         <div className="mb-4 flex items-start justify-between">
           <div className="flex items-center gap-3">
