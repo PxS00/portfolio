@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import { Award, Cloud } from 'lucide-react'
+import { Award, Cloud, ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 export default function AcademicHighlight() {
   return (
@@ -28,6 +29,13 @@ export default function AcademicHighlight() {
               com uma equipe multidisciplinar, atuando na resolução de um problema real por meio
               da aplicação de engenharia de software.
             </p>
+            <Link
+              to="/projects/Luma"
+              className="group mt-4 inline-flex items-center gap-2 font-semibold text-(--primary-color) transition-all hover:translate-x-1"
+            >
+              Ver projeto Luma
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
           </div>
         </div>
       </motion.div>
