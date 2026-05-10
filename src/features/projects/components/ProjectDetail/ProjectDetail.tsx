@@ -55,26 +55,33 @@ export default function ProjectDetail() {
 
   return (
     <div className="container mx-auto px-6 py-32 lg:px-12">
-      {/* Floating action bar — sticky while scrolling */}
+      {/* Floating buttons — fixed at bottom corners */}
       <motion.div
-        initial={{ opacity: 0, y: -10 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
-        className="sticky top-20 z-40 mb-10 flex items-center justify-between rounded-2xl border border-white/5 bg-(--bg-color)/80 px-6 py-3 shadow-lg backdrop-blur-xl"
+        transition={{ duration: 0.3, delay: 0.3 }}
+        className="fixed top-20 left-8 z-40"
       >
         <Link
           to="/projects"
-          className="group inline-flex items-center gap-2 text-sm font-semibold text-(--text-color)/70 transition-colors hover:text-(--primary-color)"
+          className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-(--bg-color)/80 px-5 py-3 text-sm font-semibold text-(--text-color) shadow-lg backdrop-blur-xl transition-all hover:border-(--primary-color)/30 hover:text-(--primary-color)"
         >
           <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
           Voltar
         </Link>
+      </motion.div>
 
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.4 }}
+        className="fixed top-20 right-8 z-40"
+      >
         <a
           href={repo.html_url}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center gap-2 rounded-lg border border-(--primary-color)/30 px-5 py-2 text-sm font-semibold text-(--primary-color) transition-all hover:bg-(--primary-color)/10"
+          className="group inline-flex items-center gap-2 rounded-full bg-(--primary-color) px-5 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:brightness-110"
         >
           Ver no GitHub
           <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
