@@ -15,7 +15,10 @@ export const githubService = {
     )
     
     if (!response.ok) {
-      throw new Error('Failed to fetch repositories')
+      if (response.status === 403) {
+        console.warn('GitHub API Rate Limit exceeded. Try again in a few minutes.')
+      }
+      throw new Error(`Failed to fetch repositories: ${response.status}`)
     }
     
     return response.json()
@@ -28,7 +31,10 @@ export const githubService = {
     )
     
     if (!response.ok) {
-      throw new Error(`Failed to fetch repository: ${repoName}`)
+      if (response.status === 403) {
+        console.warn('GitHub API Rate Limit exceeded.')
+      }
+      throw new Error(`Failed to fetch repository: ${response.status}`)
     }
     
     return response.json()
@@ -42,7 +48,10 @@ export const githubService = {
     )
 
     if (!response.ok) {
-      throw new Error('README not found')
+      if (response.status === 403) {
+        console.warn('GitHub API Rate Limit exceeded.')
+      }
+      throw new Error(`README not found or rate limit: ${response.status}`)
     }
 
     const data = await response.json()
