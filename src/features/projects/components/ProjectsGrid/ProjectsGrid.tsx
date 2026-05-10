@@ -25,8 +25,8 @@ export default function ProjectsGrid() {
           <span className="flex items-center">
             {title}
             <span
-              className={`animate-pulse ml-1 text-5xl font-thin text-(--primary-color) md:text-6xl ${
-                showCursor ? 'opacity-70' : 'opacity-0'
+              className={`ml-1 text-5xl font-thin text-(--primary-color) md:text-6xl ${
+                showCursor ? 'animate-pulse opacity-70' : 'opacity-0'
               }`}
               style={{ letterSpacing: '-0.2em' }}
             >

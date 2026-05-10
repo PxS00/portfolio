@@ -46,8 +46,8 @@ export default function ProjectsSection() {
               <span className="flex items-center">
                 {title}
                 <span
-                  className={`animate-pulse ml-1 text-4xl font-thin text-(--primary-color) md:text-5xl ${
-                    showCursor && isVisible ? 'opacity-70' : 'opacity-0'
+                  className={`ml-1 text-4xl font-thin text-(--primary-color) md:text-5xl ${
+                    showCursor && isVisible ? 'animate-pulse opacity-70' : 'opacity-0'
                   }`}
                   style={{ letterSpacing: '-0.2em' }}
                 >
