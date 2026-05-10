@@ -45,8 +45,8 @@ export default function ProjectsGrid() {
               ? Array.from({ length: 9 }).map((_, idx) => (
                   <ProjectCardSkeleton key={idx} />
                 ))
-              : repos.map((repo) => (
-                  <ProjectCard key={repo.id} repo={repo} />
+              : repos.map((repo, index) => (
+                  <ProjectCard key={repo.id} repo={repo} index={index} />
                 ))}
           </div>
         </>

@@ -1,45 +1,22 @@
+import { motion } from 'framer-motion'
 import { Github, FolderGit2, ExternalLink } from 'lucide-react'
 import type { GithubRepo } from '../../types/github.types'
+import { getLanguageColor, formatRepoDate } from '../../utils/projectHelpers'
 
 interface ProjectCardProps {
   repo: GithubRepo
+  index?: number
 }
 
-const LANGUAGE_COLORS: Record<string, string> = {
-  JavaScript: '#f1e05a',
-  TypeScript: '#3178c6',
-  Java: '#b07219',
-  Python: '#3572A5',
-  HTML: '#e34c26',
-  CSS: '#563d7c',
-  Vue: '#41b883',
-  Ruby: '#701516',
-  PHP: '#4F5D95',
-  C: '#555555',
-  'C++': '#f34b7d',
-  'C#': '#178600',
-}
-
-const getLanguageColor = (language: string | null) => {
-  if (!language) return '#8b949e' // default gray
-  return LANGUAGE_COLORS[language] || '#8b949e'
-}
-
-const formatDate = (dateString: string) => {
-  const date = new Date(dateString)
-  return new Intl.DateTimeFormat('pt-BR', {
-    day: '2-digit',
-    month: 'short',
-    year: 'numeric'
-  }).format(date)
-}
-
-export default function ProjectCard({ repo }: ProjectCardProps) {
+export default function ProjectCard({ repo, index = 0 }: ProjectCardProps) {
   return (
-    <a 
-      href={repo.html_url} 
-      target="_blank" 
+    <motion.a
+      href={repo.html_url}
+      target="_blank"
       rel="noopener noreferrer"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: index * 0.1 }}
       className="group flex h-full flex-col rounded-2xl bg-(--secondary-color)/5 p-6 border border-white/5 shadow-lg transition-all hover:-translate-y-2 hover:bg-(--secondary-color)/10 hover:shadow-xl hover:shadow-(--primary-color)/5"
     >
       <div className="mb-4 flex items-start justify-between">
@@ -58,18 +35,18 @@ export default function ProjectCard({ repo }: ProjectCardProps) {
 
       <div className="mt-auto flex flex-wrap items-center justify-between gap-4 text-xs font-medium text-(--text-color)/70">
         <div className="flex items-center gap-2">
-          <span 
-            className="h-3 w-3 rounded-full" 
-            style={{ backgroundColor: getLanguageColor(repo.language) }} 
+          <span
+            className="h-3 w-3 rounded-full"
+            style={{ backgroundColor: getLanguageColor(repo.language) }}
           />
           <span>{repo.language || 'N/A'}</span>
         </div>
-        
+
         <div className="flex items-center gap-1.5 opacity-70">
           <Github className="h-3.5 w-3.5" />
-          <span>Atualizado em {formatDate(repo.updated_at)}</span>
+          <span>Atualizado em {formatRepoDate(repo.updated_at)}</span>
         </div>
       </div>
-    </a>
+    </motion.a>
   )
 }

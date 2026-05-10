@@ -48,8 +48,8 @@ export default function ProjectsSection() {
               ? Array.from({ length: 3 }).map((_, idx) => (
                   <ProjectCardSkeleton key={idx} />
                 ))
-              : repos.map((repo) => (
-                  <ProjectCard key={repo.id} repo={repo} />
+              : repos.map((repo, index) => (
+                  <ProjectCard key={repo.id} repo={repo} index={index} />
                 ))}
           </div>
         )}
