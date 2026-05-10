@@ -12,7 +12,7 @@ export const LANGUAGE_COLORS: Record<string, string> = {
   C: '#555555',
   'C++': '#f34b7d',
   'C#': '#178600',
-  Markdown: '#083fa1',
+  Markdown: 'var(--primary-color)',
   'Jupyter Notebook': '#DA5B0B',
 }
 

@@ -21,24 +21,24 @@ export default function Navbar() {
         {/* DESKTOP */}
         <div className="flex items-center gap-2">
           <div className="hidden gap-2 md:flex">
-            <a
-              href={anchorHref('#about')}
+            <Link
+              to={anchorHref('#about')}
               className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#about' ? 'active' : ''}`}
             >
               Sobre
-            </a>
+            </Link>
             <Link
               to="/projects"
               className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/projects' ? 'active' : ''}`}
             >
               Projetos
             </Link>
-            <a
-              href={anchorHref('#contact')}
+            <Link
+              to={anchorHref('#contact')}
               className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#contact' ? 'active' : ''}`}
             >
               Contato
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -93,24 +93,24 @@ export default function Navbar() {
           className="animate-fadeAndSlide absolute top-full right-8 z-40 w-35 rounded-xl border border-white/5 bg-(--nav-bg) px-3 py-2 shadow-lg md:hidden"
         >
           <div className="flex flex-col gap-1">
-            <a
-              href={anchorHref('#about')}
+            <Link
+              to={anchorHref('#about')}
               className={`nav-text px-3 py-2 duration-300 hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#about' ? 'active' : ''}`}
             >
               Sobre
-            </a>
+            </Link>
             <Link
               to="/projects"
               className={`nav-text px-3 py-2 duration-300 hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/projects' ? 'active' : ''}`}
             >
               Projetos
             </Link>
-            <a
-              href={anchorHref('#contact')}
+            <Link
+              to={anchorHref('#contact')}
               className={`nav-text px-3 py-2 duration-300 hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#contact' ? 'active' : ''}`}
             >
               Contato
-            </a>
+            </Link>
           </div>
         </div>
       )}
