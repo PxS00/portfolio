@@ -12,6 +12,7 @@ export const LANGUAGE_COLORS: Record<string, string> = {
   C: '#555555',
   'C++': '#f34b7d',
   'C#': '#178600',
+  Markdown: '#083fa1',
 }
 
 const DEFAULT_COLOR = '#8b949e'
@@ -39,11 +40,27 @@ export const LANGUAGE_ICONS: Record<string, string> = {
   Rust: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-original.svg',
   Swift: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swift/swift-original.svg',
   Kotlin: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg',
+  Markdown: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/markdown/markdown-original.svg',
 }
 
 export const getLanguageIcon = (language: string | null): string | null => {
   if (!language) return null
   return LANGUAGE_ICONS[language] || null
+}
+
+// Returns a user-friendly language name, defaulting null to Markdown
+export const getDisplayLanguage = (language: string | null): string => {
+  return language || 'Markdown'
+}
+
+// Resolves relative image paths in README to absolute GitHub raw URLs
+export const resolveReadmeImageUrl = (
+  src: string,
+  repoName: string,
+  branch: string,
+): string => {
+  if (!src || src.startsWith('http') || src.startsWith('data:')) return src
+  return `https://raw.githubusercontent.com/PxS00/${repoName}/${branch}/${src.replace(/^\/+/, '')}`
 }
 
 export const formatRepoDate = (dateString: string): string => {
