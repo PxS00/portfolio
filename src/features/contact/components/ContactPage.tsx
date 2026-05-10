@@ -35,8 +35,8 @@ export default function ContactPage() {
   const [showCursor, setShowCursor] = useState(true)
   const title = useTypewriter({
     text: 'Contato',
-    delay: 80,
-    startDelay: 300,
+    delay: 60,
+    startDelay: 200,
     onDone: () => setShowCursor(false),
   })
 
