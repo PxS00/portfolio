@@ -10,8 +10,12 @@ export default function ProjectsGrid() {
   return (
     <div className="container mx-auto px-6 py-24 lg:px-12">
       <div className="mb-12 text-center md:text-left">
+        <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-(--primary-color)/10 px-4 py-2 text-sm font-semibold text-(--primary-color)">
+          <span className="font-mono text-base font-bold">{'>'}_</span>
+          <span>Meus Projetos</span>
+        </div>
         <h1 className="mb-4 text-4xl font-bold text-(--title-color) md:text-5xl">
-          Meus Projetos
+          Todos os Repositórios
         </h1>
         <p className="text-lg text-(--text-color) max-w-2xl">
           Explore todos os meus repositórios públicos no GitHub. Abaixo estão os projetos em que venho trabalhando, ordenados pelas atualizações mais recentes.
