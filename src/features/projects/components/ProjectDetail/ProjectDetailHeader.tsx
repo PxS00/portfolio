@@ -13,8 +13,8 @@ export default function ProjectDetailHeader({ repo }: ProjectDetailHeaderProps) 
 
   return (
     <div className="mb-10 border-b border-white/5 pb-10">
-      <div className="mb-3 flex items-center gap-3 text-(--primary-color)">
-        <FolderGit2 className="h-7 w-7" />
+      <div className="mb-3 flex items-center gap-3">
+        <FolderGit2 className="h-7 w-7" style={{ color: getLanguageColor(language) }} />
         <h1 className="text-3xl font-bold text-(--title-color) md:text-4xl">{repo.name}</h1>
         {repo.fork && (
           <span className="inline-flex items-center gap-1 rounded-full bg-white/5 px-3 py-1 text-xs text-(--text-color)/50">

@@ -57,6 +57,7 @@ const GITHUB_USERNAME = 'PxS00'
 export const getDisplayLanguage = (language: string | null, repoName?: string): string => {
   if (language) return language
   if (repoName === GITHUB_USERNAME) return 'Markdown'
+  if (repoName === 'UpPath-IA-Models') return 'Jupyter Notebook'
   return 'N/A'
 }
 

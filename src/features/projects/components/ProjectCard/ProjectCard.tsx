@@ -24,8 +24,8 @@ export default function ProjectCard({ repo, index = 0 }: ProjectCardProps) {
         className="group flex h-full flex-col rounded-2xl bg-(--secondary-color)/5 p-6 border border-white/5 shadow-lg transition-all hover:-translate-y-2 hover:bg-(--secondary-color)/10 hover:shadow-xl hover:shadow-(--primary-color)/5"
       >
         <div className="mb-4 flex items-start justify-between">
-          <div className="flex items-center gap-3 text-(--primary-color)">
-            <FolderGit2 className="h-6 w-6" />
+          <div className="flex items-center gap-3">
+            <FolderGit2 className="h-6 w-6" style={{ color: getLanguageColor(language) }} />
             <h3 className="text-xl font-bold text-(--title-color) transition-colors group-hover:text-(--primary-color) line-clamp-1">
               {repo.name}
             </h3>
