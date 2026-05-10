@@ -5,6 +5,8 @@ import App from './App'
 import { ThemeProvider } from './app/providers/ThemeContext'
 import Error from './app/routes/Error'
 import Home from './app/routes/Home'
+import Projects from './app/routes/Projects'
+import ProjectDetail from './features/projects/components/ProjectDetail/ProjectDetail'
 import './styles/global.css'
 
 const router = createBrowserRouter([
@@ -12,7 +14,11 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />,
     errorElement: <Error />,
-    children: [{ path: '/', element: <Home /> }],
+    children: [
+      { path: '/', element: <Home /> },
+      { path: '/projects', element: <Projects /> },
+      { path: '/projects/:repoName', element: <ProjectDetail /> },
+    ],
   },
 ])
 

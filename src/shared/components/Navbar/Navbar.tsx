@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useTheme } from '../../../app/providers/ThemeContext'
 import { SOCIAL_LINKS } from '../../constants/socialLinks'
 import SocialLink from '../SocialLink/SocialLink'
@@ -12,34 +12,34 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   useEffect(() => setMobileOpen(false), [location.pathname, location.hash])
 
+  // Build correct href for anchor links depending on current page
+  const anchorHref = (hash: string) => (isHome ? hash : `/${hash}`)
+
   return (
     <nav className="site-nav fixed top-0 left-0 z-50 flex w-full items-center bg-(--nav-bg) px-8 py-4 text-(--nav-text) backdrop-blur-md dark:bg-(--nav-bg) dark:text-white/70">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between">
         {/* DESKTOP */}
         <div className="flex items-center gap-2">
-          {isHome && (
-            <div className="hidden gap-2 md:flex">
-              <a
-                href="#about"
-                className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#about' ? 'active' : ''}`}
-              >
-                Sobre
-              </a>
-              <a
-                href="/projects"
-                className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/projects' ? 'active' : ''}`}
-              >
-                Projetos
-              </a>
-              <a
-                href="#contact"
-                className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#contact' ? 'active' : ''}`}
-              >
-                Contato
-              </a>
-
-            </div>
-          )}
+          <div className="hidden gap-2 md:flex">
+            <Link
+              to="/"
+              className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/' && !location.hash ? 'active' : ''}`}
+            >
+              Home
+            </Link>
+            <Link
+              to="/projects"
+              className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/projects' ? 'active' : ''}`}
+            >
+              Projetos
+            </Link>
+            <Link
+              to={anchorHref('#contact')}
+              className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#contact' ? 'active' : ''}`}
+            >
+              Contato
+            </Link>
+          </div>
         </div>
 
         <div className="hidden items-center gap-4 md:flex">
@@ -87,34 +87,34 @@ export default function Navbar() {
       </div>
 
       {/* DROPDOWN ANIMADO */}
-      {isHome && mobileOpen && (
+      {mobileOpen && (
         <div
           id="mobile-menu"
           className="animate-fadeAndSlide absolute top-full right-8 z-40 w-35 rounded-xl border border-white/5 bg-(--nav-bg) px-3 py-2 shadow-lg md:hidden"
         >
           <div className="flex flex-col gap-1">
-            <a
-              href="#about"
-              className={`nav-text px-3 py-2 duration-300 hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#about' ? 'active' : ''}`}
+            <Link
+              to="/"
+              className={`nav-text px-3 py-2 duration-300 hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/' && !location.hash ? 'active' : ''}`}
             >
-              Sobre
-            </a>
-            <a
-              href="/projects"
+              Home
+            </Link>
+            <Link
+              to="/projects"
               className={`nav-text px-3 py-2 duration-300 hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/projects' ? 'active' : ''}`}
             >
               Projetos
-            </a>
-            <a
-              href="#contact"
+            </Link>
+            <Link
+              to={anchorHref('#contact')}
               className={`nav-text px-3 py-2 duration-300 hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#contact' ? 'active' : ''}`}
             >
               Contato
-            </a>
-
+            </Link>
           </div>
         </div>
       )}
     </nav>
   )
 }
+
