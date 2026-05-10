@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Award, Cloud, ArrowRight } from 'lucide-react'
+import { ArrowRight, Award, Cloud } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 export default function AcademicHighlight() {

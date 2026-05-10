@@ -3,10 +3,10 @@ import { ArrowLeft, ExternalLink } from 'lucide-react'
 import { Link, useParams } from 'react-router-dom'
 import ErrorState from '../../../../shared/components/ErrorState/ErrorState'
 import { useProjectDetail } from '../../hooks/useProjectDetail'
+import './ProjectDetail.css'
 import ProjectDetailHeader from './ProjectDetailHeader'
 import ProjectDetailSkeleton from './ProjectDetailSkeleton'
 import ReadmeViewer from './ReadmeViewer'
-import './ProjectDetail.css'
 
 export default function ProjectDetail() {
   const { repoName } = useParams<{ repoName: string }>()

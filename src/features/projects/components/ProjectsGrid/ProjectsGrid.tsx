@@ -1,5 +1,5 @@
-import { useState } from 'react'
 import { FolderGit2 } from 'lucide-react'
+import { useState } from 'react'
 import ErrorState from '../../../../shared/components/ErrorState/ErrorState'
 import { useTypewriter } from '../../../../shared/hooks/useTypewriter'
 import { useGithubRepos } from '../../hooks/useGithubRepos'

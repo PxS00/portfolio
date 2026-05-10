@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ErrorState from '../../../../shared/components/ErrorState/ErrorState'
 import { useTypewriter } from '../../../../shared/hooks/useTypewriter'
