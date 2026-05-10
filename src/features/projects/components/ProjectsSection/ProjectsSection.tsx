@@ -45,14 +45,14 @@ export default function ProjectsSection() {
               <span className="font-mono text-(--primary-color)">{'>'}_</span>
               <span className="flex items-center">
                 {title}
-                {showCursor && isVisible && (
-                  <span
-                    className="animate-pulse ml-1 text-4xl font-thin text-(--primary-color) opacity-70 md:text-5xl"
-                    style={{ letterSpacing: '-0.2em' }}
-                  >
-                    |
-                  </span>
-                )}
+                <span
+                  className={`animate-pulse ml-1 text-4xl font-thin text-(--primary-color) md:text-5xl ${
+                    showCursor && isVisible ? 'opacity-70' : 'opacity-0'
+                  }`}
+                  style={{ letterSpacing: '-0.2em' }}
+                >
+                  |
+                </span>
               </span>
               {/* Reserve height to prevent layout shift */}
               {!isVisible && <span className="invisible">Projetos Recentes</span>}

@@ -24,14 +24,14 @@ export default function ProjectsGrid() {
           <span className="font-mono text-(--primary-color)">{'>'}_</span>
           <span className="flex items-center">
             {title}
-            {showCursor && (
-              <span
-                className="animate-pulse ml-1 text-5xl font-thin text-(--primary-color) opacity-70 md:text-6xl"
-                style={{ letterSpacing: '-0.2em' }}
-              >
-                |
-              </span>
-            )}
+            <span
+              className={`animate-pulse ml-1 text-5xl font-thin text-(--primary-color) md:text-6xl ${
+                showCursor ? 'opacity-70' : 'opacity-0'
+              }`}
+              style={{ letterSpacing: '-0.2em' }}
+            >
+              |
+            </span>
           </span>
         </h1>
         <p className="text-lg text-(--text-color) max-w-2xl">
