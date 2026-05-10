@@ -25,9 +25,9 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ y: -5, scale: 1.02 }}
-      className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl transition-all hover:border-(--primary-color)/30 hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.12)]"
+      transition={{ duration: 0.4, delay: index * 0.1 }}
+      whileHover={{ y: -5, scale: 1.01 }}
+      className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl transition-all duration-300 hover:border-(--primary-color)/30 hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.12)]"
     >
       <div className="flex flex-col gap-6">
         {/* Icon & Platform */}
@@ -67,7 +67,7 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
           </a>
           <button
             onClick={handleCopy}
-            className="flex items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-(--text-color) transition-all hover:bg-white/10"
+            className="flex min-w-[140px] items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-(--text-color) transition-all hover:bg-white/10"
           >
             <AnimatePresence mode="wait">
               {copied ? (
@@ -79,7 +79,7 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
                   className="flex items-center gap-2 text-green-400"
                 >
                   <Check className="h-4 w-4" />
-                  Copiado! ✅
+                  Copiado!
                 </motion.span>
               ) : (
                 <motion.span

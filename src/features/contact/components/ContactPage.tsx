@@ -7,8 +7,8 @@ import StatusBadge from './StatusBadge/StatusBadge'
 const CONTACTS = [
   {
     platform: 'LinkedIn',
-    value: 'lucas-pedro-souza',
-    url: 'https://www.linkedin.com/in/lucas-pedro-souza/',
+    value: 'lucas-rossoni-dieder',
+    url: 'https://www.linkedin.com/in/lucas-rossoni-dieder',
     icon: <Linkedin className="h-6 w-6" />,
   },
   {
@@ -19,14 +19,14 @@ const CONTACTS = [
   },
   {
     platform: 'Instagram',
-    value: '@pxs_00',
-    url: 'https://www.instagram.com/pxs_00/',
+    value: '_lrossoni',
+    url: 'https://www.instagram.com/_lrossoni/',
     icon: <Instagram className="h-6 w-6" />,
   },
   {
     platform: 'E-mail',
-    value: 'lucaspsouza00@gmail.com',
-    url: 'mailto:lucaspsouza00@gmail.com',
+    value: 'lucas.rossonidd@gmail.com',
+    url: 'mailto:lucas.rossonidd@gmail.com',
     icon: <Mail className="h-6 w-6" />,
   },
 ]
