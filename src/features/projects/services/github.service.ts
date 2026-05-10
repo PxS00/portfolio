@@ -41,5 +41,20 @@ export const githubService = {
     }
     
     return response.json()
-  }
+  },
+
+  // Fetch and decode README content from a repository
+  async fetchReadme(repoName: string): Promise<string> {
+    const response = await fetch(
+      `${GITHUB_API_URL}/repos/${GITHUB_USERNAME}/${repoName}/readme`,
+      { headers: getHeaders() }
+    )
+
+    if (!response.ok) {
+      throw new Error('README not found')
+    }
+
+    const data = await response.json()
+    return atob(data.content)
+  },
 }
