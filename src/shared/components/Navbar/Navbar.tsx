@@ -22,10 +22,10 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <div className="hidden gap-2 md:flex">
             <Link
-              to={anchorHref('#about')}
-              className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#about' ? 'active' : ''}`}
+              to="/"
+              className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/' && !location.hash ? 'active' : ''}`}
             >
-              Sobre
+              Home
             </Link>
             <Link
               to="/projects"
@@ -94,10 +94,10 @@ export default function Navbar() {
         >
           <div className="flex flex-col gap-1">
             <Link
-              to={anchorHref('#about')}
-              className={`nav-text px-3 py-2 duration-300 hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#about' ? 'active' : ''}`}
+              to="/"
+              className={`nav-text px-3 py-2 duration-300 hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/' && !location.hash ? 'active' : ''}`}
             >
-              Sobre
+              Home
             </Link>
             <Link
               to="/projects"
