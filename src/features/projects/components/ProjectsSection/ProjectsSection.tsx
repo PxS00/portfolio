@@ -30,7 +30,7 @@ export default function ProjectsSection() {
   }, [])
 
   const title = useTypewriter({
-    text: isVisible ? 'Meus principais trabalhos' : '',
+    text: isVisible ? 'Projetos Recentes' : '',
     delay: 60,
     startDelay: 200,
     onDone: () => setShowCursor(false),
@@ -56,10 +56,10 @@ export default function ProjectsSection() {
                 </span>
               )}
               {/* Reserve height to prevent layout shift */}
-              {!isVisible && <span className="invisible">Meus principais trabalhos</span>}
+              {!isVisible && <span className="invisible">Projetos Recentes</span>}
             </h2>
             <p className="text-lg text-(--text-color)">
-              Confira os principais projetos open-source que desenvolvi no GitHub.
+              Confira os projetos e soluções que venho desenvolvendo recentemente.
             </p>
           </div>
           <Link
