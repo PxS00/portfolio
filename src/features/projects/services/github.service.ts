@@ -55,6 +55,10 @@ export const githubService = {
     }
 
     const data = await response.json()
-    return atob(data.content)
+
+    // Decode base64 to UTF-8 to properly handle accented characters and emojis
+    const binaryString = atob(data.content)
+    const bytes = Uint8Array.from(binaryString, (char) => char.charCodeAt(0))
+    return new TextDecoder('utf-8').decode(bytes)
   },
 }
