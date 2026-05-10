@@ -1,0 +1,165 @@
+/* Styles for rendered README markdown content */
+
+.readme-content {
+  color: var(--text-color);
+  line-height: 1.8;
+}
+
+.readme-content h1,
+.readme-content h2,
+.readme-content h3,
+.readme-content h4,
+.readme-content h5,
+.readme-content h6 {
+  color: var(--title-color);
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.readme-content h1 {
+  font-size: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.readme-content h2 {
+  font-size: 1.5rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.readme-content h3 {
+  font-size: 1.25rem;
+}
+
+.readme-content p {
+  margin-bottom: 1rem;
+}
+
+.readme-content a {
+  color: var(--primary-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s;
+}
+
+.readme-content a:hover {
+  opacity: 0.8;
+}
+
+.readme-content ul,
+.readme-content ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.readme-content ul {
+  list-style-type: disc;
+}
+
+.readme-content ol {
+  list-style-type: decimal;
+}
+
+.readme-content li {
+  margin-bottom: 0.4rem;
+}
+
+.readme-content li > ul,
+.readme-content li > ol {
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+}
+
+/* Inline code */
+.readme-content code {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--primary-color);
+  padding: 0.2em 0.4em;
+  border-radius: 6px;
+  font-size: 0.875em;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Code blocks */
+.readme-content pre {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+}
+
+.readme-content pre code {
+  background-color: transparent;
+  color: var(--text-color);
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.85em;
+  line-height: 1.6;
+}
+
+/* Blockquote */
+.readme-content blockquote {
+  border-left: 3px solid var(--primary-color);
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-color);
+  opacity: 0.85;
+}
+
+/* Tables */
+.readme-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.readme-content th {
+  background-color: rgba(255, 255, 255, 0.06);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--title-color);
+}
+
+.readme-content td {
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.readme-content tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Horizontal rule */
+.readme-content hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 2rem 0;
+}
+
+/* Images */
+.readme-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+
+/* Strong and emphasis */
+.readme-content strong {
+  color: var(--title-color);
+  font-weight: 600;
+}
+
+.readme-content em {
+  font-style: italic;
+}

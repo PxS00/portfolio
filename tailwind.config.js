@@ -34,6 +34,15 @@ export default {
         glowBlue: 'rgba(60,80,255,0.25)',
         glowPurple: 'rgba(140,80,255,0.25)',
       },
+      keyframes: {
+        scroll: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+      },
+      animation: {
+        scroll: 'scroll 30s linear infinite',
+      },
     },
   },
   plugins: [typography, aspectRatio],
