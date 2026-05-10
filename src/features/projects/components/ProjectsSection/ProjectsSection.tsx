@@ -33,7 +33,9 @@ export default function ProjectsSection() {
     text: isVisible ? 'Projetos Recentes' : '',
     delay: 60,
     startDelay: 200,
-    onDone: () => setShowCursor(false),
+    onDone: () => {
+      if (isVisible) setShowCursor(false)
+    },
   })
 
   return (
