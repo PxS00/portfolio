@@ -6,4 +6,5 @@ export interface GithubRepo {
   language: string | null
   updated_at: string
   fork: boolean
+  default_branch: string
 }

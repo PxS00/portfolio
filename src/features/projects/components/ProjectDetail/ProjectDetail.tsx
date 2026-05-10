@@ -121,7 +121,21 @@ export default function ProjectDetail() {
             transition={{ duration: 0.4, delay: 0.2 }}
             className="readme-content prose prose-invert max-w-none"
           >
-            <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+            <Markdown 
+              remarkPlugins={[remarkGfm]} 
+              rehypePlugins={[rehypeRaw]}
+              components={{
+                img: ({ node, ...props }) => {
+                  let src = props.src || ''
+                  // Rewrite relative URLs to absolute GitHub raw URLs
+                  if (src && !src.startsWith('http') && !src.startsWith('data:')) {
+                    src = src.replace(/^\/+/, '') // Remove leading slash
+                    src = `https://raw.githubusercontent.com/PxS00/${repo.name}/${repo.default_branch}/${src}`
+                  }
+                  return <img {...props} src={src} alt={props.alt || ''} loading="lazy" />
+                }
+              }}
+            >
               {readme}
             </Markdown>
           </motion.article>
