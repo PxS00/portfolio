@@ -27,7 +27,7 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
       whileHover={{ y: -5, scale: 1.01 }}
-      className="group relative overflow-hidden rounded-2xl border border-white/5 bg-(--secondary-color)/5 p-6 backdrop-blur-xl transition-all duration-200 hover:border-(--primary-color)/30 hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.12)]"
+      className="group relative w-full overflow-hidden rounded-2xl border border-white/5 bg-(--secondary-color)/5 p-6 backdrop-blur-xl transition-all duration-200 hover:border-(--primary-color)/30 hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.12)]"
     >
       <div className="flex flex-col gap-6">
         {/* Icon & Platform */}
