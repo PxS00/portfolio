@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from 'react'
-import type { GithubRepo } from '../types/github.types'
+import { useCallback, useEffect, useState } from 'react'
 import { githubService } from '../services/github.service'
+import type { GithubRepo } from '../types/github.types'
 
 interface ProjectDetailState {
   repo: GithubRepo | null
