@@ -20,7 +20,7 @@ export default function ProjectsGrid() {
   return (
     <div className="container mx-auto px-6 py-24 lg:px-12">
       <div className="mb-12 text-center md:text-left">
-        <h1 className="mb-8 inline-flex items-center gap-4 rounded-full bg-(--primary-color)/10 px-6 py-3 text-4xl font-bold text-(--title-color) md:text-5xl">
+        <h1 className="mb-8 inline-flex items-center gap-4 rounded-full bg-(--primary-color)/10 px-6 py-3 text-2xl font-bold text-(--title-color) md:text-4xl">
           <span className="font-mono text-(--primary-color)">{'>'}_</span>
           <span className="flex items-center">
             {title}

@@ -35,6 +35,13 @@
   --nav-text: #0b0d12;
   --nav-text-hover: #000000;
   --nav-hover-bg: rgba(var(--accent-rgb), 0.28);
+  --primary-rgb: 124, 58, 237;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 html.dark {
