@@ -33,12 +33,6 @@ export default function Navbar() {
             >
               Projetos
             </Link>
-            <Link
-              to={anchorHref('#contact')}
-              className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#contact' ? 'active' : ''}`}
-            >
-              Contato
-            </Link>
           </div>
         </div>
 
