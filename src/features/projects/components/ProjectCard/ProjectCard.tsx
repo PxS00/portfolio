@@ -64,7 +64,7 @@ export default function ProjectCard({ repo, index = 0 }: ProjectCardProps) {
 
           <div className="flex items-center gap-1.5 opacity-70">
             <Github className="h-3.5 w-3.5" />
-            <span>Atualiz. {formatRepoDate(repo.updated_at)}</span>
+            <span>{formatRepoDate(repo.updated_at)}</span>
           </div>
         </div>
       </Link>
