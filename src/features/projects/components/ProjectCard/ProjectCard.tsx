@@ -27,7 +27,7 @@ export default function ProjectCard({ repo, index = 0 }: ProjectCardProps) {
     >
       <Link
         to={`/projects/${repo.name}`}
-        className="group flex h-full w-full flex-col rounded-2xl border border-white/5 bg-(--secondary-color)/5 p-6 shadow-lg backdrop-blur-xl transition-all duration-200 hover:-translate-y-2 hover:bg-(--secondary-color)/10 hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.12)]"
+        className="group flex h-full w-full flex-col rounded-2xl border border-(--border-color) bg-(--secondary-color)/5 p-6 shadow-lg backdrop-blur-xl transition-all duration-200 hover:-translate-y-2 hover:bg-(--secondary-color)/10 hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.12)]"
       >
         <div className="mb-4 flex items-start justify-between">
           <div className="flex items-center gap-3">
@@ -36,7 +36,7 @@ export default function ProjectCard({ repo, index = 0 }: ProjectCardProps) {
               {repo.name}
             </h3>
             {repo.fork && (
-              <span className="inline-flex items-center gap-1 rounded-full bg-white/5 px-2 py-0.5 text-xs text-(--text-color)/50">
+              <span className="inline-flex items-center gap-1 rounded-full border border-(--border-color) bg-(--bg-color-alt) px-2 py-0.5 text-xs text-(--text-color)/50">
                 <GitFork className="h-3 w-3" />
                 Fork
               </span>

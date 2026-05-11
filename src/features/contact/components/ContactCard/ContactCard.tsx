@@ -51,7 +51,7 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
       whileHover={{ y: -5, scale: 1.01 }}
-      className="group relative w-full overflow-hidden rounded-2xl border border-white/5 bg-(--secondary-color)/5 p-6 backdrop-blur-xl transition-all duration-200 hover:border-(--primary-color)/30 hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.12)]"
+      className="group relative w-full overflow-hidden rounded-2xl border border-(--border-color) bg-(--secondary-color)/5 p-6 backdrop-blur-xl transition-all duration-200 hover:border-(--primary-color)/30 hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.12)]"
     >
       <div className="flex flex-col gap-6">
         {/* Icon & Platform */}
@@ -92,7 +92,7 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
           <button
             onClick={handleCopy}
             aria-label={copied ? 'Copiado para área de transferência' : `Copiar ${platform}`}
-            className="flex min-w-[140px] items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-(--text-color) transition-all hover:bg-white/10"
+            className="flex min-w-[140px] items-center justify-center gap-2 rounded-lg border border-(--border-color) bg-(--bg-color-alt) px-4 py-2.5 text-sm font-semibold text-(--text-color) shadow-sm transition-all hover:bg-(--primary-color)/5"
           >
             <AnimatePresence mode="wait">
               {copied ? (

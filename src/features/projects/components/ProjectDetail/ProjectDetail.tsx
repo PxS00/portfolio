@@ -77,7 +77,7 @@ export default function ProjectDetail() {
         {readme ? (
           <ReadmeViewer content={readme} repoName={repo.name} defaultBranch={repo.default_branch} />
         ) : (
-          <div className="rounded-2xl border border-white/5 bg-(--secondary-color)/5 p-12 text-center">
+          <div className="rounded-2xl border border-(--border-color) bg-(--secondary-color)/5 p-12 text-center">
             <p className="text-(--text-color)/50">Este repositório não possui README.</p>
           </div>
         )}

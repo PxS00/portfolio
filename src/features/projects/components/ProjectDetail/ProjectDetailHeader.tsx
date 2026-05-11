@@ -17,7 +17,7 @@ export default function ProjectDetailHeader({ repo }: ProjectDetailHeaderProps) 
   const languageIcon = getLanguageIcon(language)
 
   return (
-    <div className="mb-10 border-b border-white/5 pb-10">
+    <div className="mb-10 border-b border-(--border-color) pb-10">
       <div className="mb-3 flex items-center gap-3">
         <FolderGit2
           className="h-7 w-7 flex-shrink-0"
@@ -27,7 +27,7 @@ export default function ProjectDetailHeader({ repo }: ProjectDetailHeaderProps) 
           {repo.name}
         </h1>
         {repo.fork && (
-          <span className="inline-flex flex-shrink-0 items-center gap-1 rounded-full bg-white/5 px-3 py-1 text-xs text-(--text-color)/50">
+          <span className="inline-flex flex-shrink-0 items-center gap-1 rounded-full border border-(--border-color) bg-(--bg-color-alt) px-3 py-1 text-xs text-(--text-color)/50">
             <GitFork className="h-3 w-3" />
             Fork
           </span>
