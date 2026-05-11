@@ -1,20 +1,30 @@
-import { StrictMode } from 'react'
+import { lazy, StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App'
 import { ThemeProvider } from './app/providers/ThemeContext'
-import Contact from './app/routes/Contact'
-import Error from './app/routes/Error'
-import Home from './app/routes/Home'
-import Projects from './app/routes/Projects'
-import ProjectDetail from './features/projects/components/ProjectDetail/ProjectDetail'
 import './styles/global.css'
+
+// Lazy loading components for performance
+const Home = lazy(() => import('./app/routes/Home'))
+const Projects = lazy(() => import('./app/routes/Projects'))
+const Contact = lazy(() => import('./app/routes/Contact'))
+const Error = lazy(() => import('./app/routes/Error'))
+const ProjectDetail = lazy(() => import('./features/projects/components/ProjectDetail/ProjectDetail'))
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
-    errorElement: <Error />,
+    element: (
+      <Suspense fallback={<div className="min-h-screen bg-(--bg-color)" />}>
+        <App />
+      </Suspense>
+    ),
+    errorElement: (
+      <Suspense fallback={<div className="min-h-screen bg-(--bg-color)" />}>
+        <Error />
+      </Suspense>
+    ),
     children: [
       { path: '/', element: <Home /> },
       { path: '/projects', element: <Projects /> },
