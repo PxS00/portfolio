@@ -18,6 +18,12 @@ export function useTypewriter({
   const [index, setIndex] = useState<number>(0)
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const onDoneRef = useRef(onDone)
+
+  // Update ref when onDone changes without re-triggering the effect
+  useEffect(() => {
+    onDoneRef.current = onDone
+  }, [onDone])
 
   useEffect(() => {
     setIndex(0)
@@ -36,8 +42,8 @@ export function useTypewriter({
             if (intervalRef.current) {
               clearInterval(intervalRef.current)
             }
-            if (onDone) {
-              onDone()
+            if (onDoneRef.current) {
+              onDoneRef.current()
             }
             if (loop) {
               timeoutRef.current = setTimeout(() => {
@@ -50,8 +56,8 @@ export function useTypewriter({
                       if (intervalRef.current) {
                         clearInterval(intervalRef.current)
                       }
-                      if (onDone) {
-                        onDone()
+                      if (onDoneRef.current) {
+                        onDoneRef.current()
                       }
                       return prevLoop
                     }
@@ -72,7 +78,7 @@ export function useTypewriter({
         clearTimeout(timeoutRef.current)
       }
     }
-  }, [text, delay, startDelay, loop, onDone])
+  }, [text, delay, startDelay, loop])
 
   return text.slice(0, index)
 }
