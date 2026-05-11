@@ -44,20 +44,28 @@ O projeto segue uma estrutura modular onde cada funcionalidade é auto-contida, 
 
 ## 📁 Estrutura do Projeto
 
+O projeto utiliza uma arquitetura **Feature-Based**, focada em alta coesão e baixo acoplamento. Cada funcionalidade importante do site é isolada em seu próprio domínio.
+
 ```text
 .
-├── .github/          # Workflows de CI/CD e automações
+├── .github/               # Automações, Workflows (CI/CD) e modelos de Issue/PR
 ├── src/
-│   ├── app/          # Rotas e configurações globais
-│   ├── features/     # Funcionalidades modulares (contact, projects, hero)
-│   │   ├── contact/
-│   │   ├── projects/
+│   ├── app/               # Configurações globais: Provedores, roteamento e layouts base
+│   ├── features/          # Domínios de negócio independentes
+│   │   ├── about/         # Seção de biografia e stack técnica
+│   │   ├── contact/       # Gestão de contatos e sistema de cópia
+│   │   ├── hero/          # Landing e primeira impressão (Typewriter)
+│   │   ├── projects/      # Integração com API do GitHub, Cache e Listagem
 │   │   └── ...
-│   ├── shared/       # Componentes, hooks e utils reutilizáveis
-│   ├── styles/       # Tokens de design e CSS global
-│   └── main.tsx      # Ponto de entrada
-└── public/           # Ativos estáticos
+│   ├── shared/            # Recursos globais reaproveitáveis
+│   │   ├── components/    # Componentes de UI genéricos (Cards, Buttons, Badges)
+│   │   ├── hooks/         # Hooks customizados (useTypewriter, useTheme)
+│   │   └── utils/         # Funções auxiliares e formatadores
+│   ├── styles/            # Design System: CSS Global, Variáveis e Tokens Tailwind
+│   └── main.tsx           # Entry point da aplicação
+└── public/                # Assets estáticos (Images, Favicons)
 ```
+
 
 ## 👥 Autor
 
