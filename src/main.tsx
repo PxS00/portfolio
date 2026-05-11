@@ -10,7 +10,9 @@ const Home = lazy(() => import('./app/routes/Home'))
 const Projects = lazy(() => import('./app/routes/Projects'))
 const Contact = lazy(() => import('./app/routes/Contact'))
 const Error = lazy(() => import('./app/routes/Error'))
-const ProjectDetail = lazy(() => import('./features/projects/components/ProjectDetail/ProjectDetail'))
+const ProjectDetail = lazy(
+  () => import('./features/projects/components/ProjectDetail/ProjectDetail'),
+)
 
 const router = createBrowserRouter([
   {
