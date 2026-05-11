@@ -12,11 +12,12 @@ export const useGithubRepos = () => {
       setLoading(true)
       setError(null)
       const allRepos = await githubService.fetchAllPublicRepos()
-      
+
       // Sort by recently updated
-      const sortedRepos = allRepos
-        .sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime())
-        
+      const sortedRepos = allRepos.sort(
+        (a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime(),
+      )
+
       setRepos(sortedRepos)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load repositories')

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { githubService } from '../services/github.service'
 import type { GithubRepo } from '../types/github.types'
 
-interface ProjectDetailState {
+type ProjectDetailState = {
   repo: GithubRepo | null
   readme: string | null
   loading: boolean

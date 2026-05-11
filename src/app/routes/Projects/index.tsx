@@ -2,7 +2,7 @@ import ProjectsGrid from '../../../features/projects/components/ProjectsGrid/Pro
 
 export default function Projects() {
   return (
-    <div className="pt-24 min-h-screen">
+    <div className="min-h-screen pt-24">
       <ProjectsGrid />
     </div>
   )

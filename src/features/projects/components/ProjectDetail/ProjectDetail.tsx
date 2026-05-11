@@ -10,9 +10,11 @@ import ReadmeViewer from './ReadmeViewer'
 
 export default function ProjectDetail() {
   const { repoName } = useParams<{ repoName: string }>()
-  const { repo, readme, loading, error, retry } = useProjectDetail(repoName!)
+  const { repo, readme, loading, error, retry } = useProjectDetail(repoName ?? '')
 
-  if (loading) return <ProjectDetailSkeleton />
+  if (loading) {
+    return <ProjectDetailSkeleton />
+  }
 
   if (error || !repo) {
     return (
@@ -65,13 +67,17 @@ export default function ProjectDetail() {
         </a>
       </motion.div>
 
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+      >
         <ProjectDetailHeader repo={repo} />
 
         {readme ? (
           <ReadmeViewer content={readme} repoName={repo.name} defaultBranch={repo.default_branch} />
         ) : (
-          <div className="rounded-2xl bg-(--secondary-color)/5 p-12 text-center border border-white/5">
+          <div className="rounded-2xl border border-white/5 bg-(--secondary-color)/5 p-12 text-center">
             <p className="text-(--text-color)/50">Este repositório não possui README.</p>
           </div>
         )}

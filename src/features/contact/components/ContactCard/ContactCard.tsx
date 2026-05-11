@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Check, Copy, ExternalLink } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
-interface ContactCardProps {
+type ContactCardProps = {
   platform: string
   value: string
   url: string
@@ -17,7 +17,9 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
   // Cleanup timeout on unmount
   useEffect(() => {
     return () => {
-      if (timerRef.current) window.clearTimeout(timerRef.current)
+      if (timerRef.current) {
+        window.clearTimeout(timerRef.current)
+      }
     }
   }, [])
 
@@ -34,7 +36,9 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
       await navigator.clipboard.writeText(value)
       setCopied(true)
 
-      if (timerRef.current) window.clearTimeout(timerRef.current)
+      if (timerRef.current) {
+        window.clearTimeout(timerRef.current)
+      }
       timerRef.current = window.setTimeout(() => setCopied(false), 2000)
     } catch (err) {
       console.error('Failed to copy text: ', err)
@@ -69,12 +73,10 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
 
         {/* Info */}
         <div>
-          <h3 className="text-sm font-medium text-(--text-color)/50 uppercase tracking-wider">
+          <h3 className="text-sm font-medium tracking-wider text-(--text-color)/50 uppercase">
             {platform}
           </h3>
-          <p className="mt-1 font-mono text-xl font-bold text-(--title-color)">
-            {value}
-          </p>
+          <p className="mt-1 font-mono text-xl font-bold text-(--title-color)">{value}</p>
         </div>
 
         {/* Actions */}

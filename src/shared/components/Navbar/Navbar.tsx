@@ -12,8 +12,6 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   useEffect(() => setMobileOpen(false), [location.pathname, location.hash])
 
-
-
   return (
     <nav className="site-nav fixed top-0 left-0 z-50 flex w-full items-center bg-(--nav-bg) px-8 py-4 text-(--nav-text) backdrop-blur-md dark:bg-(--nav-bg) dark:text-white/70">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between">
@@ -116,4 +114,3 @@ export default function Navbar() {
     </nav>
   )
 }
-

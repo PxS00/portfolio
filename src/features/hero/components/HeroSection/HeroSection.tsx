@@ -37,9 +37,12 @@ export default function HeroSection() {
         href="/cv/lucas_rossoni_dieder_cv_pt_backend.pdf"
         target="_blank"
         rel="noopener noreferrer"
-        className="relative z-50 pointer-events-auto group flex items-center gap-2 rounded-full bg-purple-600 px-6 py-3 font-semibold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:scale-105 hover:bg-purple-700 active:scale-95"
+        className="group pointer-events-auto relative z-50 flex items-center gap-2 rounded-full bg-purple-600 px-6 py-3 font-semibold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:scale-105 hover:bg-purple-700 active:scale-95"
       >
-        <FiDownload className="transition-transform duration-300 group-hover:translate-y-1" size={20} />
+        <FiDownload
+          className="transition-transform duration-300 group-hover:translate-y-1"
+          size={20}
+        />
         Baixar currículo
       </a>
     </section>

@@ -2,7 +2,7 @@ import ContactPage from '../../../features/contact/components/ContactPage'
 
 export default function Contact() {
   return (
-    <div className="pt-24 min-h-screen">
+    <div className="min-h-screen pt-24">
       <ContactPage />
     </div>
   )

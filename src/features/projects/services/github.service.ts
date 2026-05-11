@@ -13,12 +13,19 @@ const cache = {
   get<T>(key: string): T | null {
     try {
       const item = localStorage.getItem(`github_cache_${key}`)
-      if (!item) return null
+      if (!item) {
+        return null
+      }
 
       const parsed = JSON.parse(item)
-      
+
       // Basic shape validation
-      if (!parsed || typeof parsed !== 'object' || !('data' in parsed) || !('timestamp' in parsed)) {
+      if (
+        !parsed ||
+        typeof parsed !== 'object' ||
+        !('data' in parsed) ||
+        !('timestamp' in parsed)
+      ) {
         localStorage.removeItem(`github_cache_${key}`)
         return null
       }
@@ -35,14 +42,14 @@ const cache = {
       return null
     }
   },
-  set(key: string, data: any) {
+  set(key: string, data: unknown) {
     try {
       localStorage.setItem(
         `github_cache_${key}`,
         JSON.stringify({
           data,
           timestamp: Date.now(),
-        })
+        }),
       )
     } catch (error) {
       // Ignore quota errors or privacy blocks to avoid breaking the app
@@ -56,7 +63,9 @@ const handleHttpError = (status: number, repoName?: string) => {
     throw new Error('Limite de requisições excedido. Tente novamente em alguns minutos.')
   }
   if (status === 404) {
-    throw new Error(repoName ? `Repositório "${repoName}" não encontrado.` : 'Repositório não encontrado.')
+    throw new Error(
+      repoName ? `Repositório "${repoName}" não encontrado.` : 'Repositório não encontrado.',
+    )
   }
   throw new Error(`Erro ao conectar com o GitHub (Status: ${status}).`)
 }
@@ -64,18 +73,20 @@ const handleHttpError = (status: number, repoName?: string) => {
 export const githubService = {
   async fetchAllPublicRepos(): Promise<GithubRepo[]> {
     const cachedRepos = cache.get<GithubRepo[]>('repos')
-    if (cachedRepos) return cachedRepos
+    if (cachedRepos) {
+      return cachedRepos
+    }
 
     try {
       const response = await fetch(
         `${GITHUB_API_URL}/users/${GITHUB_USERNAME}/repos?type=public&sort=updated&per_page=100`,
-        { headers: GITHUB_HEADERS }
+        { headers: GITHUB_HEADERS },
       )
-      
+
       if (!response.ok) {
         handleHttpError(response.status)
       }
-      
+
       const data = await response.json()
       cache.set('repos', data)
       return data
@@ -93,22 +104,23 @@ export const githubService = {
       throw error
     }
   },
-  
+
   async fetchRepoByName(repoName: string): Promise<GithubRepo> {
     const cacheKey = `repo_${repoName}`
     const cachedRepo = cache.get<GithubRepo>(cacheKey)
-    if (cachedRepo) return cachedRepo
+    if (cachedRepo) {
+      return cachedRepo
+    }
 
     try {
-      const response = await fetch(
-        `${GITHUB_API_URL}/repos/${GITHUB_USERNAME}/${repoName}`,
-        { headers: GITHUB_HEADERS }
-      )
-      
+      const response = await fetch(`${GITHUB_API_URL}/repos/${GITHUB_USERNAME}/${repoName}`, {
+        headers: GITHUB_HEADERS,
+      })
+
       if (!response.ok) {
         handleHttpError(response.status, repoName)
       }
-      
+
       const data = await response.json()
       cache.set(cacheKey, data)
       return data
@@ -128,12 +140,14 @@ export const githubService = {
   async fetchReadme(repoName: string): Promise<string> {
     const cacheKey = `readme_${repoName}`
     const cachedReadme = cache.get<string>(cacheKey)
-    if (cachedReadme) return cachedReadme
+    if (cachedReadme) {
+      return cachedReadme
+    }
 
     try {
       const response = await fetch(
         `${GITHUB_API_URL}/repos/${GITHUB_USERNAME}/${repoName}/readme`,
-        { headers: GITHUB_HEADERS }
+        { headers: GITHUB_HEADERS },
       )
 
       if (!response.ok) {
@@ -141,11 +155,11 @@ export const githubService = {
       }
 
       const data = await response.json()
-      
+
       const binaryString = atob(data.content)
       const bytes = Uint8Array.from(binaryString, (char) => char.charCodeAt(0))
       const decodedContent = new TextDecoder('utf-8').decode(bytes)
-      
+
       cache.set(cacheKey, decodedContent)
       return decodedContent
     } catch (error) {

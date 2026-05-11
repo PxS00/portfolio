@@ -10,7 +10,9 @@ export default function AboutSection() {
       <div className="mb-16 text-center">
         <h2 className="mb-4 text-3xl font-extrabold text-(--title-color) sm:text-4xl">Sobre Mim</h2>
         <p className="mx-auto max-w-3xl text-lg leading-relaxed text-(--muted-color)">
-          Desenvolvedor Back-end com foco em Java e Spring Boot, atuando na construção de APIs e soluções escaláveis. Possui forte base em arquitetura de software, integração de sistemas e boas práticas de desenvolvimento, com foco em código limpo e sustentável.
+          Desenvolvedor Back-end com foco em Java e Spring Boot, atuando na construção de APIs e
+          soluções escaláveis. Possui forte base em arquitetura de software, integração de sistemas
+          e boas práticas de desenvolvimento, com foco em código limpo e sustentável.
         </p>
       </div>
 

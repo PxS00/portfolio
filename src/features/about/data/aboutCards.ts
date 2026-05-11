@@ -1,7 +1,7 @@
 import type { LucideIcon } from 'lucide-react'
 import { Cloud, Database, Layers, Server, Layout, Shield, BookOpen, Bot } from 'lucide-react'
 
-export interface AboutCardData {
+export type AboutCardData = {
   title: string
   description: string
   icon: LucideIcon

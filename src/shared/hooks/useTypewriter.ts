@@ -72,7 +72,7 @@ export function useTypewriter({
         clearTimeout(timeoutRef.current)
       }
     }
-  }, [text, delay, startDelay, loop])
+  }, [text, delay, startDelay, loop, onDone])
 
   return text.slice(0, index)
 }
