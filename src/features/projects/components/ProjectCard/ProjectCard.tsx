@@ -52,7 +52,15 @@ export default function ProjectCard({ repo, index = 0 }: ProjectCardProps) {
         <div className="mt-auto flex flex-col items-start gap-4 text-xs font-medium text-(--text-color)/70 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-2">
             {languageIcon ? (
-              <img src={languageIcon} alt={language} className="h-3.5 w-3.5" />
+              <img
+                src={languageIcon}
+                alt={language}
+                width="14"
+                height="14"
+                loading="lazy"
+                decoding="async"
+                className="h-3.5 w-3.5"
+              />
             ) : (
               <span
                 className="h-3 w-3 rounded-full"

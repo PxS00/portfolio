@@ -24,6 +24,10 @@ export default function TechCarousel() {
                 <img
                   src={tech.iconUrl}
                   alt={tech.name}
+                  width="64"
+                  height="64"
+                  loading="lazy"
+                  decoding="async"
                   className="h-full w-full object-contain drop-shadow-sm"
                 />
               </motion.div>

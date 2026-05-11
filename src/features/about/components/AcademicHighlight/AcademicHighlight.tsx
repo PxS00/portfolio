@@ -54,8 +54,12 @@ export default function AcademicHighlight() {
         <div className="relative z-10 flex flex-col items-start gap-8 md:flex-row md:items-center">
           <div className="group flex h-24 w-24 shrink-0 items-center justify-center overflow-visible">
             <img
-              src="/certs/OCI25FNDCFA.png"
+              src="/certs/OCI25FNDCFA.webp"
               alt="Oracle Cloud Infrastructure Foundations Associate 2025 Badge"
+              width="96"
+              height="96"
+              loading="lazy"
+              decoding="async"
               className="h-full w-full scale-[2.5] object-contain drop-shadow-xl transition-transform duration-300 group-hover:scale-[2.8]"
             />
           </div>
