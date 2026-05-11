@@ -1,37 +1,61 @@
-# Title: feat(ci): implement professional ci/cd, security and documentation standards
+# feat(ci): implement professional CI/CD, security and governance workflows
 
 ## 🎯 Overview
-This PR implements a robust CI/CD infrastructure and professionalizes the project's documentation and governance standards. The focus was on creating an "enterprise-ready" workflow that ensures code quality, performance monitoring, and security.
+This PR introduces a complete CI/CD and governance infrastructure focused on code quality, performance monitoring, security analysis and maintainability.
+
+The goal is to establish an enterprise-grade development workflow with automated quality gates, standardized conventions and improved project documentation.
 
 ---
 
 ## ✨ Features & Improvements
 
-### 🤖 CI/CD Automation (GitHub Actions)
-- **Modular Pipeline:** Split CI into parallel jobs (Lint, Typecheck, Build) for better log isolation and faster feedback.
-- **PNPM Caching:** Implemented advanced caching to reduce installation time.
-- **PR Title Validator:** Enforced Conventional Commits at the PR level to maintain a clean project history.
-- **Lighthouse CI:** Automatic performance, accessibility, and SEO auditing on every PR (using Vercel Preview URLs).
-- **CodeQL Security:** Integrated static analysis to detect vulnerabilities and maintain high security standards.
+### 🤖 CI/CD Automation
+- Implemented modular GitHub Actions workflows with isolated jobs for:
+  - Lint
+  - Typecheck
+  - Build
 
-### 📝 Documentation & Configs
-- **Professional README:** Complete rewrite with tech badges (React, TS, Tailwind, Vite, Vercel), architecture overview, and author section.
-- **Config Sync:** Synchronized ESLint (Flat Config) with Prettier and removed redundant legacy `.eslintrc.json`.
-- **Git Governance:** Adjusted `.gitignore` to ensure `pnpm-lock.yaml` and workflows are correctly tracked while maintaining local instructions private.
+- Added PNPM dependency caching for faster workflow execution.
+- Added Conventional Commit validation for Pull Request titles.
+- Integrated Lighthouse CI using Vercel Preview Deployments.
+- Added CodeQL static analysis for automated security scanning.
+
+### 📊 Quality Gates
+Automatic PR validation now enforces:
+
+- Performance >= 90
+- Accessibility >= 95
+- Best Practices >= 95
+- SEO >= 90
+
+### 📝 Documentation & Governance
+- Reworked README with:
+  - Technology badges
+  - Architecture overview
+  - Deployment information
+  - Author section
+
+- Migrated fully to ESLint v9 Flat Config.
+- Removed legacy `.eslintrc.json` configuration.
+- Improved `.gitignore` governance for workflow and lockfile tracking.
+- Standardized project tooling and formatting configuration.
 
 ---
 
 ## 🛠️ Technical Details
-- **CI/CD:** GitHub Actions
-- **Quality Gates:** 
-  - Performance >= 90
-  - Accessibility >= 95
-  - Best Practices >= 95
-  - SEO >= 90
-- **Linter:** ESLint v9 (Flat Config)
-- **Lockfile:** pnpm-lock.yaml
 
----
+### Stack
+- GitHub Actions
+- Lighthouse CI
+- CodeQL
+- ESLint v9 (Flat Config)
+- PNPM
 
-## 📸 Preview
-*CI Pipeline status and Lighthouse reports will be visible in the Checks section of this PR.*
+### Architecture
+```txt
+.github/workflows/
+├── ci.yml
+├── lighthouse.yml
+├── codeql.yml
+└── pr-title.yml
+```
