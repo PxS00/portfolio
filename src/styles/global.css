@@ -49,6 +49,7 @@ html.dark {
   --bg-color-alt: #171717;
   --border-color: #262626;
   --primary-color: #8b5cf6;
+  --primary-rgb: 139, 92, 246;
   --secondary-color: #f472b6;
   --grid-color: rgba(255, 255, 255, 0.06);
   --glow-start: rgba(var(--accent-rgb), 0.35);

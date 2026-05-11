@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Copy, Check, ExternalLink } from 'lucide-react'
 
@@ -12,13 +12,33 @@ interface ContactCardProps {
 
 export default function ContactCard({ platform, value, url, icon, index }: ContactCardProps) {
   const [copied, setCopied] = useState(false)
+  const timerRef = useRef<number | null>(null)
 
-  const handleCopy = (e: React.MouseEvent) => {
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) window.clearTimeout(timerRef.current)
+    }
+  }, [])
+
+  const handleCopy = async (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
-    navigator.clipboard.writeText(value)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+
+    if (!navigator.clipboard) {
+      console.warn('Clipboard API not available')
+      return
+    }
+
+    try {
+      await navigator.clipboard.writeText(value)
+      setCopied(true)
+
+      if (timerRef.current) window.clearTimeout(timerRef.current)
+      timerRef.current = window.setTimeout(() => setCopied(false), 2000)
+    } catch (err) {
+      console.error('Failed to copy text: ', err)
+    }
   }
 
   return (
@@ -39,6 +59,8 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
             href={url}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`Abrir perfil no ${platform}`}
+            title={`Abrir perfil no ${platform}`}
             className="text-(--text-color)/30 transition-colors hover:text-(--primary-color)"
           >
             <ExternalLink className="h-5 w-5" />
@@ -67,6 +89,7 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
           </a>
           <button
             onClick={handleCopy}
+            aria-label={copied ? 'Copiado para área de transferência' : `Copiar ${platform}`}
             className="flex min-w-[140px] items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-sm font-semibold text-(--text-color) transition-all hover:bg-white/10"
           >
             <AnimatePresence mode="wait">

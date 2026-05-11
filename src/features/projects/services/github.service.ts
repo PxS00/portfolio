@@ -11,18 +11,29 @@ const GITHUB_HEADERS = {
 // Helper to handle localStorage caching
 const cache = {
   get<T>(key: string): T | null {
-    const item = localStorage.getItem(`github_cache_${key}`)
-    if (!item) return null
+    try {
+      const item = localStorage.getItem(`github_cache_${key}`)
+      if (!item) return null
 
-    const parsed = JSON.parse(item)
-    const isExpired = Date.now() - parsed.timestamp > CACHE_DURATION
+      const parsed = JSON.parse(item)
+      
+      // Basic shape validation
+      if (!parsed || typeof parsed !== 'object' || !('data' in parsed) || !('timestamp' in parsed)) {
+        localStorage.removeItem(`github_cache_${key}`)
+        return null
+      }
 
-    if (isExpired) {
-      localStorage.removeItem(`github_cache_${key}`)
+      const isExpired = Date.now() - parsed.timestamp > CACHE_DURATION
+      if (isExpired) {
+        localStorage.removeItem(`github_cache_${key}`)
+        return null
+      }
+
+      return parsed.data
+    } catch (error) {
+      console.warn('Cache parsing failed:', error)
       return null
     }
-
-    return parsed.data
   },
   set(key: string, data: any) {
     try {
@@ -40,6 +51,16 @@ const cache = {
   },
 }
 
+const handleHttpError = (status: number, repoName?: string) => {
+  if (status === 403) {
+    throw new Error('Limite de requisições excedido. Tente novamente em alguns minutos.')
+  }
+  if (status === 404) {
+    throw new Error(repoName ? `Repositório "${repoName}" não encontrado.` : 'Repositório não encontrado.')
+  }
+  throw new Error(`Erro ao conectar com o GitHub (Status: ${status}).`)
+}
+
 export const githubService = {
   async fetchAllPublicRepos(): Promise<GithubRepo[]> {
     const cachedRepos = cache.get<GithubRepo[]>('repos')
@@ -52,7 +73,7 @@ export const githubService = {
       )
       
       if (!response.ok) {
-        throw new Error(`Status: ${response.status}`)
+        handleHttpError(response.status)
       }
       
       const data = await response.json()
@@ -62,7 +83,13 @@ export const githubService = {
       console.error('Failed to fetch repositories:', error)
       // Fallback: try to return expired cache if available
       const expiredData = localStorage.getItem('github_cache_repos')
-      if (expiredData) return JSON.parse(expiredData).data
+      if (expiredData) {
+        try {
+          return JSON.parse(expiredData).data
+        } catch {
+          /* ignore */
+        }
+      }
       throw error
     }
   },
@@ -79,7 +106,7 @@ export const githubService = {
       )
       
       if (!response.ok) {
-        throw new Error(`Status: ${response.status}`)
+        handleHttpError(response.status, repoName)
       }
       
       const data = await response.json()
@@ -87,7 +114,13 @@ export const githubService = {
       return data
     } catch (error) {
       const expiredData = localStorage.getItem(`github_cache_${cacheKey}`)
-      if (expiredData) return JSON.parse(expiredData).data
+      if (expiredData) {
+        try {
+          return JSON.parse(expiredData).data
+        } catch {
+          /* ignore */
+        }
+      }
       throw error
     }
   },
@@ -104,7 +137,7 @@ export const githubService = {
       )
 
       if (!response.ok) {
-        throw new Error(`Status: ${response.status}`)
+        handleHttpError(response.status, repoName)
       }
 
       const data = await response.json()
@@ -117,7 +150,13 @@ export const githubService = {
       return decodedContent
     } catch (error) {
       const expiredData = localStorage.getItem(`github_cache_${cacheKey}`)
-      if (expiredData) return JSON.parse(expiredData).data
+      if (expiredData) {
+        try {
+          return JSON.parse(expiredData).data
+        } catch {
+          /* ignore */
+        }
+      }
       throw error
     }
   },
