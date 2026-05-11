@@ -19,7 +19,7 @@ export default function HeroSection() {
       <h1 className="mb-6 text-[clamp(1.8rem,6vw,4.5rem)] font-extrabold text-(--title-color)">
         Lucas Rossoni
       </h1>
-      <h1 className="mb-6 text-[clamp(1.7rem,5.8vw,4.5rem)] font-extrabold text-(--title-color)">
+      <p className="mb-6 text-[clamp(1.7rem,5.8vw,4.5rem)] font-extrabold text-(--title-color)">
         {title}
         {showCursor && (
           <span
@@ -29,7 +29,7 @@ export default function HeroSection() {
             |
           </span>
         )}
-      </h1>
+      </p>
       <p className="mb-10 text-xl font-semibold text-(--muted-color)">
         Desenvolvendo arquiteturas escaláveis para soluções digitais modernas.
       </p>
