@@ -14,19 +14,21 @@ export default function ProjectDetailHeader({ repo }: ProjectDetailHeaderProps) 
   return (
     <div className="mb-10 border-b border-white/5 pb-10">
       <div className="mb-3 flex items-center gap-3">
-        <FolderGit2 className="h-7 w-7" style={{ color: getLanguageColor(language) }} />
-        <h1 className="text-3xl font-bold text-(--title-color) md:text-4xl">{repo.name}</h1>
+        <FolderGit2 className="h-7 w-7 flex-shrink-0" style={{ color: getLanguageColor(language) }} />
+        <h1 className="break-words text-2xl font-bold text-(--title-color) md:text-4xl min-w-0 flex-1">
+          {repo.name}
+        </h1>
         {repo.fork && (
-          <span className="inline-flex items-center gap-1 rounded-full bg-white/5 px-3 py-1 text-xs text-(--text-color)/50">
+          <span className="inline-flex items-center gap-1 rounded-full bg-white/5 px-3 py-1 text-xs text-(--text-color)/50 flex-shrink-0">
             <GitFork className="h-3 w-3" />
             Fork
           </span>
         )}
       </div>
       {repo.description && (
-        <p className="mt-2 max-w-2xl text-lg text-(--text-color)">{repo.description}</p>
+        <p className="mt-2 max-w-2xl text-lg text-(--text-color) break-words">{repo.description}</p>
       )}
-      <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-(--text-color)/70">
+      <div className="mt-4 flex flex-col gap-4 text-sm text-(--text-color)/70 sm:flex-row sm:items-center">
         <div className="flex items-center gap-2">
           {languageIcon ? (
             <img src={languageIcon} alt={language} className="h-4 w-4" />
@@ -38,9 +40,9 @@ export default function ProjectDetailHeader({ repo }: ProjectDetailHeaderProps) 
           )}
           <span>{language}</span>
         </div>
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5 opacity-70">
           <Github className="h-3.5 w-3.5" />
-          <span>Atualizado em {formatRepoDate(repo.updated_at)}</span>
+          <span>Atualiz. {formatRepoDate(repo.updated_at)}</span>
         </div>
       </div>
     </div>

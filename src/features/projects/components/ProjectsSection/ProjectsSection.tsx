@@ -43,7 +43,7 @@ export default function ProjectsSection() {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <h2 className="mb-6 inline-flex items-center gap-4 rounded-full bg-(--primary-color)/10 px-6 py-3 text-3xl font-bold text-(--title-color) md:text-4xl lg:text-5xl">
+            <h2 className="mb-6 inline-flex items-center gap-4 rounded-full bg-(--primary-color)/10 px-6 py-3 text-2xl font-bold text-(--title-color) md:text-4xl lg:text-5xl">
               <span className="font-mono text-(--primary-color)">{'>'}_</span>
               <span className="flex items-center">
                 {title}

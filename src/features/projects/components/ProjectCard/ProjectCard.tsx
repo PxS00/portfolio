@@ -17,11 +17,12 @@ export default function ProjectCard({ repo, index = 0 }: ProjectCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
+      className="w-full"
     >
       <Link
         to={`/projects/${repo.name}`}
-        className="group flex h-full flex-col rounded-2xl bg-(--secondary-color)/5 p-6 border border-white/5 shadow-lg transition-all hover:-translate-y-2 hover:bg-(--secondary-color)/10 hover:shadow-xl hover:shadow-(--primary-color)/5"
+        className="group flex w-full h-full flex-col rounded-2xl bg-(--secondary-color)/5 p-6 border border-white/5 shadow-lg backdrop-blur-xl transition-all duration-200 hover:-translate-y-2 hover:bg-(--secondary-color)/10 hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.12)]"
       >
         <div className="mb-4 flex items-start justify-between">
           <div className="flex items-center gap-3">
@@ -43,7 +44,7 @@ export default function ProjectCard({ repo, index = 0 }: ProjectCardProps) {
           {repo.description || 'Nenhuma descrição fornecida.'}
         </p>
 
-        <div className="mt-auto flex flex-wrap items-center justify-between gap-4 text-xs font-medium text-(--text-color)/70">
+        <div className="mt-auto flex flex-col items-start gap-4 text-xs font-medium text-(--text-color)/70 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-2">
             {languageIcon ? (
               <img src={languageIcon} alt={language} className="h-3.5 w-3.5" />
@@ -58,7 +59,7 @@ export default function ProjectCard({ repo, index = 0 }: ProjectCardProps) {
 
           <div className="flex items-center gap-1.5 opacity-70">
             <Github className="h-3.5 w-3.5" />
-            <span>Atualizado em {formatRepoDate(repo.updated_at)}</span>
+            <span>Atualiz. {formatRepoDate(repo.updated_at)}</span>
           </div>
         </div>
       </Link>
