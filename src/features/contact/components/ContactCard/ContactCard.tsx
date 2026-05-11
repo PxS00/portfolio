@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Copy, Check, ExternalLink } from 'lucide-react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { Check, Copy, ExternalLink } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 
 interface ContactCardProps {
   platform: string
