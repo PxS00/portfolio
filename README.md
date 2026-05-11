@@ -9,9 +9,9 @@
 </div>
 
 ### 🛠️ Quality & Automation
-[![CI Pipeline](https://github.com/PxS00/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/PxS00/portfolio/actions/workflows/ci.yml)
-[![Lighthouse CI](https://github.com/PxS00/portfolio/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/PxS00/portfolio/actions/workflows/lighthouse.yml)
-[![CodeQL](https://github.com/PxS00/portfolio/actions/workflows/codeql.yml/badge.svg)](https://github.com/PxS00/portfolio/actions/workflows/codeql.yml)
+![CI Pipeline](https://img.shields.io/github/actions/workflow/status/PxS00/portfolio/ci.yml?branch=main&style=flat-square&label=CI%20Pipeline&logo=github)
+![Lighthouse](https://img.shields.io/badge/Lighthouse-Pass-success?style=flat-square&logo=lighthouse)
+![Security](https://img.shields.io/github/actions/workflow/status/PxS00/portfolio/codeql.yml?branch=main&style=flat-square&label=CodeQL&logo=github-actions)
 
 ---
 
