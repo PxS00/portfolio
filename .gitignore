@@ -23,11 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
-# Lockfiles (should be committed in professional projects)
-# pnpm-lock.yaml
-# yarn.lock
-# package-lock.json
-
+# Vercel & Environment
 .vercel
 .env
 .env*.local

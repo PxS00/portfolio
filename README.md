@@ -1,11 +1,22 @@
 # 👨‍💻 Lucas Rossoni - Developer Portfolio
 
+<div align="left">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
+</div>
+
+### 🛠️ Quality & Automation
 [![CI Pipeline](https://github.com/PxS00/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/PxS00/portfolio/actions/workflows/ci.yml)
 [![Lighthouse CI](https://github.com/PxS00/portfolio/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/PxS00/portfolio/actions/workflows/lighthouse.yml)
 [![CodeQL](https://github.com/PxS00/portfolio/actions/workflows/codeql.yml/badge.svg)](https://github.com/PxS00/portfolio/actions/workflows/codeql.yml)
-[![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat&logo=vercel&logoColor=white)](https://vercel.com/)
+
+---
 
 Um portfólio moderno, performático e inspirado na estética de terminais e IDEs, focado em demonstrar engenharia de software de alta qualidade e design centrado no desenvolvedor.
+
 
 ## 🚀 Tecnologias
 
