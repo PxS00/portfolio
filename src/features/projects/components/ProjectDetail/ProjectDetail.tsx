@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowLeft, ExternalLink } from 'lucide-react'
 import { Link, useParams } from 'react-router-dom'
@@ -6,7 +7,9 @@ import { useProjectDetail } from '../../hooks/useProjectDetail'
 import './ProjectDetail.css'
 import ProjectDetailHeader from './ProjectDetailHeader'
 import ProjectDetailSkeleton from './ProjectDetailSkeleton'
-import ReadmeViewer from './ReadmeViewer'
+
+// High-level optimization: Lazy load the heavy markdown renderer
+const ReadmeViewer = lazy(() => import('./ReadmeViewer'))
 
 export default function ProjectDetail() {
   const { repoName } = useParams<{ repoName: string }>()
@@ -75,7 +78,21 @@ export default function ProjectDetail() {
         <ProjectDetailHeader repo={repo} />
 
         {readme ? (
-          <ReadmeViewer content={readme} repoName={repo.name} defaultBranch={repo.default_branch} />
+          <Suspense
+            fallback={
+              <div className="flex animate-pulse flex-col gap-4 py-8">
+                <div className="h-4 w-3/4 rounded bg-white/5" />
+                <div className="h-4 w-full rounded bg-white/5" />
+                <div className="h-4 w-5/6 rounded bg-white/5" />
+              </div>
+            }
+          >
+            <ReadmeViewer
+              content={readme}
+              repoName={repo.name}
+              defaultBranch={repo.default_branch}
+            />
+          </Suspense>
         ) : (
           <div className="rounded-2xl border border-(--border-color) bg-(--secondary-color)/5 p-12 text-center">
             <p className="text-(--text-color)/50">Este repositório não possui README.</p>
