@@ -25,13 +25,18 @@ const cache = {
     return parsed.data
   },
   set(key: string, data: any) {
-    localStorage.setItem(
-      `github_cache_${key}`,
-      JSON.stringify({
-        data,
-        timestamp: Date.now(),
-      })
-    )
+    try {
+      localStorage.setItem(
+        `github_cache_${key}`,
+        JSON.stringify({
+          data,
+          timestamp: Date.now(),
+        })
+      )
+    } catch (error) {
+      // Ignore quota errors or privacy blocks to avoid breaking the app
+      console.warn('Failed to write to GitHub cache:', error)
+    }
   },
 }
 
