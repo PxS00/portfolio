@@ -11,9 +11,9 @@
 ### 🌐 Live Demo: [https://lucas-rossoni.vercel.app](https://lucas-rossoni.vercel.app)
 
 ### 🛠️ Quality & Automation
-![CI Pipeline](https://img.shields.io/github/actions/workflow/status/PxS00/portfolio/ci.yml?branch=main&style=flat-square&label=CI%20Pipeline&logo=github)
+![CI Pipeline](https://img.shields.io/github/actions/workflow/status/PxS00/portfolio/ci.yml?style=flat-square&label=CI%20Pipeline&logo=github)
 ![Lighthouse](https://img.shields.io/badge/Lighthouse-Pass-success?style=flat-square&logo=lighthouse)
-![Security](https://img.shields.io/github/actions/workflow/status/PxS00/portfolio/codeql.yml?branch=main&style=flat-square&label=CodeQL&logo=github-actions)
+![Security](https://img.shields.io/github/actions/workflow/status/PxS00/portfolio/codeql.yml?style=flat-square&label=CodeQL&logo=github-actions)
 
 ---
 
