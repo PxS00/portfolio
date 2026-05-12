@@ -1,4 +1,4 @@
-export interface GithubRepo {
+export type GithubRepo = {
   id: number
   name: string
   description: string | null

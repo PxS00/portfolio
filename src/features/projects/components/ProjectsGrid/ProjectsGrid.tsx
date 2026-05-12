@@ -20,7 +20,7 @@ export default function ProjectsGrid() {
   return (
     <div className="container mx-auto px-6 py-24 lg:px-12">
       <div className="mb-12 text-center md:text-left">
-        <h1 className="mb-8 inline-flex items-center gap-4 rounded-full bg-(--primary-color)/10 px-6 py-3 text-4xl font-bold text-(--title-color) md:text-5xl">
+        <h1 className="mb-8 inline-flex items-center gap-4 rounded-full bg-(--primary-color)/10 px-6 py-3 text-2xl font-bold text-(--title-color) md:text-4xl">
           <span className="font-mono text-(--primary-color)">{'>'}_</span>
           <span className="flex items-center">
             {title}
@@ -34,8 +34,9 @@ export default function ProjectsGrid() {
             </span>
           </span>
         </h1>
-        <p className="text-lg text-(--text-color) max-w-2xl">
-          Explore todos os meus repositórios públicos no GitHub. Abaixo estão os projetos em que venho trabalhando, ordenados pelas atualizações mais recentes.
+        <p className="max-w-2xl text-lg text-(--text-color)">
+          Explore todos os meus repositórios públicos no GitHub. Abaixo estão os projetos em que
+          venho trabalhando, ordenados pelas atualizações mais recentes.
         </p>
       </div>
 
@@ -53,15 +54,14 @@ export default function ProjectsGrid() {
               )}
             </div>
           </div>
-          
+
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {loading
               ? Array.from({ length: 9 }).map((_, idx) => (
+                  // eslint-disable-next-line react/no-array-index-key
                   <ProjectCardSkeleton key={idx} />
                 ))
-              : repos.map((repo, index) => (
-                  <ProjectCard key={repo.id} repo={repo} index={index} />
-                ))}
+              : repos.map((repo, index) => <ProjectCard key={repo.id} repo={repo} index={index} />)}
           </div>
         </>
       )}

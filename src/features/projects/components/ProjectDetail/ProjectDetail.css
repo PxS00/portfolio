@@ -3,6 +3,8 @@
 .readme-content {
   color: var(--text-color);
   line-height: 1.8;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .readme-content h1,
@@ -91,6 +93,7 @@
   padding: 1.25rem;
   margin-bottom: 1.5rem;
   overflow-x: auto;
+  max-width: 100%;
 }
 
 .readme-content pre code {
@@ -115,10 +118,13 @@
 
 /* Tables */
 .readme-content table {
+  display: block;
   width: 100%;
+  overflow-x: auto;
   border-collapse: collapse;
   margin-bottom: 1.5rem;
   font-size: 0.9rem;
+  -webkit-overflow-scrolling: touch;
 }
 
 .readme-content th {

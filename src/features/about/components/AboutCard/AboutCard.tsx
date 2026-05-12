@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import type { LucideIcon } from 'lucide-react'
 
-interface AboutCardProps {
+type AboutCardProps = {
   title: string
   description: string
   icon: LucideIcon

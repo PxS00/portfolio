@@ -23,11 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
-pnpm-lock.yaml
-yarn.lock
-package-lock.json
-
-.github
+# Vercel & Environment
 .vercel
 .env
 .env*.local
+.github/instructions

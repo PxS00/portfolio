@@ -7,13 +7,10 @@ import SocialLink from '../SocialLink/SocialLink'
 
 export default function Navbar() {
   const location = useLocation()
-  const isHome = location.pathname === '/'
+
   const { resolvedTheme, toggleTheme } = useTheme()
   const [mobileOpen, setMobileOpen] = useState(false)
   useEffect(() => setMobileOpen(false), [location.pathname, location.hash])
-
-  // Build correct href for anchor links depending on current page
-  const anchorHref = (hash: string) => (isHome ? hash : `/${hash}`)
 
   return (
     <nav className="site-nav fixed top-0 left-0 z-50 flex w-full items-center bg-(--nav-bg) px-8 py-4 text-(--nav-text) backdrop-blur-md dark:bg-(--nav-bg) dark:text-white/70">
@@ -32,6 +29,12 @@ export default function Navbar() {
               className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/projects' ? 'active' : ''}`}
             >
               Projetos
+            </Link>
+            <Link
+              to="/contact"
+              className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/contact' ? 'active' : ''}`}
+            >
+              Contato
             </Link>
           </div>
         </div>
@@ -84,7 +87,7 @@ export default function Navbar() {
       {mobileOpen && (
         <div
           id="mobile-menu"
-          className="animate-fadeAndSlide absolute top-full right-8 z-40 w-35 rounded-xl border border-white/5 bg-(--nav-bg) px-3 py-2 shadow-lg md:hidden"
+          className="animate-fadeAndSlide absolute top-full right-8 z-40 w-36 rounded-xl border border-(--border-color) bg-(--bg-color-alt) px-3 py-2 shadow-lg md:hidden"
         >
           <div className="flex flex-col gap-1">
             <Link
@@ -100,8 +103,8 @@ export default function Navbar() {
               Projetos
             </Link>
             <Link
-              to={anchorHref('#contact')}
-              className={`nav-text px-3 py-2 duration-300 hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.hash === '#contact' ? 'active' : ''}`}
+              to="/contact"
+              className={`nav-text px-3 py-2 duration-300 hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/contact' ? 'active' : ''}`}
             >
               Contato
             </Link>
@@ -111,4 +114,3 @@ export default function Navbar() {
     </nav>
   )
 }
-

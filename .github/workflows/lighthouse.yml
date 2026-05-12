@@ -1,0 +1,30 @@
+name: Lighthouse
+
+on:
+  pull_request:
+    branches: [main, develop]
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  audit:
+    name: audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: ⏳ Wait for Vercel Deployment
+        uses: patrickedqvist/wait-for-vercel-preview@v1.3.2
+        id: vercel_preview_url
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 300
+
+      - name: 🏠 Audit Preview URL
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: ${{ steps.vercel_preview_url.outputs.url }}
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          configPath: ./.lighthouserc.json

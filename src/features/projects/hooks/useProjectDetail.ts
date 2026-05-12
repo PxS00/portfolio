@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { githubService } from '../services/github.service'
 import type { GithubRepo } from '../types/github.types'
 
-interface ProjectDetailState {
+type ProjectDetailState = {
   repo: GithubRepo | null
   readme: string | null
   loading: boolean
@@ -44,8 +44,17 @@ export const useProjectDetail = (repoName: string) => {
   }, [repoName])
 
   useEffect(() => {
+    if (!repoName) {
+      setState({
+        repo: null,
+        readme: null,
+        loading: false,
+        error: 'Nome do repositório inválido.',
+      })
+      return
+    }
     fetchDetail()
-  }, [fetchDetail])
+  }, [fetchDetail, repoName])
 
-  return { ...state, retry: fetchDetail }
+  return { ...state, retry: repoName ? fetchDetail : undefined }
 }

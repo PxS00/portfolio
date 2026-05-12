@@ -81,18 +81,7 @@ export default [
     },
     rules: {
       // Prettier integration
-      'prettier/prettier': [
-        'error',
-        {
-          printWidth: 100,
-          tabWidth: 2,
-          singleQuote: true,
-          trailingComma: 'all',
-          arrowParens: 'always',
-          semi: false,
-          endOfLine: 'lf',
-        },
-      ],
+      'prettier/prettier': ['error'],
 
       // React rules
       'react/react-in-jsx-scope': 'off',

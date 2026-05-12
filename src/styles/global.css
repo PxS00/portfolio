@@ -4,6 +4,10 @@
   --animate-scroll: scroll 30s linear infinite;
 }
 
+.animate-scroll {
+  will-change: transform;
+}
+
 @keyframes scroll {
   0% {
     transform: translateX(0%);
@@ -35,6 +39,14 @@
   --nav-text: #0b0d12;
   --nav-text-hover: #000000;
   --nav-hover-bg: rgba(var(--accent-rgb), 0.28);
+  --primary-rgb: 124, 58, 237;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 
 html.dark {
@@ -42,6 +54,7 @@ html.dark {
   --bg-color-alt: #171717;
   --border-color: #262626;
   --primary-color: #8b5cf6;
+  --primary-rgb: 139, 92, 246;
   --secondary-color: #f472b6;
   --grid-color: rgba(255, 255, 255, 0.06);
   --glow-start: rgba(var(--accent-rgb), 0.35);
