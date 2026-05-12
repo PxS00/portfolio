@@ -76,7 +76,7 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
           <h3 className="text-sm font-medium tracking-wider text-(--text-color)/50 uppercase">
             {platform}
           </h3>
-          <p className="mt-1 font-mono text-xl font-bold text-(--title-color)">{value}</p>
+          <p className="mt-1 font-mono text-xl font-bold break-all text-(--title-color)">{value}</p>
         </div>
 
         {/* Actions */}

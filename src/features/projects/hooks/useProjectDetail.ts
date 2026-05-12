@@ -45,11 +45,12 @@ export const useProjectDetail = (repoName: string) => {
 
   useEffect(() => {
     if (!repoName) {
-      setState((prev) => ({
-        ...prev,
+      setState({
+        repo: null,
+        readme: null,
         loading: false,
         error: 'Nome do repositório inválido.',
-      }))
+      })
       return
     }
     fetchDetail()

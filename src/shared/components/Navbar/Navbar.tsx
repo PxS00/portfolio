@@ -87,7 +87,7 @@ export default function Navbar() {
       {mobileOpen && (
         <div
           id="mobile-menu"
-          className="animate-fadeAndSlide absolute top-full right-8 z-40 w-35 rounded-xl border border-(--border-color) bg-(--bg-color-alt) px-3 py-2 shadow-lg md:hidden"
+          className="animate-fadeAndSlide absolute top-full right-8 z-40 w-36 rounded-xl border border-(--border-color) bg-(--bg-color-alt) px-3 py-2 shadow-lg md:hidden"
         >
           <div className="flex flex-col gap-1">
             <Link
