@@ -30,7 +30,9 @@ const cache = {
   get<T>(key: string, ignoreExpiration = false): T | null {
     try {
       const item = safeGetItem(`github_cache_${key}`)
-      if (!item) return null
+      if (!item) {
+        return null
+      }
 
       const parsed = JSON.parse(item)
 
@@ -113,8 +115,11 @@ export const githubService = {
       return data
     } catch (error) {
       console.error('Failed to fetch repositories:', error)
-      // Fallback: try to return expired cache if available
-      return cache.get<GithubRepo[]>('repos', true) || ((): never => { throw error })()
+      const fallback = cache.get<GithubRepo[]>('repos', true)
+      if (fallback) {
+        return fallback
+      }
+      throw error
     }
   },
 
@@ -138,7 +143,11 @@ export const githubService = {
       cache.set(cacheKey, data)
       return data
     } catch (error) {
-      return cache.get<GithubRepo>(cacheKey, true) || ((): never => { throw error })()
+      const fallback = cache.get<GithubRepo>(cacheKey, true)
+      if (fallback) {
+        return fallback
+      }
+      throw error
     }
   },
 
@@ -168,7 +177,11 @@ export const githubService = {
       cache.set(cacheKey, decodedContent)
       return decodedContent
     } catch (error) {
-      return cache.get<string>(cacheKey, true) || ((): never => { throw error })()
+      const fallback = cache.get<string>(cacheKey, true)
+      if (fallback) {
+        return fallback
+      }
+      throw error
     }
   },
 }
