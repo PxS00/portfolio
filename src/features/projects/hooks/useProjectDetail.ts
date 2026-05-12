@@ -56,5 +56,5 @@ export const useProjectDetail = (repoName: string) => {
     fetchDetail()
   }, [fetchDetail, repoName])
 
-  return { ...state, retry: fetchDetail }
+  return { ...state, retry: repoName ? fetchDetail : undefined }
 }

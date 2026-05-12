@@ -13,6 +13,7 @@ type ContactCardProps = {
 export default function ContactCard({ platform, value, url, icon, index }: ContactCardProps) {
   const [copied, setCopied] = useState(false)
   const timerRef = useRef<number | null>(null)
+  const isExternalUrl = /^https?:\/\//i.test(url)
 
   // Cleanup timeout on unmount
   useEffect(() => {
@@ -61,8 +62,7 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
           </div>
           <a
             href={url}
-            target="_blank"
-            rel="noopener noreferrer"
+            {...(isExternalUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
             aria-label={`Abrir perfil no ${platform}`}
             title={`Abrir perfil no ${platform}`}
             className="text-(--text-color)/30 transition-colors hover:text-(--primary-color)"
@@ -83,8 +83,7 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
         <div className="mt-2 flex gap-3">
           <a
             href={url}
-            target="_blank"
-            rel="noopener noreferrer"
+            {...(isExternalUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
             className="flex-1 rounded-lg bg-(--primary-color) py-2.5 text-center text-sm font-bold text-white transition-all hover:brightness-110"
           >
             Visitar Perfil
