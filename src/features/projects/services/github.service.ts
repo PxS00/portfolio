@@ -117,6 +117,7 @@ export const githubService = {
       console.error('Failed to fetch repositories:', error)
       const fallback = cache.get<GithubRepo[]>('repos', true)
       if (fallback) {
+        cache.set('repos', fallback)
         return fallback
       }
       throw error
@@ -145,6 +146,7 @@ export const githubService = {
     } catch (error) {
       const fallback = cache.get<GithubRepo>(cacheKey, true)
       if (fallback) {
+        cache.set(cacheKey, fallback)
         return fallback
       }
       throw error
@@ -179,6 +181,7 @@ export const githubService = {
     } catch (error) {
       const fallback = cache.get<string>(cacheKey, true)
       if (fallback) {
+        cache.set(cacheKey, fallback)
         return fallback
       }
       throw error
