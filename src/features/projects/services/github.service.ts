@@ -156,7 +156,7 @@ export const githubService = {
   async fetchReadme(repoName: string): Promise<string> {
     const cacheKey = `readme_${repoName}`
     const cachedReadme = cache.get<string>(cacheKey)
-    if (cachedReadme) {
+    if (cachedReadme !== null) {
       return cachedReadme
     }
 
@@ -167,6 +167,10 @@ export const githubService = {
       )
 
       if (!response.ok) {
+        if (response.status === 404) {
+          cache.set(cacheKey, '')
+          return ''
+        }
         handleHttpError(response.status, repoName)
       }
 
@@ -180,7 +184,7 @@ export const githubService = {
       return decodedContent
     } catch (error) {
       const fallback = cache.get<string>(cacheKey, true)
-      if (fallback) {
+      if (fallback !== null) {
         cache.set(cacheKey, fallback)
         return fallback
       }

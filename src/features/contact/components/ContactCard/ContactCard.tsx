@@ -17,7 +17,7 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
   // Cleanup timeout on unmount
   useEffect(() => {
     return () => {
-      if (timerRef.current) {
+      if (timerRef.current !== null) {
         window.clearTimeout(timerRef.current)
       }
     }
@@ -36,7 +36,7 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
       await navigator.clipboard.writeText(value)
       setCopied(true)
 
-      if (timerRef.current) {
+      if (timerRef.current !== null) {
         window.clearTimeout(timerRef.current)
       }
       timerRef.current = window.setTimeout(() => setCopied(false), 2000)
