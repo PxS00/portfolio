@@ -8,37 +8,59 @@ const GITHUB_HEADERS = {
   Accept: 'application/vnd.github.v3+json',
 }
 
+// Helper to safe-access localStorage (prevents crashes in private modes/blocked storage)
+const safeGetItem = (key: string): string | null => {
+  try {
+    return localStorage.getItem(key)
+  } catch {
+    return null
+  }
+}
+
+const safeRemoveItem = (key: string) => {
+  try {
+    localStorage.removeItem(key)
+  } catch {
+    /* ignore */
+  }
+}
+
 // Helper to handle localStorage caching
 const cache = {
-  get<T>(key: string): T | null {
+  get<T>(key: string, ignoreExpiration = false): T | null {
     try {
-      const item = localStorage.getItem(`github_cache_${key}`)
-      if (!item) {
-        return null
-      }
+      const item = safeGetItem(`github_cache_${key}`)
+      if (!item) return null
 
       const parsed = JSON.parse(item)
 
-      // Basic shape validation
-      if (
-        !parsed ||
-        typeof parsed !== 'object' ||
-        !('data' in parsed) ||
-        !('timestamp' in parsed)
-      ) {
-        localStorage.removeItem(`github_cache_${key}`)
+      // Validate shape and timestamp
+      const hasValidStructure =
+        parsed &&
+        typeof parsed === 'object' &&
+        'data' in parsed &&
+        typeof parsed.timestamp === 'number' &&
+        Number.isFinite(parsed.timestamp)
+
+      if (!hasValidStructure) {
+        safeRemoveItem(`github_cache_${key}`)
         return null
+      }
+
+      if (ignoreExpiration) {
+        return parsed.data
       }
 
       const isExpired = Date.now() - parsed.timestamp > CACHE_DURATION
       if (isExpired) {
-        localStorage.removeItem(`github_cache_${key}`)
+        // We don't remove it here to allow fallback if network fails later
         return null
       }
 
       return parsed.data
     } catch (error) {
-      console.warn('Cache parsing failed:', error)
+      console.warn('Cache parsing failed, cleaning up:', error)
+      safeRemoveItem(`github_cache_${key}`)
       return null
     }
   },
@@ -52,7 +74,6 @@ const cache = {
         }),
       )
     } catch (error) {
-      // Ignore quota errors or privacy blocks to avoid breaking the app
       console.warn('Failed to write to GitHub cache:', error)
     }
   },
@@ -93,15 +114,7 @@ export const githubService = {
     } catch (error) {
       console.error('Failed to fetch repositories:', error)
       // Fallback: try to return expired cache if available
-      const expiredData = localStorage.getItem('github_cache_repos')
-      if (expiredData) {
-        try {
-          return JSON.parse(expiredData).data
-        } catch {
-          /* ignore */
-        }
-      }
-      throw error
+      return cache.get<GithubRepo[]>('repos', true) || ((): never => { throw error })()
     }
   },
 
@@ -125,15 +138,7 @@ export const githubService = {
       cache.set(cacheKey, data)
       return data
     } catch (error) {
-      const expiredData = localStorage.getItem(`github_cache_${cacheKey}`)
-      if (expiredData) {
-        try {
-          return JSON.parse(expiredData).data
-        } catch {
-          /* ignore */
-        }
-      }
-      throw error
+      return cache.get<GithubRepo>(cacheKey, true) || ((): never => { throw error })()
     }
   },
 
@@ -163,15 +168,7 @@ export const githubService = {
       cache.set(cacheKey, decodedContent)
       return decodedContent
     } catch (error) {
-      const expiredData = localStorage.getItem(`github_cache_${cacheKey}`)
-      if (expiredData) {
-        try {
-          return JSON.parse(expiredData).data
-        } catch {
-          /* ignore */
-        }
-      }
-      throw error
+      return cache.get<string>(cacheKey, true) || ((): never => { throw error })()
     }
   },
 }

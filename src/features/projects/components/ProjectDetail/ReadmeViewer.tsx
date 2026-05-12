@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import Markdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
+import rehypeSanitize from 'rehype-sanitize'
 import remarkGfm from 'remark-gfm'
 import { resolveReadmeImageUrl } from '../../utils/projectHelpers'
 
@@ -21,7 +22,7 @@ export default function ReadmeViewer({ content, repoName, defaultBranch }: Readm
     >
       <Markdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeRaw]}
+        rehypePlugins={[rehypeRaw, rehypeSanitize]}
         components={{
           img: ({ ...props }) => {
             const src = resolveReadmeImageUrl(props.src || '', repoName, defaultBranch)

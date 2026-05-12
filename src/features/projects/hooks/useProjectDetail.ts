@@ -44,8 +44,16 @@ export const useProjectDetail = (repoName: string) => {
   }, [repoName])
 
   useEffect(() => {
+    if (!repoName) {
+      setState((prev) => ({
+        ...prev,
+        loading: false,
+        error: 'Nome do repositório inválido.',
+      }))
+      return
+    }
     fetchDetail()
-  }, [fetchDetail])
+  }, [fetchDetail, repoName])
 
   return { ...state, retry: fetchDetail }
 }
