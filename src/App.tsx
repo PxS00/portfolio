@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import { Outlet } from 'react-router-dom'
 import Footer from './shared/components/Footer/Footer'
 import Navbar from './shared/components/Navbar/Navbar'
@@ -9,7 +10,9 @@ export default function App() {
       <ScrollToTop />
       <Navbar />
       <main className="w-full flex-1">
-        <Outlet />
+        <Suspense fallback={<div className="min-h-screen bg-(--bg-color)" />}>
+          <Outlet />
+        </Suspense>
       </main>
       <Footer />
     </div>

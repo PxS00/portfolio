@@ -17,11 +17,7 @@ const ProjectDetail = lazy(
 const router = createBrowserRouter([
   {
     path: '/',
-    element: (
-      <Suspense fallback={<div className="min-h-screen bg-(--bg-color)" />}>
-        <App />
-      </Suspense>
-    ),
+    element: <App />,
     errorElement: (
       <Suspense fallback={<div className="min-h-screen bg-(--bg-color)" />}>
         <Error />
