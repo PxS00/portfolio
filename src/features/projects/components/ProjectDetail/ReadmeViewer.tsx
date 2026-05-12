@@ -4,7 +4,7 @@ import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import { resolveReadmeImageUrl } from '../../utils/projectHelpers'
 
-interface ReadmeViewerProps {
+type ReadmeViewerProps = {
   content: string
   repoName: string
   defaultBranch: string
@@ -23,7 +23,7 @@ export default function ReadmeViewer({ content, repoName, defaultBranch }: Readm
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeRaw]}
         components={{
-          img: ({ node, ...props }) => {
+          img: ({ ...props }) => {
             const src = resolveReadmeImageUrl(props.src || '', repoName, defaultBranch)
             return <img {...props} src={src} alt={props.alt || ''} loading="lazy" />
           },

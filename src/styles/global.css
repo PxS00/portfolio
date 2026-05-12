@@ -4,6 +4,10 @@
   --animate-scroll: scroll 30s linear infinite;
 }
 
+.animate-scroll {
+  will-change: transform;
+}
+
 @keyframes scroll {
   0% {
     transform: translateX(0%);

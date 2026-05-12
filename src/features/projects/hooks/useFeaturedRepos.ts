@@ -24,7 +24,9 @@ export const useFeaturedRepos = () => {
 
       setRepos(recentRepos)
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Não foi possível carregar os projetos recentes.')
+      setError(
+        err instanceof Error ? err.message : 'Não foi possível carregar os projetos recentes.',
+      )
     } finally {
       setLoading(false)
     }

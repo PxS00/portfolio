@@ -58,11 +58,13 @@ export default function ContactPage() {
             </span>
           </span>
         </h1>
-        
+
         <StatusBadge />
-        
+
         <p className="mt-8 max-w-2xl text-lg text-(--text-color)">
-          Vamos construir algo juntos. Se você tem um projeto em mente, uma pergunta técnica ou apenas quer trocar uma ideia sobre engenharia de software, sinta-se à vontade para me chamar!
+          Vamos construir algo juntos. Se você tem um projeto em mente, uma pergunta técnica ou
+          apenas quer trocar uma ideia sobre engenharia de software, sinta-se à vontade para me
+          chamar!
         </p>
       </div>
 

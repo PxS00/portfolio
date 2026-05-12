@@ -25,7 +25,9 @@ export default function ProjectsSection() {
       { threshold: 0.2 },
     )
 
-    if (sectionRef.current) observer.observe(sectionRef.current)
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
     return () => observer.disconnect()
   }, [])
 
@@ -34,7 +36,9 @@ export default function ProjectsSection() {
     delay: 60,
     startDelay: 200,
     onDone: () => {
-      if (isVisible) setShowCursor(false)
+      if (isVisible) {
+        setShowCursor(false)
+      }
     },
   })
 
@@ -78,11 +82,10 @@ export default function ProjectsSection() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {loading
               ? Array.from({ length: 3 }).map((_, idx) => (
+                  // eslint-disable-next-line react/no-array-index-key
                   <ProjectCardSkeleton key={idx} />
                 ))
-              : repos.map((repo, index) => (
-                  <ProjectCard key={repo.id} repo={repo} index={index} />
-                ))}
+              : repos.map((repo, index) => <ProjectCard key={repo.id} repo={repo} index={index} />)}
           </div>
         )}
       </div>
