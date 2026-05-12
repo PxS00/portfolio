@@ -11,7 +11,7 @@
 ### 🌐 Live Demo: [https://lucas-rossoni.vercel.app](https://lucas-rossoni.vercel.app)
 
 ### 🛠️ Quality & Automation
-![CI Pipeline](https://img.shields.io/github/actions/workflow/status/PxS00/portfolio/ci.yml?style=flat-square&label=CI%20Pipeline&logo=github)
+![CI](https://img.shields.io/github/actions/workflow/status/PxS00/portfolio/ci.yml?style=flat-square&label=CI&logo=github)
 ![Lighthouse](https://img.shields.io/badge/Lighthouse-Pass-success?style=flat-square&logo=lighthouse)
 ![Security](https://img.shields.io/github/actions/workflow/status/PxS00/portfolio/codeql.yml?style=flat-square&label=CodeQL&logo=github-actions)
 
@@ -37,10 +37,11 @@ O projeto segue uma estrutura modular onde cada funcionalidade é auto-contida, 
 - **Cache Layer:** Implementação de cache customizado via `localStorage` com expiração de 30 minutos.
 - **Fail-safe:** Mecanismos de fallback que garantem a exibição dos dados mesmo em cenários de *Rate Limit*.
 
-### 🤖 CI/CD "Startup-Grade"
-- **Modular Jobs:** Pipeline paralela para Lint, Typecheck e Build.
-- **Automated QA:** Verificação de performance via Lighthouse CI em cada PR.
-- **Security First:** Análise estática de vulnerabilidades com CodeQL.
+### 🤖 CI/CD "Enterprise-Grade"
+- **Standardized Pipeline:** Workflows isolados para CI, Lighthouse e CodeQL.
+- **Modular Jobs:** Execução paralela para lint, typecheck e build.
+- **Automated QA:** Auditoria de performance automática em cada PR.
+- **Security First:** Análise estática de vulnerabilidades via CodeQL.
 
 ## 📁 Estrutura do Projeto
 

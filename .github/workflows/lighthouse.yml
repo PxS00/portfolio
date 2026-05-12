@@ -1,4 +1,4 @@
-name: Lighthouse CI
+name: Lighthouse
 
 on:
   pull_request:
@@ -8,8 +8,8 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
-  lighthouse:
-    name: ⚡ Lighthouse Check
+  audit:
+    name: audit
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
