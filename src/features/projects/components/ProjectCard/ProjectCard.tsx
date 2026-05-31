@@ -25,11 +25,11 @@ const ProjectCard = ({ repo, index = 0 }: ProjectCardProps) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
-      className="w-full"
+      className="w-full min-w-0"
     >
       <Link
         to={`/projects/${repo.name}`}
-        className="group flex h-full w-full flex-col rounded-2xl border border-(--border-color) bg-(--secondary-color)/5 p-4 shadow-lg backdrop-blur-xl transition-all duration-200 hover:-translate-y-2 hover:bg-(--secondary-color)/10 hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.12)] sm:p-6"
+        className="group flex h-full w-full min-w-0 flex-col rounded-2xl border border-(--border-color) bg-(--secondary-color)/5 p-4 shadow-lg backdrop-blur-xl transition-all duration-200 hover:-translate-y-2 hover:bg-(--secondary-color)/10 hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.12)] sm:p-6"
       >
         <div className="mb-4 flex min-w-0 items-start justify-between gap-2">
           <div className="flex min-w-0 flex-1 items-center gap-3">

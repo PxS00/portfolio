@@ -54,7 +54,7 @@ const ProjectsSection = () => {
 
   return (
     <section id="projects" ref={sectionRef} className="relative overflow-hidden py-12 sm:py-24">
-      <div className="container mx-auto px-6 lg:px-12">
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-12">
         <div className="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
             <h2 className="mb-6 inline-flex items-center gap-4 rounded-full bg-(--primary-color)/10 px-6 py-3 text-2xl font-bold text-(--title-color) md:text-4xl lg:text-5xl">
@@ -87,7 +87,7 @@ const ProjectsSection = () => {
         {error ? (
           <ErrorState message={error} onRetry={retry} />
         ) : (
-          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
             {loading
               ? Array.from({ length: 3 }).map((_, idx) => (
                   // eslint-disable-next-line react/no-array-index-key

@@ -23,7 +23,7 @@ const ProjectDetail = () => {
 
   if (error || !repo) {
     return (
-      <div className="container mx-auto flex min-h-[60vh] flex-col items-center justify-center px-6 py-32 text-center lg:px-12">
+      <div className="mx-auto flex min-h-[60vh] w-full max-w-7xl flex-col items-center justify-center px-4 py-32 text-center sm:px-6 lg:px-12">
         <ErrorState message={error || t('project_detail_not_found')} onRetry={retry}>
           <Link
             to="/projects"
@@ -37,7 +37,7 @@ const ProjectDetail = () => {
   }
 
   return (
-    <div className="container mx-auto px-6 py-32 lg:px-12">
+    <div className="mx-auto w-full max-w-7xl px-4 py-32 sm:px-6 lg:px-12">
       {/* Floating back button */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

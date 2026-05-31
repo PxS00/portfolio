@@ -1,7 +1,7 @@
 // Loading skeleton for the project detail page
-export default function ProjectDetailSkeleton() {
+const ProjectDetailSkeleton = () => {
   return (
-    <div className="container mx-auto px-6 py-32 lg:px-12">
+    <div className="mx-auto w-full max-w-7xl px-4 py-32 sm:px-6 lg:px-12">
       <div className="animate-pulse space-y-6">
         <div className="h-8 w-48 rounded bg-white/10" />
         <div className="h-12 w-2/3 rounded bg-white/10" />
@@ -17,3 +17,5 @@ export default function ProjectDetailSkeleton() {
     </div>
   )
 }
+
+export default ProjectDetailSkeleton

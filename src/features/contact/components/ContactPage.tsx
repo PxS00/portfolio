@@ -50,7 +50,7 @@ const ContactPage = () => {
   })
 
   return (
-    <div className="container mx-auto px-6 py-24 lg:px-12">
+    <div className="mx-auto w-full max-w-7xl px-4 pt-4 pb-12 sm:px-6 lg:px-12">
       {/* Header */}
       <div className="mb-16 flex flex-col items-center text-center">
         <h1 className="mb-6 inline-flex items-center gap-4 rounded-full bg-(--primary-color)/10 px-6 py-3 text-2xl font-bold text-(--title-color) md:text-4xl">

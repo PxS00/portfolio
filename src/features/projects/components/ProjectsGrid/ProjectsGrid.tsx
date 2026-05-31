@@ -26,7 +26,7 @@ const ProjectsGrid = () => {
   })
 
   return (
-    <div className="container mx-auto px-6 py-12 sm:py-24 lg:px-12">
+    <div className="mx-auto w-full max-w-7xl px-4 pt-4 pb-12 sm:px-6 lg:px-12">
       <div className="mb-12 text-center md:text-left">
         <h1 className="mb-8 inline-flex items-center gap-4 rounded-full bg-(--primary-color)/10 px-6 py-3 text-2xl font-bold text-(--title-color) md:text-4xl">
           <span className="font-mono text-(--primary-color)">{'>'}_</span>
@@ -60,7 +60,7 @@ const ProjectsGrid = () => {
             </div>
           </div>
 
-          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
             {loading
               ? Array.from({ length: 9 }).map((_, idx) => (
                   // eslint-disable-next-line react/no-array-index-key

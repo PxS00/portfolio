@@ -2,7 +2,7 @@ import AboutSection from '../../../features/about/components/AboutSection/AboutS
 import HeroSection from '../../../features/hero/components/HeroSection/HeroSection'
 import ProjectsSection from '../../../features/projects/components/ProjectsSection/ProjectsSection'
 
-export default function Home() {
+const Home = () => {
   return (
     <>
       <HeroSection />
@@ -11,3 +11,5 @@ export default function Home() {
     </>
   )
 }
+
+export default Home
