@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App'
 import { ThemeProvider } from './app/providers/ThemeContext'
+import { LanguageProvider } from './app/providers/LanguageContext'
 import './styles/global.css'
 
 // Lazy loading components for performance
@@ -40,7 +41,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider>
-      <RouterProvider router={router} />
+      <LanguageProvider>
+        <RouterProvider router={router} />
+      </LanguageProvider>
     </ThemeProvider>
   </StrictMode>,
 )
