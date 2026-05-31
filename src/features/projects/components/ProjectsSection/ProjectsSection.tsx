@@ -6,9 +6,11 @@ import { useTypewriter } from '../../../../shared/hooks/useTypewriter'
 import { useFeaturedRepos } from '../../hooks/useFeaturedRepos'
 import ProjectCard from '../ProjectCard/ProjectCard'
 import ProjectCardSkeleton from '../ProjectCard/ProjectCardSkeleton'
+import { useLanguage } from '../../../../app/providers/LanguageContext'
 
-export default function ProjectsSection() {
+const ProjectsSection = () => {
   const { repos, loading, error, retry } = useFeaturedRepos()
+  const { language, t } = useLanguage()
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
   const [showCursor, setShowCursor] = useState(true)
@@ -31,8 +33,16 @@ export default function ProjectsSection() {
     return () => observer.disconnect()
   }, [])
 
+  // Reset cursor to blink when language changes so that re-typing looks natural
+  useEffect(() => {
+    if (isVisible) {
+      setShowCursor(true)
+    }
+  }, [language, isVisible])
+
+  const titleText = isVisible ? t('projects_recent_title') : ''
   const title = useTypewriter({
-    text: isVisible ? 'Projetos Recentes' : '',
+    text: titleText,
     delay: 60,
     startDelay: 200,
     onDone: () => {
@@ -61,17 +71,15 @@ export default function ProjectsSection() {
                 </span>
               </span>
               {/* Reserve height to prevent layout shift */}
-              {!isVisible && <span className="invisible">Projetos Recentes</span>}
+              {!isVisible && <span className="invisible">{t('projects_recent_title')}</span>}
             </h2>
-            <p className="text-lg text-(--text-color)">
-              Confira os projetos e soluções que venho desenvolvendo recentemente.
-            </p>
+            <p className="text-lg text-(--text-color)">{t('projects_section_subtitle')}</p>
           </div>
           <Link
             to="/projects"
             className="group flex items-center gap-2 rounded-lg border border-(--primary-color)/30 px-6 py-3 font-semibold text-(--primary-color) transition-all hover:bg-(--primary-color)/10"
           >
-            Ver todos os projetos
+            {t('projects_view_all')}
             <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
@@ -92,3 +100,5 @@ export default function ProjectsSection() {
     </section>
   )
 }
+
+export default ProjectsSection

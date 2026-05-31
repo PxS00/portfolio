@@ -1,17 +1,25 @@
 import { FolderGit2 } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ErrorState from '../../../../shared/components/ErrorState/ErrorState'
 import { useTypewriter } from '../../../../shared/hooks/useTypewriter'
 import { useGithubRepos } from '../../hooks/useGithubRepos'
 import ProjectCard from '../ProjectCard/ProjectCard'
 import ProjectCardSkeleton from '../ProjectCard/ProjectCardSkeleton'
+import { useLanguage } from '../../../../app/providers/LanguageContext'
 
-export default function ProjectsGrid() {
+const ProjectsGrid = () => {
   const { repos, loading, error, retry } = useGithubRepos()
+  const { language, t } = useLanguage()
   const [showCursor, setShowCursor] = useState(true)
 
+  // Reset typewriter cursor when language toggles
+  useEffect(() => {
+    setShowCursor(true)
+  }, [language])
+
+  const titleText = t('projects_title')
   const title = useTypewriter({
-    text: 'Meus Projetos',
+    text: titleText,
     delay: 60,
     startDelay: 200,
     onDone: () => setShowCursor(false),
@@ -34,10 +42,7 @@ export default function ProjectsGrid() {
             </span>
           </span>
         </h1>
-        <p className="max-w-2xl text-lg text-(--text-color)">
-          Explore todos os meus repositórios públicos no GitHub. Abaixo estão os projetos em que
-          venho trabalhando, ordenados pelas atualizações mais recentes.
-        </p>
+        <p className="max-w-2xl text-lg text-(--text-color)">{t('projects_grid_subtitle')}</p>
       </div>
 
       {error ? (
@@ -48,9 +53,9 @@ export default function ProjectsGrid() {
             <div className="flex items-center gap-2">
               <FolderGit2 className="h-5 w-5 text-(--primary-color)" />
               {loading ? (
-                <span>Carregando repositórios...</span>
+                <span>{t('projects_loading')}</span>
               ) : (
-                <span>Exibindo {repos.length} repositórios</span>
+                <span>{t('projects_displaying', { count: repos.length })}</span>
               )}
             </div>
           </div>
@@ -68,3 +73,5 @@ export default function ProjectsGrid() {
     </div>
   )
 }
+
+export default ProjectsGrid
