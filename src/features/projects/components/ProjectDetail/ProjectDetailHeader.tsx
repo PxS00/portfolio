@@ -21,10 +21,7 @@ const ProjectDetailHeader = ({ repo }: ProjectDetailHeaderProps) => {
   return (
     <div className="mb-10 border-b border-(--border-color) pb-10">
       <div className="mb-3 flex items-center gap-3">
-        <FolderGit2
-          className="h-7 w-7 shrink-0"
-          style={{ color: getLanguageColor(displayLang) }}
-        />
+        <FolderGit2 className="h-7 w-7 shrink-0" style={{ color: getLanguageColor(displayLang) }} />
         <h1 className="min-w-0 flex-1 text-2xl font-bold wrap-break-word text-(--title-color) md:text-4xl">
           {repo.name}
         </h1>
@@ -36,7 +33,9 @@ const ProjectDetailHeader = ({ repo }: ProjectDetailHeaderProps) => {
         )}
       </div>
       {repo.description && (
-        <p className="mt-2 max-w-2xl text-lg wrap-break-word text-(--text-color)">{repo.description}</p>
+        <p className="mt-2 max-w-2xl text-lg wrap-break-word text-(--text-color)">
+          {repo.description}
+        </p>
       )}
       <div className="mt-4 flex flex-col gap-4 text-sm text-(--text-color)/70 sm:flex-row sm:items-center">
         <div className="flex items-center gap-2">
