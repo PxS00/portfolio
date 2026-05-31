@@ -1,8 +1,9 @@
 import { Github, Instagram, Linkedin, Mail } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTypewriter } from '../../../shared/hooks/useTypewriter'
 import ContactCard from './ContactCard/ContactCard'
 import StatusBadge from './StatusBadge/StatusBadge'
+import { useLanguage } from '../../../app/providers/LanguageContext'
 
 const CONTACTS = [
   {
@@ -31,10 +32,18 @@ const CONTACTS = [
   },
 ]
 
-export default function ContactPage() {
+const ContactPage = () => {
+  const { language, t } = useLanguage()
   const [showCursor, setShowCursor] = useState(true)
+
+  // Reset typewriter cursor when language toggles
+  useEffect(() => {
+    setShowCursor(true)
+  }, [language])
+
+  const titleText = t('nav_contact')
   const title = useTypewriter({
-    text: 'Contato',
+    text: titleText,
     delay: 60,
     startDelay: 200,
     onDone: () => setShowCursor(false),
@@ -61,11 +70,7 @@ export default function ContactPage() {
 
         <StatusBadge />
 
-        <p className="mt-8 max-w-2xl text-lg text-(--text-color)">
-          Vamos construir algo juntos. Se você tem um projeto em mente, uma pergunta técnica ou
-          apenas quer trocar uma ideia sobre engenharia de software, sinta-se à vontade para me
-          chamar!
-        </p>
+        <p className="mt-8 max-w-2xl text-lg text-(--text-color)">{t('contact_subtitle')}</p>
       </div>
 
       {/* Grid */}
@@ -77,3 +82,5 @@ export default function ContactPage() {
     </div>
   )
 }
+
+export default ContactPage
