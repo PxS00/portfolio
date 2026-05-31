@@ -50,7 +50,7 @@ export type TranslationKeys =
 
 export const TRANSLATIONS: Record<'pt-BR' | 'en-GB', Record<TranslationKeys, string>> = {
   'pt-BR': {
-    nav_home: 'Home',
+    nav_home: 'Menu',
     nav_projects: 'Projetos',
     nav_contact: 'Contato',
     hero_subtitle: 'Desenvolvendo arquiteturas escaláveis para soluções digitais modernas.',

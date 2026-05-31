@@ -9,7 +9,10 @@ const AboutSection = () => {
   const { t } = useLanguage()
 
   return (
-    <section id="about" className="relative z-30 mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
+    <section
+      id="about"
+      className="relative z-30 mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-24 lg:px-8"
+    >
       {/* Title */}
       <div className="mb-16 text-center">
         <h2 className="mb-4 text-3xl font-extrabold text-(--title-color) sm:text-4xl">

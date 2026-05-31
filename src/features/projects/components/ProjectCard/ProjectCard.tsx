@@ -31,14 +31,17 @@ const ProjectCard = ({ repo, index = 0 }: ProjectCardProps) => {
         to={`/projects/${repo.name}`}
         className="group flex h-full w-full flex-col rounded-2xl border border-(--border-color) bg-(--secondary-color)/5 p-6 shadow-lg backdrop-blur-xl transition-all duration-200 hover:-translate-y-2 hover:bg-(--secondary-color)/10 hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.12)]"
       >
-        <div className="mb-4 flex items-start justify-between">
-          <div className="flex items-center gap-3">
-            <FolderGit2 className="h-6 w-6" style={{ color: getLanguageColor(displayLang) }} />
-            <h3 className="line-clamp-1 text-xl font-bold text-(--title-color) transition-colors group-hover:text-(--primary-color)">
+        <div className="mb-4 flex min-w-0 items-start justify-between gap-2">
+          <div className="flex min-w-0 items-center gap-3">
+            <FolderGit2
+              className="h-6 w-6 shrink-0"
+              style={{ color: getLanguageColor(displayLang) }}
+            />
+            <h3 className="line-clamp-1 min-w-0 text-xl font-bold text-(--title-color) transition-colors group-hover:text-(--primary-color)">
               {repo.name}
             </h3>
             {repo.fork && (
-              <span className="inline-flex items-center gap-1 rounded-full border border-(--border-color) bg-(--bg-color-alt) px-2 py-0.5 text-xs text-(--text-color)/50">
+              <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-(--border-color) bg-(--bg-color-alt) px-2 py-0.5 text-xs text-(--text-color)/50">
                 <GitFork className="h-3 w-3" />
                 Fork
               </span>
