@@ -53,7 +53,7 @@ const ProjectsSection = () => {
   })
 
   return (
-    <section id="projects" ref={sectionRef} className="relative py-12 sm:py-24">
+    <section id="projects" ref={sectionRef} className="relative overflow-hidden py-12 sm:py-24">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="mb-16 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
