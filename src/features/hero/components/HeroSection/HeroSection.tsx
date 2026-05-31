@@ -3,15 +3,18 @@ import { FiDownload } from 'react-icons/fi'
 import GridPattern from '../../../../shared/components/GridPattern/GridPattern'
 import ShadowEffect from '../../../../shared/components/ShadowEffect/ShadowEffect'
 import { useTypewriter } from '../../../../shared/hooks/useTypewriter'
+import { useLanguage } from '../../../../app/providers/LanguageContext'
 
-export default function HeroSection() {
+const HeroSection = () => {
   const [showCursor, setShowCursor] = useState(true)
+  const { language, t } = useLanguage()
   const title = useTypewriter({
     text: 'Backend Software Engineer',
     delay: 80,
     startDelay: 400,
     onDone: () => setShowCursor(false),
   })
+
   return (
     <section className="relative z-30 flex min-h-[75vh] flex-col items-center justify-center py-24 text-center">
       <GridPattern />
@@ -30,11 +33,13 @@ export default function HeroSection() {
           </span>
         )}
       </p>
-      <p className="mb-10 text-xl font-semibold text-(--muted-color)">
-        Desenvolvendo arquiteturas escaláveis para soluções digitais modernas.
-      </p>
+      <p className="mb-10 text-xl font-semibold text-(--muted-color)">{t('hero_subtitle')}</p>
       <a
-        href="/cv/lucas_rossoni_dieder_cv_pt_backend.pdf"
+        href={
+          language === 'pt-BR'
+            ? '/cv/lucas_rossoni_dieder_cv_pt_backend.pdf'
+            : '/cv/lucas_rossoni_dieder_cv_en_backend.pdf'
+        }
         target="_blank"
         rel="noopener noreferrer"
         className="group pointer-events-auto relative z-50 flex items-center gap-2 rounded-full bg-purple-600 px-6 py-3 font-semibold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:scale-105 hover:bg-purple-700 active:scale-95"
@@ -43,8 +48,10 @@ export default function HeroSection() {
           className="transition-transform duration-300 group-hover:translate-y-1"
           size={20}
         />
-        Baixar currículo
+        {t('hero_download_cv')}
       </a>
     </section>
   )
 }
+
+export default HeroSection
