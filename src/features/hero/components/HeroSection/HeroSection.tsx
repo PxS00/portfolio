@@ -16,7 +16,7 @@ const HeroSection = () => {
   })
 
   return (
-    <section className="relative z-30 flex min-h-[70vh] flex-col items-center justify-center py-16 text-center md:min-h-[75vh] md:py-24">
+    <section className="relative z-30 flex min-h-[55vh] flex-col items-center justify-center py-12 text-center sm:min-h-[75vh] sm:py-24">
       <GridPattern />
       <ShadowEffect />
       <h1 className="mb-6 text-[clamp(1.8rem,6vw,4.5rem)] font-extrabold text-(--title-color)">
