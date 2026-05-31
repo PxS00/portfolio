@@ -16,7 +16,7 @@ const getInitialLanguage = (): Language => {
   if (saved && (saved === 'pt-BR' || saved === 'en-GB')) {
     return saved
   }
-  return navigator.language.startsWith('pt') ? 'pt-BR' : 'en-GB'
+  return 'en-GB'
 }
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
