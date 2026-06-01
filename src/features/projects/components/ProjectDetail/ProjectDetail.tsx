@@ -8,6 +8,7 @@ import './ProjectDetail.css'
 import ProjectDetailHeader from './ProjectDetailHeader'
 import ProjectDetailSkeleton from './ProjectDetailSkeleton'
 import { useLanguage } from '../../../../app/providers/LanguageContext'
+import type { TranslationKeys } from '../../../../shared/constants/translations'
 
 // High-level optimization: Lazy load the heavy markdown renderer
 const ReadmeViewer = lazy(() => import('./ReadmeViewer'))
@@ -22,9 +23,15 @@ const ProjectDetail = () => {
   }
 
   if (error || !repo) {
+    const isKnownKey =
+      error === 'project_detail_not_found' || error === 'project_detail_invalid_name'
+    const errorMessage = isKnownKey
+      ? t(error as TranslationKeys)
+      : error || t('project_detail_not_found')
+
     return (
       <div className="mx-auto flex min-h-[60vh] w-full max-w-7xl flex-col items-center justify-center px-4 py-32 text-center sm:px-6 lg:px-12">
-        <ErrorState message={error || t('project_detail_not_found')} onRetry={retry}>
+        <ErrorState message={errorMessage} onRetry={retry}>
           <Link
             to="/projects"
             className="rounded-lg border border-(--primary-color)/30 px-6 py-2 text-sm font-semibold text-(--primary-color) transition-colors hover:bg-(--primary-color)/10"

@@ -31,7 +31,7 @@ export const useProjectDetail = (repoName: string) => {
         repo: repo.status === 'fulfilled' ? repo.value : null,
         readme: readme.status === 'fulfilled' ? readme.value : null,
         loading: false,
-        error: repo.status === 'rejected' ? 'Repositório não encontrado.' : null,
+        error: repo.status === 'rejected' ? 'project_detail_not_found' : null,
       })
     } catch (err) {
       setState({
@@ -49,7 +49,7 @@ export const useProjectDetail = (repoName: string) => {
         repo: null,
         readme: null,
         loading: false,
-        error: 'Nome do repositório inválido.',
+        error: 'project_detail_invalid_name',
       })
       return
     }

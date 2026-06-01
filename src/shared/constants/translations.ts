@@ -43,6 +43,7 @@ export type TranslationKeys =
   | 'project_card_fallback_desc'
   | 'project_detail_back_to_list'
   | 'project_detail_not_found'
+  | 'project_detail_invalid_name'
   | 'project_detail_back'
   | 'project_detail_view_github'
   | 'project_detail_no_readme'
@@ -113,6 +114,7 @@ export const TRANSLATIONS: Record<'pt-BR' | 'en-GB', Record<TranslationKeys, str
     project_card_fallback_desc: 'Nenhuma descrição fornecida.',
     project_detail_back_to_list: 'Voltar aos projetos',
     project_detail_not_found: 'Projeto não encontrado.',
+    project_detail_invalid_name: 'Nome do repositório inválido.',
     project_detail_back: 'Voltar',
     project_detail_view_github: 'Ver no GitHub',
     project_detail_no_readme: 'Este repositório não possui README.',
@@ -183,6 +185,7 @@ export const TRANSLATIONS: Record<'pt-BR' | 'en-GB', Record<TranslationKeys, str
     project_card_fallback_desc: 'No description provided.',
     project_detail_back_to_list: 'Back to projects',
     project_detail_not_found: 'Project not found.',
+    project_detail_invalid_name: 'Invalid repository name.',
     project_detail_back: 'Back',
     project_detail_view_github: 'View on GitHub',
     project_detail_no_readme: 'This repository does not have a README.',
