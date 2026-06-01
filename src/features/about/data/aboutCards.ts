@@ -1,59 +1,52 @@
 import type { LucideIcon } from 'lucide-react'
 import { Cloud, Database, Layers, Server, Layout, Shield, BookOpen, Bot } from 'lucide-react'
+import type { TranslationKeys } from '../../../shared/constants/translations'
 
 export type AboutCardData = {
-  title: string
-  description: string
+  titleKey: TranslationKeys
+  descriptionKey: TranslationKeys
   icon: LucideIcon
 }
 
 export const aboutCards: AboutCardData[] = [
   {
-    title: 'Backend & APIs',
-    description:
-      'Construção de APIs utilizando Java e Spring Boot, com foco na organização de serviços, implementação de regras de negócio e arquitetura em camadas.',
+    titleKey: 'card_backend_title',
+    descriptionKey: 'card_backend_desc',
     icon: Server,
   },
   {
-    title: 'Dados & Persistência',
-    description:
-      'Desenvolvimento de soluções de persistência com SQL, aplicando boas práticas de modelagem, integridade e performance de dados.',
+    titleKey: 'card_data_title',
+    descriptionKey: 'card_data_desc',
     icon: Database,
   },
   {
-    title: 'Arquitetura & Boas\u00A0Práticas',
-    description:
-      'Aplicação de SOLID, Clean Code e padrões arquiteturais na construção de sistemas sustentáveis, escaláveis e de fácil manutenção.',
+    titleKey: 'card_arch_title',
+    descriptionKey: 'card_arch_desc',
     icon: Layers,
   },
   {
-    title: 'Cloud & Infraestrutura',
-    description:
-      'Utilização de ambientes em nuvem e conteinerização com Docker, com foco em deploy, escalabilidade e eficiência operacional.',
+    titleKey: 'card_cloud_title',
+    descriptionKey: 'card_cloud_desc',
     icon: Cloud,
   },
   {
-    title: 'Frontend & UI',
-    description:
-      'Desenvolvimento de interfaces modernas e responsivas com React, Angular, HTML, CSS e JavaScript, integrando APIs REST e aplicações backend.',
+    titleKey: 'card_front_title',
+    descriptionKey: 'card_front_desc',
     icon: Layout,
   },
   {
-    title: 'Segurança & Autenticação',
-    description:
-      'Implementação de práticas de segurança, autenticação e controle de acesso para APIs e aplicações modernas.',
+    titleKey: 'card_security_title',
+    descriptionKey: 'card_security_desc',
     icon: Shield,
   },
   {
-    title: 'Docs & Integração',
-    description:
-      'Documentação e organização de APIs com foco em manutenção, padronização e comunicação eficiente entre serviços.',
+    titleKey: 'card_docs_title',
+    descriptionKey: 'card_docs_desc',
     icon: BookOpen,
   },
   {
-    title: 'IA & Automação',
-    description:
-      'Desenvolvimento de soluções inteligentes com foco em automação, integração de APIs e experiências orientadas por IA.',
+    titleKey: 'card_ai_title',
+    descriptionKey: 'card_ai_desc',
     icon: Bot,
   },
 ]

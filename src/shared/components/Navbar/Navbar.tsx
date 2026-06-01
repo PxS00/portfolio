@@ -2,15 +2,19 @@ import { useEffect, useState } from 'react'
 import { FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi'
 import { Link, useLocation } from 'react-router-dom'
 import { useTheme } from '../../../app/providers/ThemeContext'
+import { useLanguage } from '../../../app/providers/LanguageContext'
 import { SOCIAL_LINKS } from '../../constants/socialLinks'
 import SocialLink from '../SocialLink/SocialLink'
 
-export default function Navbar() {
+const Navbar = () => {
   const location = useLocation()
-
   const { resolvedTheme, toggleTheme } = useTheme()
+  const { language, toggleLanguage, t } = useLanguage()
   const [mobileOpen, setMobileOpen] = useState(false)
-  useEffect(() => setMobileOpen(false), [location.pathname, location.hash])
+
+  useEffect(() => {
+    setMobileOpen(false)
+  }, [location.pathname, location.hash])
 
   return (
     <nav className="site-nav fixed top-0 left-0 z-50 flex w-full items-center bg-(--nav-bg) px-8 py-4 text-(--nav-text) backdrop-blur-md dark:bg-(--nav-bg) dark:text-white/70">
@@ -22,19 +26,19 @@ export default function Navbar() {
               to="/"
               className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/' && !location.hash ? 'active' : ''}`}
             >
-              Home
+              {t('nav_home')}
             </Link>
             <Link
               to="/projects"
               className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/projects' ? 'active' : ''}`}
             >
-              Projetos
+              {t('nav_projects')}
             </Link>
             <Link
               to="/contact"
               className={`nav-text px-4 py-2 transition-all duration-300 hover:scale-[1.08] hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/contact' ? 'active' : ''}`}
             >
-              Contato
+              {t('nav_contact')}
             </Link>
           </div>
         </div>
@@ -47,6 +51,21 @@ export default function Navbar() {
               className="nav-text duration-300 hover:scale-[1.08] active:scale-95"
             />
           ))}
+          <button
+            onClick={toggleLanguage}
+            aria-label="Toggle language"
+            className="nav-text pointer-events-auto relative z-50 rounded-full p-2 transition-all duration-300 hover:scale-[1.12] hover:bg-(--nav-hover-bg) active:scale-95"
+          >
+            <span className={`icon-spin ${language === 'en-GB' ? 'active' : ''}`}>
+              <img
+                src={
+                  language === 'pt-BR' ? 'https://flagcdn.com/br.svg' : 'https://flagcdn.com/gb.svg'
+                }
+                alt={language === 'pt-BR' ? 'Português' : 'English'}
+                className="h-5 w-5 rounded-full object-cover"
+              />
+            </span>
+          </button>
           <button
             onClick={(e) => {
               e.stopPropagation()
@@ -73,6 +92,22 @@ export default function Navbar() {
           </button>
 
           <button
+            onClick={toggleLanguage}
+            aria-label="Toggle language"
+            className="nav-text rounded-full p-2 duration-300 hover:scale-[1.12] hover:bg-(--nav-hover-bg) active:scale-95"
+          >
+            <span className={`icon-spin ${language === 'en-GB' ? 'active' : ''}`}>
+              <img
+                src={
+                  language === 'pt-BR' ? 'https://flagcdn.com/br.svg' : 'https://flagcdn.com/gb.svg'
+                }
+                alt={language === 'pt-BR' ? 'Português' : 'English'}
+                className="h-5 w-5 rounded-full object-cover"
+              />
+            </span>
+          </button>
+
+          <button
             onClick={toggleTheme}
             className="nav-text rounded-full p-2 duration-300 hover:scale-[1.12] hover:bg-(--nav-hover-bg) active:scale-95"
           >
@@ -94,19 +129,19 @@ export default function Navbar() {
               to="/"
               className={`nav-text px-3 py-2 duration-300 hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/' && !location.hash ? 'active' : ''}`}
             >
-              Home
+              {t('nav_home')}
             </Link>
             <Link
               to="/projects"
               className={`nav-text px-3 py-2 duration-300 hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/projects' ? 'active' : ''}`}
             >
-              Projetos
+              {t('nav_projects')}
             </Link>
             <Link
               to="/contact"
               className={`nav-text px-3 py-2 duration-300 hover:bg-(--nav-hover-bg) hover:text-(--nav-text-hover) active:scale-95 ${location.pathname === '/contact' ? 'active' : ''}`}
             >
-              Contato
+              {t('nav_contact')}
             </Link>
           </div>
         </div>
@@ -114,3 +149,5 @@ export default function Navbar() {
     </nav>
   )
 }
+
+export default Navbar

@@ -1,8 +1,9 @@
 import { Github, Instagram, Linkedin, Mail } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTypewriter } from '../../../shared/hooks/useTypewriter'
 import ContactCard from './ContactCard/ContactCard'
 import StatusBadge from './StatusBadge/StatusBadge'
+import { useLanguage } from '../../../app/providers/LanguageContext'
 
 const CONTACTS = [
   {
@@ -31,17 +32,25 @@ const CONTACTS = [
   },
 ]
 
-export default function ContactPage() {
+const ContactPage = () => {
+  const { language, t } = useLanguage()
   const [showCursor, setShowCursor] = useState(true)
+
+  // Reset typewriter cursor when language toggles
+  useEffect(() => {
+    setShowCursor(true)
+  }, [language])
+
+  const titleText = t('nav_contact')
   const title = useTypewriter({
-    text: 'Contato',
+    text: titleText,
     delay: 60,
     startDelay: 200,
     onDone: () => setShowCursor(false),
   })
 
   return (
-    <div className="container mx-auto px-6 py-24 lg:px-12">
+    <div className="mx-auto w-full max-w-7xl px-4 pt-4 pb-12 sm:px-6 lg:px-12">
       {/* Header */}
       <div className="mb-16 flex flex-col items-center text-center">
         <h1 className="mb-6 inline-flex items-center gap-4 rounded-full bg-(--primary-color)/10 px-6 py-3 text-2xl font-bold text-(--title-color) md:text-4xl">
@@ -61,11 +70,7 @@ export default function ContactPage() {
 
         <StatusBadge />
 
-        <p className="mt-8 max-w-2xl text-lg text-(--text-color)">
-          Vamos construir algo juntos. Se você tem um projeto em mente, uma pergunta técnica ou
-          apenas quer trocar uma ideia sobre engenharia de software, sinta-se à vontade para me
-          chamar!
-        </p>
+        <p className="mt-8 max-w-2xl text-lg text-(--text-color)">{t('contact_subtitle')}</p>
       </div>
 
       {/* Grid */}
@@ -77,3 +82,5 @@ export default function ContactPage() {
     </div>
   )
 }
+
+export default ContactPage

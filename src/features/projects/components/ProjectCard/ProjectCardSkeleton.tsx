@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-export default function ProjectCardSkeleton() {
+const ProjectCardSkeleton = () => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -28,3 +28,5 @@ export default function ProjectCardSkeleton() {
     </motion.div>
   )
 }
+
+export default ProjectCardSkeleton
