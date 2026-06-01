@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
 </div>
 
-### 🌐 Live Demo: [https://lucas-rossoni.vercel.app](https://lucas-rossoni.vercel.app)
+### 🌐 Live Portfolio: [https://lucas-rossoni.vercel.app](https://lucas-rossoni.vercel.app)
 
 ### 🛠️ Quality & Automation
 ![CI Pipeline](https://img.shields.io/github/actions/workflow/status/PxS00/portfolio/ci.yml?style=flat-square&label=CI%20Pipeline&logo=github)
