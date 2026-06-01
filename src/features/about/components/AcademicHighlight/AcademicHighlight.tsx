@@ -3,6 +3,34 @@ import { ArrowRight, Award } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../../../../app/providers/LanguageContext'
 
+const renderFormattedText = (text: string, termsToBold: string[]): React.ReactNode => {
+  if (!text) {
+    return ''
+  }
+  let parts: Array<string | React.ReactNode> = [text]
+
+  termsToBold.forEach((term) => {
+    const nextParts: Array<string | React.ReactNode> = []
+    parts.forEach((part) => {
+      if (typeof part === 'string') {
+        const splitText = part.split(term)
+        splitText.forEach((subPart, i) => {
+          nextParts.push(subPart)
+          if (i < splitText.length - 1) {
+            // eslint-disable-next-line react/no-array-index-key
+            nextParts.push(<strong key={`${term}-${i}`}>{term}</strong>)
+          }
+        })
+      } else {
+        nextParts.push(part)
+      }
+    })
+    parts = nextParts
+  })
+
+  return parts
+}
+
 const AcademicHighlight = () => {
   const { t } = useLanguage()
 
@@ -27,14 +55,12 @@ const AcademicHighlight = () => {
             <h3 className="mb-3 text-2xl font-bold text-(--title-color)">
               {t('academic_highlight_title')}
             </h3>
-            <p
-              className="text-lg leading-relaxed text-(--muted-color)"
-              dangerouslySetInnerHTML={{
-                __html: t('academic_highlight_desc')
-                  .replace('FIAP NEXT', '<strong>FIAP NEXT</strong>')
-                  .replace('Hospital das Clínicas', '<strong>Hospital das Clínicas</strong>'),
-              }}
-            />
+            <p className="text-lg leading-relaxed text-(--muted-color)">
+              {renderFormattedText(t('academic_highlight_desc'), [
+                'FIAP NEXT',
+                'Hospital das Clínicas',
+              ])}
+            </p>
             <Link
               to="/projects/Luma"
               className="group mt-4 inline-flex items-center gap-2 font-semibold text-(--primary-color) transition-all hover:translate-x-1"
@@ -73,15 +99,9 @@ const AcademicHighlight = () => {
             <h3 className="mb-3 text-2xl font-bold text-(--title-color)">
               Oracle Cloud Infrastructure Foundations Associate 2025
             </h3>
-            <p
-              className="text-lg leading-relaxed text-(--muted-color)"
-              dangerouslySetInnerHTML={{
-                __html: t('cert_desc').replace(
-                  'Oracle University',
-                  '<strong>Oracle University</strong>',
-                ),
-              }}
-            />
+            <p className="text-lg leading-relaxed text-(--muted-color)">
+              {renderFormattedText(t('cert_desc'), ['Oracle University'])}
+            </p>
             <p className="mt-2 text-sm text-(--muted-color)">{t('cert_skills')}</p>
             <div className="mt-4 flex flex-wrap items-center gap-4">
               <span className="inline-block rounded-full bg-(--primary-color)/10 px-3 py-1 text-sm font-medium text-(--primary-color)">

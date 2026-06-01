@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { Check, Copy, ExternalLink } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
+import { useLanguage } from '../../../../app/providers/LanguageContext'
 
 type ContactCardProps = {
   platform: string
@@ -10,9 +11,10 @@ type ContactCardProps = {
   index: number
 }
 
-export default function ContactCard({ platform, value, url, icon, index }: ContactCardProps) {
+const ContactCard = ({ platform, value, url, icon, index }: ContactCardProps) => {
   const [copied, setCopied] = useState(false)
   const timerRef = useRef<number | null>(null)
+  const { t } = useLanguage()
 
   // Cleanup timeout on unmount
   useEffect(() => {
@@ -63,8 +65,8 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Abrir perfil no ${platform}`}
-            title={`Abrir perfil no ${platform}`}
+            aria-label={t('contact_open_profile', { platform })}
+            title={t('contact_open_profile', { platform })}
             className="text-(--text-color)/30 transition-colors hover:text-(--primary-color)"
           >
             <ExternalLink className="h-5 w-5" />
@@ -87,11 +89,11 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
             rel="noopener noreferrer"
             className="flex-1 rounded-lg bg-(--primary-color) py-2.5 text-center text-sm font-bold text-white transition-all hover:brightness-110"
           >
-            Visitar Perfil
+            {t('contact_visit_profile')}
           </a>
           <button
             onClick={handleCopy}
-            aria-label={copied ? 'Copiado para área de transferência' : `Copiar ${platform}`}
+            aria-label={copied ? t('contact_copied_aria') : t('contact_copy_aria', { platform })}
             className="flex min-w-[140px] items-center justify-center gap-2 rounded-lg border border-(--border-color) bg-(--bg-color-alt) px-4 py-2.5 text-sm font-semibold text-(--text-color) shadow-sm transition-all hover:bg-(--primary-color)/5"
           >
             <AnimatePresence mode="wait">
@@ -104,7 +106,7 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
                   className="flex items-center gap-2 text-green-400"
                 >
                   <Check className="h-4 w-4" />
-                  Copiado!
+                  {t('contact_copied')}
                 </motion.span>
               ) : (
                 <motion.span
@@ -115,7 +117,7 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
                   className="flex items-center gap-2"
                 >
                   <Copy className="h-4 w-4" />
-                  Copiar
+                  {t('contact_copy')}
                 </motion.span>
               )}
             </AnimatePresence>
@@ -125,3 +127,5 @@ export default function ContactCard({ platform, value, url, icon, index }: Conta
     </motion.div>
   )
 }
+
+export default ContactCard

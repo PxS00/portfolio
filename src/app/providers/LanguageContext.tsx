@@ -12,9 +12,13 @@ export type LanguageContextProps = {
 export const LanguageContext = createContext<LanguageContextProps | undefined>(undefined)
 
 const getInitialLanguage = (): Language => {
-  const saved = localStorage.getItem('portfolio-language') as Language | null
-  if (saved && (saved === 'pt-BR' || saved === 'en-GB')) {
-    return saved
+  try {
+    const saved = localStorage.getItem('portfolio-language') as Language | null
+    if (saved && (saved === 'pt-BR' || saved === 'en-GB')) {
+      return saved
+    }
+  } catch {
+    // localStorage may be unavailable (e.g., Safari private mode)
   }
   return 'en-GB'
 }
@@ -23,7 +27,13 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<Language>(getInitialLanguage)
 
   useEffect(() => {
-    localStorage.setItem('portfolio-language', language)
+    try {
+      localStorage.setItem('portfolio-language', language)
+    } catch {
+      // localStorage may be unavailable
+    }
+    // Synchronize HTML lang attribute for accessibility and SEO
+    document.documentElement.lang = language
   }, [language])
 
   const toggleLanguage = () => {

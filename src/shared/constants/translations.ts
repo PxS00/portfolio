@@ -47,6 +47,12 @@ export type TranslationKeys =
   | 'project_detail_view_github'
   | 'project_detail_no_readme'
   | 'contact_subtitle'
+  | 'contact_open_profile'
+  | 'contact_visit_profile'
+  | 'contact_copy_aria'
+  | 'contact_copied_aria'
+  | 'contact_copied'
+  | 'contact_copy'
 
 export const TRANSLATIONS: Record<'pt-BR' | 'en-GB', Record<TranslationKeys, string>> = {
   'pt-BR': {
@@ -112,6 +118,12 @@ export const TRANSLATIONS: Record<'pt-BR' | 'en-GB', Record<TranslationKeys, str
     project_detail_no_readme: 'Este repositório não possui README.',
     contact_subtitle:
       'Vamos construir algo juntos. Se você tem um projeto em mente, uma pergunta técnica ou apenas quer trocar uma ideia sobre engenharia de software, sinta-se à vontade para me chamar!',
+    contact_open_profile: 'Abrir perfil no {platform}',
+    contact_visit_profile: 'Visitar Perfil',
+    contact_copy_aria: 'Copiar {platform}',
+    contact_copied_aria: 'Copiado para a área de transferência',
+    contact_copied: 'Copiado!',
+    contact_copy: 'Copiar',
   },
   'en-GB': {
     nav_home: 'Home',
@@ -176,5 +188,11 @@ export const TRANSLATIONS: Record<'pt-BR' | 'en-GB', Record<TranslationKeys, str
     project_detail_no_readme: 'This repository does not have a README.',
     contact_subtitle:
       "Let's build something together. If you have a project in mind, a technical question, or just want to chat about software engineering, feel free to contact me!",
+    contact_open_profile: 'Open profile on {platform}',
+    contact_visit_profile: 'Visit Profile',
+    contact_copy_aria: 'Copy {platform}',
+    contact_copied_aria: 'Copied to clipboard',
+    contact_copied: 'Copied!',
+    contact_copy: 'Copy',
   },
 }
