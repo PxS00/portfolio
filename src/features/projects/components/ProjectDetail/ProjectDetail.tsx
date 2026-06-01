@@ -7,27 +7,36 @@ import { useProjectDetail } from '../../hooks/useProjectDetail'
 import './ProjectDetail.css'
 import ProjectDetailHeader from './ProjectDetailHeader'
 import ProjectDetailSkeleton from './ProjectDetailSkeleton'
+import { useLanguage } from '../../../../app/providers/LanguageContext'
+import type { TranslationKeys } from '../../../../shared/constants/translations'
 
 // High-level optimization: Lazy load the heavy markdown renderer
 const ReadmeViewer = lazy(() => import('./ReadmeViewer'))
 
-export default function ProjectDetail() {
+const ProjectDetail = () => {
   const { repoName } = useParams<{ repoName: string }>()
   const { repo, readme, loading, error, retry } = useProjectDetail(repoName ?? '')
+  const { t } = useLanguage()
 
   if (loading) {
     return <ProjectDetailSkeleton />
   }
 
   if (error || !repo) {
+    const isKnownKey =
+      error === 'project_detail_not_found' || error === 'project_detail_invalid_name'
+    const errorMessage = isKnownKey
+      ? t(error as TranslationKeys)
+      : error || t('project_detail_not_found')
+
     return (
-      <div className="container mx-auto flex min-h-[60vh] flex-col items-center justify-center px-6 py-32 text-center lg:px-12">
-        <ErrorState message={error || 'Projeto não encontrado.'} onRetry={retry}>
+      <div className="mx-auto flex min-h-[60vh] w-full max-w-7xl flex-col items-center justify-center px-4 py-32 text-center sm:px-6 lg:px-12">
+        <ErrorState message={errorMessage} onRetry={retry}>
           <Link
             to="/projects"
             className="rounded-lg border border-(--primary-color)/30 px-6 py-2 text-sm font-semibold text-(--primary-color) transition-colors hover:bg-(--primary-color)/10"
           >
-            Voltar aos projetos
+            {t('project_detail_back_to_list')}
           </Link>
         </ErrorState>
       </div>
@@ -35,7 +44,7 @@ export default function ProjectDetail() {
   }
 
   return (
-    <div className="container mx-auto px-6 py-32 lg:px-12">
+    <div className="mx-auto w-full max-w-7xl px-4 py-32 sm:px-6 lg:px-12">
       {/* Floating back button */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -48,7 +57,7 @@ export default function ProjectDetail() {
           className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-(--bg-color)/80 px-5 py-3 text-sm font-semibold text-(--text-color) shadow-lg backdrop-blur-xl transition-all hover:border-(--primary-color)/30 hover:text-(--primary-color)"
         >
           <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-          Voltar
+          {t('project_detail_back')}
         </Link>
       </motion.div>
 
@@ -65,7 +74,7 @@ export default function ProjectDetail() {
           rel="noopener noreferrer"
           className="group inline-flex items-center gap-2 rounded-full bg-(--primary-color) px-5 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:brightness-110"
         >
-          Ver no GitHub
+          {t('project_detail_view_github')}
           <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
         </a>
       </motion.div>
@@ -95,10 +104,12 @@ export default function ProjectDetail() {
           </Suspense>
         ) : (
           <div className="rounded-2xl border border-(--border-color) bg-(--secondary-color)/5 p-12 text-center">
-            <p className="text-(--text-color)/50">Este repositório não possui README.</p>
+            <p className="text-(--text-color)/50">{t('project_detail_no_readme')}</p>
           </div>
         )}
       </motion.div>
     </div>
   )
 }
+
+export default ProjectDetail

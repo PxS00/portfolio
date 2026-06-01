@@ -84,9 +84,9 @@ export const resolveReadmeImageUrl = (src: string, repoName: string, branch: str
   return `https://raw.githubusercontent.com/PxS00/${repoName}/${branch}/${src.replace(/^\/+/, '')}`
 }
 
-export const formatRepoDate = (dateString: string): string => {
+export const formatRepoDate = (dateString: string, locale: string = 'pt-BR'): string => {
   const date = new Date(dateString)
-  return new Intl.DateTimeFormat('pt-BR', {
+  return new Intl.DateTimeFormat(locale, {
     day: '2-digit',
     month: 'short',
     year: 'numeric',

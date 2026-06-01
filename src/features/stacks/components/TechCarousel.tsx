@@ -6,10 +6,10 @@ export default function TechCarousel() {
 
   return (
     <div className="relative w-full overflow-hidden pt-8 pb-14">
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-(--bg-color) to-transparent sm:w-32" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-(--bg-color) to-transparent sm:w-32" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-linear-to-r from-(--bg-color) to-transparent sm:w-32" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-linear-to-l from-(--bg-color) to-transparent sm:w-32" />
 
-      <div className="group flex">
+      <div className="group flex w-full overflow-hidden">
         <div className="flex animate-scroll items-center gap-10 group-hover:[animation-play-state:paused]">
           {items.map((tech, idx) => (
             <div
@@ -19,7 +19,7 @@ export default function TechCarousel() {
             >
               <motion.div
                 whileHover={{ scale: 1.2 }}
-                className="flex h-16 w-16 cursor-pointer items-center justify-center rounded-xl bg-white/[0.04] p-3 ring-1 ring-white/10 transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(124,58,237,0.15)]"
+                className="flex h-16 w-16 cursor-pointer items-center justify-center rounded-xl bg-white/4 p-3 ring-1 ring-white/10 transition-shadow duration-300 hover:shadow-[0_0_20px_rgba(124,58,237,0.15)]"
               >
                 <img
                   src={tech.iconUrl}

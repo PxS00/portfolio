@@ -1,4 +1,4 @@
-name: CI
+name: CI Pipeline
 
 on:
   push:
@@ -10,8 +10,35 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
+  setup:
+    name: 📦 Setup
+    runs-on: ubuntu-latest
+    outputs:
+      pnpm_cache_dir: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          
+      - name: Set pnpm cache directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+          
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
   lint:
-    name: lint
+    name: ⬢ Lint
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -28,7 +55,8 @@ jobs:
         run: pnpm lint
 
   typecheck:
-    name: typecheck
+    name: ʦ Type Check
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -45,7 +73,8 @@ jobs:
         run: pnpm typecheck
 
   build:
-    name: build
+    name: 🏗️ Build
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

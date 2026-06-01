@@ -8,74 +8,72 @@
   <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" />
 </div>
 
-### 🌐 Live Demo: [https://lucas-rossoni.vercel.app](https://lucas-rossoni.vercel.app)
+### 🌐 Live Portfolio: [https://lucas-rossoni.vercel.app](https://lucas-rossoni.vercel.app)
 
 ### 🛠️ Quality & Automation
-![CI](https://img.shields.io/github/actions/workflow/status/PxS00/portfolio/ci.yml?style=flat-square&label=CI&logo=github)
+![CI Pipeline](https://img.shields.io/github/actions/workflow/status/PxS00/portfolio/ci.yml?style=flat-square&label=CI%20Pipeline&logo=github)
 ![Lighthouse](https://img.shields.io/badge/Lighthouse-Pass-success?style=flat-square&logo=lighthouse)
 ![Security](https://img.shields.io/github/actions/workflow/status/PxS00/portfolio/codeql.yml?style=flat-square&label=CodeQL&logo=github-actions)
 
 ---
 
-Um portfólio moderno, performático e inspirado na estética de terminais e IDEs, focado em demonstrar engenharia de software de alta qualidade e design centrado no desenvolvedor.
+A modern, high-performance portfolio inspired by terminal and IDE aesthetics, focused on demonstrating high-quality software engineering and developer-centric design.
 
-## 🚀 Tecnologias
+## 🚀 Technologies
 
 - **Core:** React 19, TypeScript, Vite
 - **Styling:** Tailwind CSS (v4)
-- **Animações:** Framer Motion
-- **Ícones:** Lucide React
-- **Qualidade:** ESLint (Flat Config), Prettier, Lighthouse CI
-- **Infra:** GitHub Actions, Vercel
+- **Animations:** Framer Motion
+- **Icons:** Lucide React
+- **Quality:** ESLint (Flat Config), Prettier, Lighthouse CI
+- **Infrastructure:** GitHub Actions, Vercel
 
-## ✨ Diferenciais Técnicos
+## ✨ Technical Highlights
 
 ### 🏛️ Feature-Based Architecture
-O projeto segue uma estrutura modular onde cada funcionalidade é auto-contida, facilitando a manutenção e escalabilidade.
+The project follows a modular structure where each feature is self-contained, simplifying maintenance and scalability.
 
-### ⚡ Resiliência e Performance (GitHub API)
-- **Cache Layer:** Implementação de cache customizado via `localStorage` com expiração de 30 minutos.
-- **Fail-safe:** Mecanismos de fallback que garantem a exibição dos dados mesmo em cenários de *Rate Limit*.
+### ⚡ Resilience and Performance (GitHub API)
+- **Cache Layer:** Custom cache implementation via `localStorage` with a 30-minute expiration.
+- **Fail-safe:** Fallback mechanisms that guarantee data rendering even in rate-limiting scenarios.
 
-### 🤖 CI/CD "Enterprise-Grade"
-- **Standardized Pipeline:** Workflows isolados para CI, Lighthouse e CodeQL.
-- **Modular Jobs:** Execução paralela para lint, typecheck e build.
-- **Automated QA:** Auditoria de performance automática em cada PR.
-- **Security First:** Análise estática de vulnerabilidades via CodeQL.
+### 🤖 CI/CD "Startup-Grade"
+- **Modular Jobs:** Parallel pipelines for Lint, Typecheck, and Build.
+- **Automated QA:** Performance verification via Lighthouse CI on every Pull Request.
+- **Security First:** Static analysis of vulnerabilities with CodeQL.
 
-## 📁 Estrutura do Projeto
+## 📁 Project Structure
 
-O projeto utiliza uma arquitetura **Feature-Based**, focada em alta coesão e baixo acoplamento. Cada funcionalidade importante do site é isolada em seu próprio domínio.
+The project uses a **Feature-Based** architecture, focused on high cohesion and low coupling. Each primary function of the site is isolated into its own domain.
 
 ```text
 .
-├── .github/               # Automações, Workflows (CI/CD) e modelos de Issue/PR
+├── .github/               # Automations, Workflows (CI/CD) and Issue/PR templates
 ├── src/
-│   ├── app/               # Configurações globais: Provedores, roteamento e layouts base
-│   ├── features/          # Domínios de negócio independentes
-│   │   ├── about/         # Seção de biografia e stack técnica
-│   │   ├── contact/       # Gestão de contatos e sistema de cópia
-│   │   ├── hero/          # Landing e primeira impressão (Typewriter)
-│   │   ├── projects/      # Integração com API do GitHub, Cache e Listagem
+│   ├── app/               # Global settings: Providers, routing, and base layouts
+│   ├── features/          # Independent business domains
+│   │   ├── about/         # Biography section and technical stack
+│   │   ├── contact/       # Contact management and copy-to-clipboard system
+│   │   ├── hero/          # Landing and first impression (Typewriter)
+│   │   ├── projects/      # GitHub API integration, Cache, and repository listing
 │   │   └── ...
-│   ├── shared/            # Recursos globais reaproveitáveis
-│   │   ├── components/    # Componentes de UI genéricos (Cards, Buttons, Badges)
-│   │   ├── hooks/         # Hooks customizados (useTypewriter, useTheme)
-│   │   └── utils/         # Funções auxiliares e formatadores
-│   ├── styles/            # Design System: CSS Global, Variáveis e Tokens Tailwind
-│   └── main.tsx           # Entry point da aplicação
-└── public/                # Assets estáticos (Images, Favicons)
+│   ├── shared/            # Reusable global resources
+│   │   ├── components/    # Generic UI components (Cards, Buttons, Badges)
+│   │   ├── hooks/         # Custom hooks (useTypewriter, useTheme)
+│   │   └── utils/         # Helper functions and formatters
+│   ├── styles/            # Design System: Global CSS, Variables, and Tailwind tokens
+│   └── main.tsx           # Application entry point
+└── public/                # Static assets (Images, Favicons)
 ```
 
-
-## 👥 Autor
+## 👥 Author
 
 <table>
   <tr>
     <td align="center">
       <a href="https://github.com/PxS00">
         <img src="https://github.com/PxS00.png" width="100px;" alt="Lucas Rossoni"/><br>
-        <sub><b>Lucas Rossoni Dieder</b></sub>
+        <b>Lucas Rossoni Dieder</b>
       </a><br>
       <a href="https://www.linkedin.com/in/lucas-rossoni-dieder-32242a353/">LinkedIn</a>
     </td>
@@ -83,4 +81,4 @@ O projeto utiliza uma arquitetura **Feature-Based**, focada em alta coesão e ba
 </table>
 
 ---
-Desenvolvido com 💜 por [Lucas Rossoni](https://github.com/PxS00)
+Developed with 💜 by [Lucas Rossoni](https://github.com/PxS00)

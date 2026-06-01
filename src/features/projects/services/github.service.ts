@@ -8,61 +8,37 @@ const GITHUB_HEADERS = {
   Accept: 'application/vnd.github.v3+json',
 }
 
-// Helper to safe-access localStorage (prevents crashes in private modes/blocked storage)
-const safeGetItem = (key: string): string | null => {
-  try {
-    return localStorage.getItem(key)
-  } catch {
-    return null
-  }
-}
-
-const safeRemoveItem = (key: string) => {
-  try {
-    localStorage.removeItem(key)
-  } catch {
-    /* ignore */
-  }
-}
-
 // Helper to handle localStorage caching
 const cache = {
-  get<T>(key: string, ignoreExpiration = false): T | null {
+  get<T>(key: string): T | null {
     try {
-      const item = safeGetItem(`github_cache_${key}`)
+      const item = localStorage.getItem(`github_cache_${key}`)
       if (!item) {
         return null
       }
 
       const parsed = JSON.parse(item)
 
-      // Validate shape and timestamp
-      const hasValidStructure =
-        parsed &&
-        typeof parsed === 'object' &&
-        'data' in parsed &&
-        typeof parsed.timestamp === 'number' &&
-        Number.isFinite(parsed.timestamp)
-
-      if (!hasValidStructure) {
-        safeRemoveItem(`github_cache_${key}`)
+      // Basic shape validation
+      if (
+        !parsed ||
+        typeof parsed !== 'object' ||
+        !('data' in parsed) ||
+        !('timestamp' in parsed)
+      ) {
+        localStorage.removeItem(`github_cache_${key}`)
         return null
-      }
-
-      if (ignoreExpiration) {
-        return parsed.data
       }
 
       const isExpired = Date.now() - parsed.timestamp > CACHE_DURATION
       if (isExpired) {
-        // We don't remove it here to allow fallback if network fails later
+        localStorage.removeItem(`github_cache_${key}`)
         return null
       }
 
       return parsed.data
     } catch (error) {
-      console.warn('Cache parsing failed, cleaning up:', error)
-      safeRemoveItem(`github_cache_${key}`)
+      console.warn('Cache parsing failed:', error)
       return null
     }
   },
@@ -76,6 +52,7 @@ const cache = {
         }),
       )
     } catch (error) {
+      // Ignore quota errors or privacy blocks to avoid breaking the app
       console.warn('Failed to write to GitHub cache:', error)
     }
   },
@@ -115,10 +92,14 @@ export const githubService = {
       return data
     } catch (error) {
       console.error('Failed to fetch repositories:', error)
-      const fallback = cache.get<GithubRepo[]>('repos', true)
-      if (fallback) {
-        cache.set('repos', fallback)
-        return fallback
+      // Fallback: try to return expired cache if available
+      const expiredData = localStorage.getItem('github_cache_repos')
+      if (expiredData) {
+        try {
+          return JSON.parse(expiredData).data
+        } catch {
+          /* ignore */
+        }
       }
       throw error
     }
@@ -144,10 +125,13 @@ export const githubService = {
       cache.set(cacheKey, data)
       return data
     } catch (error) {
-      const fallback = cache.get<GithubRepo>(cacheKey, true)
-      if (fallback) {
-        cache.set(cacheKey, fallback)
-        return fallback
+      const expiredData = localStorage.getItem(`github_cache_${cacheKey}`)
+      if (expiredData) {
+        try {
+          return JSON.parse(expiredData).data
+        } catch {
+          /* ignore */
+        }
       }
       throw error
     }
@@ -156,7 +140,7 @@ export const githubService = {
   async fetchReadme(repoName: string): Promise<string> {
     const cacheKey = `readme_${repoName}`
     const cachedReadme = cache.get<string>(cacheKey)
-    if (cachedReadme !== null) {
+    if (cachedReadme) {
       return cachedReadme
     }
 
@@ -167,10 +151,6 @@ export const githubService = {
       )
 
       if (!response.ok) {
-        if (response.status === 404) {
-          cache.set(cacheKey, '')
-          return ''
-        }
         handleHttpError(response.status, repoName)
       }
 
@@ -183,10 +163,13 @@ export const githubService = {
       cache.set(cacheKey, decodedContent)
       return decodedContent
     } catch (error) {
-      const fallback = cache.get<string>(cacheKey, true)
-      if (fallback !== null) {
-        cache.set(cacheKey, fallback)
-        return fallback
+      const expiredData = localStorage.getItem(`github_cache_${cacheKey}`)
+      if (expiredData) {
+        try {
+          return JSON.parse(expiredData).data
+        } catch {
+          /* ignore */
+        }
       }
       throw error
     }
