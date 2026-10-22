@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight, Award } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../../../../app/providers/LanguageContext'
+import { ENERGIAI_HACKATHON_CREDENTIAL_URL } from '../../../projects/data/credentials'
 
 const renderFormattedText = (text: string, termsToBold: string[]): React.ReactNode => {
   if (!text) {
@@ -83,18 +84,37 @@ const AcademicHighlight = () => {
             ? 'Atuação no backend Java e Spring Boot, configuração de OCI e IAM, deploy e organização de issues e pull requests. Colaboração com Data Science nas revisões dos modelos e apoio técnico ao Demo Day.'
             : 'Java and Spring Boot backend development, OCI and IAM configuration, deployment, and issue and pull request coordination. Collaboration with Data Science on model reviews and technical support for Demo Day.'}
         </p>
-        <Link
-          to="/projects/energi-ai-g9-br-team-09"
-          className="mt-5 inline-flex items-center gap-2 font-semibold text-(--primary-color)"
-        >
-          {pt ? 'Conhecer o projeto e a participação' : 'Explore the project and my contribution'}
-          <ArrowRight className="h-4 w-4" />
-        </Link>
+        <div className="mt-5 flex flex-wrap gap-5">
+          <Link
+            to="/projects/energi-ai-g9-br-team-09"
+            className="inline-flex items-center gap-2 font-semibold text-(--primary-color)"
+          >
+            {pt ? 'Conhecer o projeto e a participação' : 'Explore the project and my contribution'}
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+          <a
+            href={ENERGIAI_HACKATHON_CREDENTIAL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-semibold text-(--primary-color)"
+          >
+            {pt ? 'Certificado do hackathon' : 'Hackathon certificate'}
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
       </section>
 
       {/* Certification Highlight */}
       <section className="rounded-3xl border border-(--primary-color)/20 bg-(--bg-color-alt) p-8 sm:p-12">
-        <Award className="mb-5 h-10 w-10 text-(--primary-color)" aria-hidden="true" />
+        <img
+          src="/certs/OCI-AI-Foundations-2026-badge.jpg"
+          alt="Oracle Certified AI Foundations Associate 2026 badge"
+          width="552"
+          height="276"
+          loading="lazy"
+          decoding="async"
+          className="mb-6 h-auto w-full max-w-64 rounded-xl object-contain"
+        />
         <h3 className="mb-3 text-2xl font-bold text-(--title-color)">
           Oracle Cloud Infrastructure Certified AI Foundations Associate
         </h3>
@@ -142,7 +162,7 @@ const AcademicHighlight = () => {
           </div>
           <div className="flex-1">
             <h3 className="mb-3 text-2xl font-bold text-(--title-color)">
-              Oracle Cloud Infrastructure Foundations Associate 2025
+              Oracle Cloud Infrastructure 2025 Certified Foundations Associate
             </h3>
             <p className="text-lg leading-relaxed text-(--muted-color)">
               {renderFormattedText(t('cert_desc'), ['Oracle University'])}

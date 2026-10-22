@@ -1,4 +1,5 @@
 import type { Language } from '../../../app/providers/LanguageContext'
+import { ENERGIAI_HACKATHON_CREDENTIAL_URL } from './credentials'
 
 type StoryCopy = {
   summary: string
@@ -218,6 +219,10 @@ export const PROJECT_STORIES: Record<string, ProjectStory> = {
       {
         url: `${energiRepo}/docs/delivery/demo-script.md`,
         label: { 'pt-BR': 'Apresentação do Demo Day', 'en-GB': 'Demo Day presentation' },
+      },
+      {
+        url: ENERGIAI_HACKATHON_CREDENTIAL_URL,
+        label: { 'pt-BR': 'Certificado do hackathon', 'en-GB': 'Hackathon certificate' },
       },
       {
         url: `${energiRepo}/docs/delivery/architecture.md`,
