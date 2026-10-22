@@ -24,6 +24,16 @@ export const FEATURED_REPO_SNAPSHOTS: GithubRepo[] = [
     default_branch: 'develop',
   },
   {
+    id: 1423601579,
+    name: 'ceu-de-lavanda-catalog',
+    description: null,
+    html_url: 'https://github.com/PxS00/ceu-de-lavanda-catalog',
+    language: 'TypeScript',
+    updated_at: '2026-10-19T19:32:33Z',
+    fork: false,
+    default_branch: 'main',
+  },
+  {
     id: 1089880524,
     name: 'Luma',
     description:

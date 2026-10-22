@@ -22,6 +22,93 @@ const energiRepo = 'https://github.com/PxS00/energi-ai-g9-br-team-09/blob/develo
 const lavandaRepo = 'https://github.com/PxS00/lavanda-flow/blob/main'
 
 export const PROJECT_STORIES: Record<string, ProjectStory> = {
+  'ceu-de-lavanda-catalog': {
+    name: 'Catálogo Céu de Lavanda',
+    category: { 'pt-BR': 'Freelance · Catálogo digital', 'en-GB': 'Freelance · Digital catalogue' },
+    stack: ['Next.js', 'React', 'TypeScript', 'Cloudflare Pages'],
+    links: [
+      {
+        url: 'https://ceu-de-lavanda.pages.dev/',
+        label: { 'pt-BR': 'Abrir catálogo', 'en-GB': 'Open catalogue' },
+      },
+    ],
+    copy: {
+      'pt-BR': {
+        summary:
+          'Catálogo digital da Céu de Lavanda para apresentar fragrâncias, explorar categorias e consultar produtos em celulares, tablets e computadores.',
+        context:
+          'A marca precisava de um espaço próprio para apresentar perfumes, body splash e perfumes capilares, preservando sua identidade visual e facilitando a descoberta da coleção.',
+        role: 'Desenvolvimento freelance do catálogo digital, com organização da coleção, navegação e adaptação da interface à identidade da Céu de Lavanda.',
+        contributions: [
+          'Organização dos produtos por categoria, com páginas individuais para cada fragrância.',
+          'Busca por nome com suporte a acentos, filtros por inicial, ordenação alfabética e paginação.',
+          'Interface responsiva que preserva o logo e a paleta da marca, com tipografia editorial e detalhes botânicos.',
+          'Navegação por teclado com foco visível e respeito à preferência por redução de movimento.',
+        ],
+        decisions: [
+          {
+            title: 'Descoberta da coleção',
+            description:
+              'Categorias, busca e filtros permitem encontrar uma fragrância de diferentes formas, sem exigir que a pessoa percorra a coleção inteira.',
+          },
+          {
+            title: 'Identidade e acessibilidade',
+            description:
+              'O visual acompanha a marca enquanto mantém foco visível e redução de movimento para apoiar diferentes formas de navegação.',
+          },
+          {
+            title: 'Informação comercial confirmada',
+            description:
+              'Fotografias, descrições, preços e disponibilidade são incorporados conforme aprovação da empresa. Informações pendentes são sinalizadas nas páginas.',
+          },
+        ],
+        outcome:
+          'Catálogo publicado no Cloudflare Pages. O cadastro da coleção continua em andamento; o site apresenta os produtos e não realiza finalização de compras online.',
+        walkthrough: [
+          'Abrir o catálogo e explorar as categorias de fragrâncias.',
+          'Pesquisar um nome ou filtrar a coleção pela inicial.',
+          'Abrir um produto para consultar as informações disponíveis e identificar o que ainda aguarda confirmação.',
+        ],
+      },
+      'en-GB': {
+        summary:
+          'A digital catalogue for Céu de Lavanda, presenting fragrances, categories and individual products across phones, tablets and computers.',
+        context:
+          'The brand needed its own space to present perfumes, body splashes and hair perfumes while preserving its visual identity and making the collection easier to discover.',
+        role: 'Freelance development of the digital catalogue, organising the collection, navigation and interface around the Céu de Lavanda identity.',
+        contributions: [
+          'Organised products into categories with an individual page for each fragrance.',
+          'Implemented accent-aware name search, initial-letter filters, alphabetical sorting and pagination.',
+          'Built a responsive interface preserving the brand logo and palette, with editorial typography and botanical details.',
+          'Provided visible keyboard focus and support for reduced motion preferences.',
+        ],
+        decisions: [
+          {
+            title: 'Discovering the collection',
+            description:
+              'Categories, search and filters offer different ways to find a fragrance without browsing the entire collection.',
+          },
+          {
+            title: 'Identity and accessibility',
+            description:
+              'The interface follows the brand while preserving visible keyboard focus and reduced motion support.',
+          },
+          {
+            title: 'Confirmed commercial information',
+            description:
+              'Photos, descriptions, prices and availability are added as the company approves them. Pending information is identified on product pages.',
+          },
+        ],
+        outcome:
+          'Published on Cloudflare Pages. Collection data entry is ongoing; the site presents products and does not provide online checkout.',
+        walkthrough: [
+          'Open the catalogue and explore the fragrance categories.',
+          'Search for a name or filter the collection by initial letter.',
+          'Open a product to review the available information and see what is awaiting confirmation.',
+        ],
+      },
+    },
+  },
   'lavanda-flow': {
     name: 'Lavanda Flow',
     category: {

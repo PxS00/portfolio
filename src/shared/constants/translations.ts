@@ -105,7 +105,7 @@ export const TRANSLATIONS: Record<'pt-BR' | 'en-GB', Record<TranslationKeys, str
     projects_title: 'Meus Projetos',
     projects_recent_title: 'Projetos em Destaque',
     projects_section_subtitle:
-      'Estoque e produção com o Lavanda Flow, backend e cloud no hackathon EnergiAI, e tecnologia aplicada à saúde com o Luma.',
+      'Catálogo digital e gestão para a Céu de Lavanda, backend e cloud no EnergiAI, e tecnologia aplicada à saúde com o Luma.',
     projects_grid_subtitle:
       'Explore todos os meus repositórios públicos no GitHub. Abaixo estão os projetos em que venho trabalhando, ordenados pelas atualizações mais recentes.',
     projects_view_all: 'Ver todos os projetos',
@@ -176,7 +176,7 @@ export const TRANSLATIONS: Record<'pt-BR' | 'en-GB', Record<TranslationKeys, str
     projects_title: 'My Projects',
     projects_recent_title: 'Featured Projects',
     projects_section_subtitle:
-      'Inventory and production with Lavanda Flow, backend and cloud at the EnergiAI hackathon, and healthcare technology with Luma.',
+      'Digital catalogue and business management for Céu de Lavanda, backend and cloud with EnergiAI, and healthcare technology with Luma.',
     projects_grid_subtitle:
       'Explore all my public repositories on GitHub. Below are the projects I have been working on, sorted by the most recent updates.',
     projects_view_all: 'View all projects',
