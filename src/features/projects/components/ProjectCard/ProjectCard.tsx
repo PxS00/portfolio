@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight, FolderGit2, GitFork, Github } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import type { GithubRepo } from '../../types/github.types'
+import { getProjectStory } from '../../data/projectStories'
 import {
   formatRepoDate,
   getDisplayLanguage,
@@ -17,6 +18,7 @@ type ProjectCardProps = {
 
 const ProjectCard = ({ repo, index = 0 }: ProjectCardProps) => {
   const { language, t } = useLanguage()
+  const story = getProjectStory(repo.name)
   const displayLang = getDisplayLanguage(repo.language, repo.name)
   const languageIcon = getLanguageIcon(displayLang)
 
@@ -38,7 +40,7 @@ const ProjectCard = ({ repo, index = 0 }: ProjectCardProps) => {
               style={{ color: getLanguageColor(displayLang) }}
             />
             <h3 className="truncate text-xl font-bold text-(--title-color) transition-colors group-hover:text-(--primary-color)">
-              {repo.name}
+              {story?.name ?? repo.name}
             </h3>
             {repo.fork && (
               <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-(--border-color) bg-(--bg-color-alt) px-2 py-0.5 text-xs text-(--text-color)/50">
@@ -50,8 +52,13 @@ const ProjectCard = ({ repo, index = 0 }: ProjectCardProps) => {
           <ArrowRight className="h-5 w-5 shrink-0 text-(--text-color)/50 transition-all group-hover:translate-x-1 group-hover:text-(--primary-color)" />
         </div>
 
-        <p className="mb-6 line-clamp-3 flex-1 text-sm leading-relaxed text-(--text-color)">
-          {repo.description || t('project_card_fallback_desc')}
+        {story && (
+          <p className="mb-3 text-xs font-semibold text-(--primary-color)">
+            {story.category[language]}
+          </p>
+        )}
+        <p className="mb-6 flex-1 text-sm leading-relaxed text-(--text-color)">
+          {story?.copy[language].summary ?? (repo.description || t('project_card_fallback_desc'))}
         </p>
 
         <div className="mt-auto flex flex-col items-start gap-4 text-xs font-medium text-(--text-color)/70 sm:flex-row sm:items-center sm:justify-between">

@@ -32,7 +32,8 @@ const renderFormattedText = (text: string, termsToBold: string[]): React.ReactNo
 }
 
 const AcademicHighlight = () => {
-  const { t } = useLanguage()
+  const { language, t } = useLanguage()
+  const pt = language === 'pt-BR'
 
   return (
     <div className="flex flex-col gap-8">
@@ -72,7 +73,51 @@ const AcademicHighlight = () => {
         </div>
       </motion.div>
 
+      <section className="rounded-3xl border border-(--primary-color)/20 bg-(--bg-color-alt) p-8 sm:p-12">
+        <p className="mb-3 text-sm font-semibold text-(--primary-color)">
+          Hackathon Oracle ONE + Alura · 2026
+        </p>
+        <h3 className="mb-4 text-2xl font-bold text-(--title-color)">EnergiAI</h3>
+        <p className="text-lg leading-relaxed text-(--muted-color)">
+          {pt
+            ? 'Atuação no backend Java e Spring Boot, configuração de OCI e IAM, deploy e organização de issues e pull requests. Colaboração com Data Science nas revisões dos modelos e apoio técnico ao Demo Day.'
+            : 'Java and Spring Boot backend development, OCI and IAM configuration, deployment, and issue and pull request coordination. Collaboration with Data Science on model reviews and technical support for Demo Day.'}
+        </p>
+        <Link
+          to="/projects/energi-ai-g9-br-team-09"
+          className="mt-5 inline-flex items-center gap-2 font-semibold text-(--primary-color)"
+        >
+          {pt ? 'Conhecer o projeto e a participação' : 'Explore the project and my contribution'}
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      </section>
+
       {/* Certification Highlight */}
+      <section className="rounded-3xl border border-(--primary-color)/20 bg-(--bg-color-alt) p-8 sm:p-12">
+        <Award className="mb-5 h-10 w-10 text-(--primary-color)" aria-hidden="true" />
+        <h3 className="mb-3 text-2xl font-bold text-(--title-color)">
+          Oracle Cloud Infrastructure Certified AI Foundations Associate
+        </h3>
+        <p className="text-lg leading-relaxed text-(--muted-color)">
+          {pt
+            ? 'Certificação Oracle em fundamentos de inteligência artificial.'
+            : 'Oracle certification in artificial intelligence foundations.'}
+        </p>
+        <p className="mt-3 text-sm text-(--muted-color)">
+          {pt
+            ? 'Emitida em 30/09/2026 · Válida até 30/09/2028'
+            : 'Issued 30 September 2026 · Valid until 30 September 2028'}
+        </p>
+        <a
+          href="/certs/OCI-AI-Foundations-2026.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-5 inline-flex items-center gap-2 font-semibold text-(--primary-color)"
+        >
+          {t('cert_pdf_link')}
+          <ArrowRight className="h-4 w-4" />
+        </a>
+      </section>
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}

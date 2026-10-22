@@ -9,11 +9,13 @@ import ProjectDetailHeader from './ProjectDetailHeader'
 import ProjectDetailSkeleton from './ProjectDetailSkeleton'
 import { useLanguage } from '../../../../app/providers/LanguageContext'
 import type { TranslationKeys } from '../../../../shared/constants/translations'
+import { getProjectStory } from '../../data/projectStories'
+import ProjectCaseStudy from './ProjectCaseStudy'
 
 // High-level optimization: Lazy load the heavy markdown renderer
 const ReadmeViewer = lazy(() => import('./ReadmeViewer'))
 
-const ProjectDetail = () => {
+const GithubProjectDetail = () => {
   const { repoName } = useParams<{ repoName: string }>()
   const { repo, readme, loading, error, retry } = useProjectDetail(repoName ?? '')
   const { t } = useLanguage()
@@ -110,6 +112,12 @@ const ProjectDetail = () => {
       </motion.div>
     </div>
   )
+}
+
+const ProjectDetail = () => {
+  const { repoName = '' } = useParams<{ repoName: string }>()
+  const story = getProjectStory(repoName)
+  return story ? <ProjectCaseStudy story={story} repoName={repoName} /> : <GithubProjectDetail />
 }
 
 export default ProjectDetail

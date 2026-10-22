@@ -1,15 +1,13 @@
 import { ArrowRight } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import ErrorState from '../../../../shared/components/ErrorState/ErrorState'
 import { useTypewriter } from '../../../../shared/hooks/useTypewriter'
 import { useFeaturedRepos } from '../../hooks/useFeaturedRepos'
 import ProjectCard from '../ProjectCard/ProjectCard'
-import ProjectCardSkeleton from '../ProjectCard/ProjectCardSkeleton'
 import { useLanguage } from '../../../../app/providers/LanguageContext'
 
 const ProjectsSection = () => {
-  const { repos, loading, error, retry } = useFeaturedRepos()
+  const { repos } = useFeaturedRepos()
   const { language, t } = useLanguage()
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
@@ -84,18 +82,11 @@ const ProjectsSection = () => {
           </Link>
         </div>
 
-        {error ? (
-          <ErrorState message={error} onRetry={retry} />
-        ) : (
-          <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {loading
-              ? Array.from({ length: 3 }).map((_, idx) => (
-                  // eslint-disable-next-line react/no-array-index-key
-                  <ProjectCardSkeleton key={idx} />
-                ))
-              : repos.map((repo, index) => <ProjectCard key={repo.id} repo={repo} index={index} />)}
-          </div>
-        )}
+        <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {repos.map((repo, index) => (
+            <ProjectCard key={repo.id} repo={repo} index={index} />
+          ))}
+        </div>
       </div>
     </section>
   )
