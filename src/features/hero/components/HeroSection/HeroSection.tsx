@@ -19,9 +19,19 @@ const HeroSection = () => {
     <section className="relative z-30 flex flex-col items-center justify-start overflow-hidden pt-20 pb-2 text-center sm:min-h-[75vh] sm:justify-center sm:py-24">
       <GridPattern />
       <ShadowEffect />
-      <h1 className="mb-6 text-[clamp(1.8rem,6vw,4.5rem)] font-extrabold text-(--title-color)">
-        Lucas Rossoni
-      </h1>
+      <div className="mb-8 flex flex-col items-center gap-5 px-4 sm:flex-row sm:gap-8">
+        <img
+          src="/images/lucas-rossoni.jpg"
+          alt={language === 'pt-BR' ? 'Retrato de Lucas Rossoni' : 'Portrait of Lucas Rossoni'}
+          width="400"
+          height="400"
+          fetchPriority="high"
+          className="h-28 w-28 shrink-0 rounded-full border-2 border-(--primary-color)/40 object-cover shadow-lg sm:h-36 sm:w-36"
+        />
+        <h1 className="text-[clamp(1.8rem,6vw,4.5rem)] font-extrabold text-(--title-color)">
+          Lucas Rossoni
+        </h1>
+      </div>
       <p className="mb-6 text-[clamp(1.7rem,5.8vw,4.5rem)] font-extrabold text-(--title-color)">
         {title}
         {showCursor && (
