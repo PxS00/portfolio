@@ -5,11 +5,10 @@ import { useLanguage } from '../../../app/providers/LanguageContext'
 const experienceCopy = {
   'pt-BR': {
     title: 'Experiência profissional',
-    intro:
-      'Desenvolvimento de software em ambiente profissional e entregas freelance para negócios.',
+    intro: 'Experiência freelance no desenvolvimento de software e soluções para negócios.',
     comRole: 'Back-end Developer',
     comPeriod: 'Abril – novembro de 2025',
-    comType: 'Experiência profissional',
+    comType: 'Freelance',
     comDescription:
       'Desenvolvimento de serviços e APIs para coleta, processamento e visualização de dados operacionais de sensores industriais.',
     comItems: [
@@ -33,11 +32,10 @@ const experienceCopy = {
   },
   'en-GB': {
     title: 'Professional experience',
-    intro:
-      'Software development in a professional environment and freelance delivery for businesses.',
+    intro: 'Freelance experience developing software and business solutions.',
     comRole: 'Backend Developer',
     comPeriod: 'April – November 2025',
-    comType: 'Professional experience',
+    comType: 'Freelance',
     comDescription:
       'Developed services and APIs to collect, process and visualise operational data from industrial sensors.',
     comItems: [
