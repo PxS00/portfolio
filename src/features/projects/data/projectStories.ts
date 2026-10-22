@@ -1,4 +1,4 @@
-import type { Language } from '../../../app/providers/LanguageContext'
+import type { Language } from '../../../shared/types/language'
 import { ENERGIAI_HACKATHON_CREDENTIAL_URL } from './credentials'
 
 type StoryCopy = {
@@ -15,6 +15,12 @@ export type ProjectStory = {
   name: string
   category: Record<Language, string>
   stack: string[]
+  screenshots?: Array<{
+    src: string
+    width: number
+    height: number
+    caption: Record<Language, string>
+  }>
   links: Array<{ url: string; label: Record<Language, string> }>
   copy: Record<Language, StoryCopy>
 }
@@ -27,6 +33,17 @@ export const PROJECT_STORIES: Record<string, ProjectStory> = {
     name: 'Catálogo Céu de Lavanda',
     category: { 'pt-BR': 'Freelance · Catálogo digital', 'en-GB': 'Freelance · Digital catalogue' },
     stack: ['Next.js', 'React', 'TypeScript', 'Cloudflare Pages'],
+    screenshots: [
+      {
+        src: '/images/projects/ceu-de-lavanda.jpg',
+        width: 1905,
+        height: 944,
+        caption: {
+          'pt-BR': 'Página inicial do catálogo Céu de Lavanda publicado.',
+          'en-GB': 'Homepage of the published Céu de Lavanda catalogue.',
+        },
+      },
+    ],
     links: [
       {
         url: 'https://ceu-de-lavanda.pages.dev/',
@@ -117,6 +134,28 @@ export const PROJECT_STORIES: Record<string, ProjectStory> = {
       'en-GB': 'Inventory and production management',
     },
     stack: ['Java', 'Spring Boot', 'Spring Modulith', 'PostgreSQL', 'Angular', 'Docker'],
+    screenshots: [
+      {
+        src: '/images/projects/lavanda-flow-inventory.jpg',
+        width: 1280,
+        height: 720,
+        caption: {
+          'pt-BR':
+            'Operações de estoque na versão 0.8.1, executada localmente com item e lote fictícios de demonstração.',
+          'en-GB':
+            'Inventory operations in version 0.8.1, running locally with a fictional demonstration item and batch.',
+        },
+      },
+      {
+        src: '/images/projects/lavanda-flow-item.jpg',
+        width: 1280,
+        height: 720,
+        caption: {
+          'pt-BR': 'Detalhes de um item fictício no ambiente local de demonstração.',
+          'en-GB': 'Details of a fictional item in the local demonstration environment.',
+        },
+      },
+    ],
     links: [
       {
         url: `${lavandaRepo}/docs/architecture/architecture.md`,
@@ -211,6 +250,17 @@ export const PROJECT_STORIES: Record<string, ProjectStory> = {
       'en-GB': 'Oracle ONE + Alura Hackathon · 2026',
     },
     stack: ['Java 21', 'Spring Boot', 'Oracle Database', 'OCI', 'Terraform', 'FastAPI', 'React'],
+    screenshots: [
+      {
+        src: '/images/projects/energiai.jpg',
+        width: 1905,
+        height: 888,
+        caption: {
+          'pt-BR': 'Página pública de apresentação do EnergiAI.',
+          'en-GB': 'Public EnergiAI introduction page.',
+        },
+      },
+    ],
     links: [
       {
         url: 'https://energiai.vercel.app',

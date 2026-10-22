@@ -1,7 +1,8 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
 import { TRANSLATIONS, type TranslationKeys } from '../../shared/constants/translations'
 
-export type Language = 'pt-BR' | 'en-GB'
+import type { Language } from '../../shared/types/language'
+export type { Language } from '../../shared/types/language'
 
 export type LanguageContextProps = {
   language: Language

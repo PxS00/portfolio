@@ -4,6 +4,8 @@ export type TranslationKeys =
   | 'nav_contact'
   | 'hero_subtitle'
   | 'hero_download_cv'
+  | 'hero_view_projects'
+  | 'hero_contact'
   | 'about_title_pre'
   | 'about_title_post'
   | 'about_intro'
@@ -62,6 +64,8 @@ export const TRANSLATIONS: Record<'pt-BR' | 'en-GB', Record<TranslationKeys, str
     nav_contact: 'Contato',
     hero_subtitle: 'Desenvolvendo arquiteturas escaláveis para soluções digitais modernas.',
     hero_download_cv: 'Baixar currículo',
+    hero_view_projects: 'Ver projetos',
+    hero_contact: 'Entrar em contato',
     about_title_pre: 'Sobre ',
     about_title_post: 'mim',
     about_intro:
@@ -133,6 +137,8 @@ export const TRANSLATIONS: Record<'pt-BR' | 'en-GB', Record<TranslationKeys, str
     nav_contact: 'Contact',
     hero_subtitle: 'Developing scalable architectures for modern digital solutions.',
     hero_download_cv: 'Download CV',
+    hero_view_projects: 'View projects',
+    hero_contact: 'Get in touch',
     about_title_pre: 'About ',
     about_title_post: 'me',
     about_intro:

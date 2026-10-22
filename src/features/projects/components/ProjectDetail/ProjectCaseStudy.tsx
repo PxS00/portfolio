@@ -57,6 +57,43 @@ const ProjectCaseStudy = ({ story, repoName }: Props) => {
           ))}
         </div>
       </header>
+      {story.screenshots && (
+        <section
+          aria-label={pt ? 'Telas do projeto' : 'Project screenshots'}
+          className="mb-12 grid gap-6"
+        >
+          {story.screenshots.map((screenshot) => (
+            <figure
+              key={screenshot.src}
+              className="overflow-hidden rounded-2xl border border-(--border-color)"
+            >
+              <a
+                href={screenshot.src}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={
+                  pt
+                    ? `Ampliar: ${screenshot.caption[language]}`
+                    : `Enlarge: ${screenshot.caption[language]}`
+                }
+              >
+                <img
+                  src={screenshot.src}
+                  alt={screenshot.caption[language]}
+                  width={screenshot.width}
+                  height={screenshot.height}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-auto w-full"
+                />
+              </a>
+              <figcaption className="bg-(--bg-color-alt) px-5 py-3 text-sm text-(--muted-color)">
+                {screenshot.caption[language]}
+              </figcaption>
+            </figure>
+          ))}
+        </section>
+      )}
       <div className="grid gap-10 md:grid-cols-2">
         <section>
           <h2 className="mb-4 text-2xl font-bold text-(--title-color)">

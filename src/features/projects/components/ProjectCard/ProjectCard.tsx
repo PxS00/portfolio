@@ -33,13 +33,24 @@ const ProjectCard = ({ repo, index = 0 }: ProjectCardProps) => {
         to={`/projects/${repo.name}`}
         className="group flex h-full w-full min-w-0 flex-col rounded-2xl border border-(--border-color) bg-(--secondary-color)/5 p-4 shadow-lg backdrop-blur-xl transition-all duration-200 hover:-translate-y-2 hover:bg-(--secondary-color)/10 hover:shadow-[0_0_30px_rgba(var(--primary-rgb),0.12)] sm:p-6"
       >
+        {story?.screenshots?.[0] && (
+          <img
+            src={story.screenshots[0].src}
+            alt={story.screenshots[0].caption[language]}
+            width={story.screenshots[0].width}
+            height={story.screenshots[0].height}
+            loading="lazy"
+            decoding="async"
+            className="mb-5 aspect-video w-full rounded-xl border border-(--border-color) object-cover object-top"
+          />
+        )}
         <div className="mb-4 flex min-w-0 items-start justify-between gap-2">
           <div className="flex min-w-0 flex-1 items-center gap-3">
             <FolderGit2
               className="h-6 w-6 shrink-0"
               style={{ color: getLanguageColor(displayLang) }}
             />
-            <h3 className="truncate text-xl font-bold text-(--title-color) transition-colors group-hover:text-(--primary-color)">
+            <h3 className="min-w-0 text-xl font-bold wrap-break-word text-(--title-color) transition-colors group-hover:text-(--primary-color)">
               {story?.name ?? repo.name}
             </h3>
             {repo.fork && (

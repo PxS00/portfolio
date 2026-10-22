@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useReducedMotion } from 'framer-motion'
 import type { TypewriterOptions } from '../types/typewriter'
 /**
  * Hook para efeito de digitação tipo "typewriter".
@@ -16,6 +17,7 @@ export function useTypewriter({
   onDone,
 }: TypewriterOptions) {
   const [index, setIndex] = useState<number>(0)
+  const reducedMotion = useReducedMotion()
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const onDoneRef = useRef(onDone)
@@ -26,6 +28,10 @@ export function useTypewriter({
   }, [onDone])
 
   useEffect(() => {
+    if (reducedMotion) {
+      setIndex(text.length)
+      return
+    }
     setIndex(0)
     if (intervalRef.current) {
       clearInterval(intervalRef.current)
@@ -78,7 +84,7 @@ export function useTypewriter({
         clearTimeout(timeoutRef.current)
       }
     }
-  }, [text, delay, startDelay, loop])
+  }, [text, delay, startDelay, loop, reducedMotion])
 
   return text.slice(0, index)
 }
