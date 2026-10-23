@@ -8,6 +8,13 @@ Run this check only after the release is merged into `main` and the production d
 4. Request indexing where appropriate. A submitted request does not confirm that a page is indexed.
 5. Recheck the Pages report after Google has processed the URLs. Record the inspection date and actual status; do not promise indexing or ranking.
 6. Check a shared link in LinkedIn Post Inspector. The HTML contains title, description, canonical URL and a 1200 × 630 cover before JavaScript runs. Cached previews may require a refresh.
+7. Confirm that the production response has no `X-Robots-Tag: noindex` header. Run a production Lighthouse audit using `.lighthouserc.json`, which includes the indexing audit.
+
+## Lighthouse on pull requests
+
+Vercel deliberately adds `X-Robots-Tag: noindex` to preview deployments. The PR workflow uses `.lighthouserc.preview.cjs`, inheriting all thresholds from the base configuration and excluding only `is-crawlable` from collection. This keeps the preview out of search results while checking the remaining SEO audits. Built HTML robots directives are still checked by `scripts/verify-seo.mjs`.
+
+The failed run `39878738568` reported performance 99, accessibility 100, best practices 100 and SEO 69. Its only failed SEO audit was `is-crawlable`, citing the preview response header. The complete production configuration remains unchanged.
 
 ## Scope
 

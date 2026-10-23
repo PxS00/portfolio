@@ -27,4 +27,5 @@ jobs:
           urls: ${{ steps.vercel_preview_url.outputs.url }}
           uploadArtifacts: true
           temporaryPublicStorage: true
-          configPath: ./.lighthouserc.json
+          # Preview URLs are deliberately noindex; production uses the base config.
+          configPath: ./.lighthouserc.preview.cjs
