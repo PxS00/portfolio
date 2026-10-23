@@ -35,6 +35,13 @@ The responsive review used emulated viewport widths, not physical mobile devices
 - Added questionnaire, result, history and dashboard captures (six EnergiAI images total). Captions identify local execution and fictional inputs. The case study now explains the deactivated public database and links to the public introduction, with local instructions for the full demonstration.
 - These are actual application/model outputs for fictional examples, not evidence of real customer savings or model performance on real-world data.
 
+## Catalogue screenshot hotfix — 2026-10-23
+
+- Replaced all three catalogue screenshots with captures from the open source PR [ceu-de-lavanda-catalog#1](https://github.com/PxS00/ceu-de-lavanda-catalog/pull/1), branch `feat/catalog-product-photos` at `ecd38afa9e50cb70abe36ac7c092ffa4b703f0a5`.
+- Built the unchanged source with Next.js and served the static export locally at `127.0.0.1:5182`. Captures show the homepage selection with four photographed perfumes, search for Acquaré and the product detail with photo, prices and fragrance information.
+- The source PR contains 112 perfume entries and 20 photographs. Remaining placeholders are part of that source version. Bilingual captions and the delivery status identify this as a local preview of an open PR; the public catalogue link remains accompanied by a separate link to the update under review.
+- No source code or merge state was changed in the catalogue repository. This hotfix changes only portfolio image files, their intrinsic dimensions, captions, source link and status copy.
+
 ## Publication follow-up
 
 Production deployment, platform routing, externally cached link previews, real-device testing and Google Search Console indexation still need to be checked after release. Follow `search-console-checklist.md`. Local build checks do not prove that Google has indexed a page.
