@@ -36,32 +36,35 @@ export const PROJECT_STORIES: Record<string, ProjectStory> = {
     screenshots: [
       {
         src: '/images/projects/ceu-de-lavanda.jpg',
-        width: 1905,
-        height: 944,
+        width: 1390,
+        height: 1089,
         caption: {
-          'pt-BR': 'Página inicial do catálogo Céu de Lavanda publicado.',
-          'en-GB': 'Homepage of the published Céu de Lavanda catalogue.',
+          'pt-BR':
+            'Seleção da página inicial com fotos e preços de quatro perfumes, na versão do PR #1 executada localmente.',
+          'en-GB':
+            'Homepage selection with photos and prices for four perfumes, from PR #1 running locally.',
         },
       },
       {
         src: '/images/projects/ceu-de-lavanda-collection.jpg',
         width: 1390,
-        height: 990,
+        height: 1089,
         caption: {
-          'pt-BR': 'Coleção publicada com categorias, busca, ordenação e filtros por inicial.',
+          'pt-BR':
+            'Busca por Acquaré com fotografia, disponibilidade e preços por volume, na prévia local do PR #1.',
           'en-GB':
-            'Published collection with categories, search, sorting and initial-letter filters.',
+            'Search for Acquaré with its photo, availability and volume pricing, in the local preview of PR #1.',
         },
       },
       {
         src: '/images/projects/ceu-de-lavanda-product.jpg',
         width: 1390,
-        height: 990,
+        height: 1089,
         caption: {
           'pt-BR':
-            'Página da fragrância Acquaré, com informações comerciais ainda pendentes sinalizadas.',
+            'Detalhe do Acquaré com fotografia, descrição, preços de 50 e 100 ml e pirâmide olfativa, na prévia local do PR #1.',
           'en-GB':
-            'Acquaré fragrance page, with pending commercial information clearly identified.',
+            'Acquaré detail with its photo, description, 50 and 100 ml pricing and fragrance pyramid, in the local preview of PR #1.',
         },
       },
     ],
@@ -69,6 +72,10 @@ export const PROJECT_STORIES: Record<string, ProjectStory> = {
       {
         url: 'https://ceu-de-lavanda.pages.dev/',
         label: { 'pt-BR': 'Abrir catálogo', 'en-GB': 'Open catalogue' },
+      },
+      {
+        url: 'https://github.com/PxS00/ceu-de-lavanda-catalog/pull/1',
+        label: { 'pt-BR': 'Atualização em revisão', 'en-GB': 'Update under review' },
       },
     ],
     copy: {
@@ -102,7 +109,7 @@ export const PROJECT_STORIES: Record<string, ProjectStory> = {
           },
         ],
         outcome:
-          'Catálogo publicado no Cloudflare Pages. O cadastro da coleção continua em andamento; o site apresenta os produtos e não realiza finalização de compras online.',
+          'Catálogo publicado no Cloudflare Pages, com ampliação em revisão no PR #1 para 112 perfumes, 20 fotografias e preços por volume. As capturas mostram essa versão executada localmente. O cadastro da coleção continua em andamento; o site apresenta os produtos e não realiza finalização de compras online.',
         walkthrough: [
           'Abrir o catálogo e explorar as categorias de fragrâncias.',
           'Pesquisar um nome ou filtrar a coleção pela inicial.',
@@ -139,7 +146,7 @@ export const PROJECT_STORIES: Record<string, ProjectStory> = {
           },
         ],
         outcome:
-          'Published on Cloudflare Pages. Collection data entry is ongoing; the site presents products and does not provide online checkout.',
+          'Published on Cloudflare Pages, with an expansion to 112 perfumes, 20 photographs and volume pricing under review in PR #1. Screenshots show that version running locally. Collection data entry is ongoing; the site presents products and does not provide online checkout.',
         walkthrough: [
           'Open the catalogue and explore the fragrance categories.',
           'Search for a name or filter the collection by initial letter.',
