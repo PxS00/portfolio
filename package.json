@@ -10,6 +10,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
+    "test:seo": "node --test scripts/verify-seo.mjs",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

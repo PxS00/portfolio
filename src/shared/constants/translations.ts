@@ -4,6 +4,8 @@ export type TranslationKeys =
   | 'nav_contact'
   | 'hero_subtitle'
   | 'hero_download_cv'
+  | 'hero_view_projects'
+  | 'hero_contact'
   | 'about_title_pre'
   | 'about_title_post'
   | 'about_intro'
@@ -62,6 +64,8 @@ export const TRANSLATIONS: Record<'pt-BR' | 'en-GB', Record<TranslationKeys, str
     nav_contact: 'Contato',
     hero_subtitle: 'Desenvolvendo arquiteturas escaláveis para soluções digitais modernas.',
     hero_download_cv: 'Baixar currículo',
+    hero_view_projects: 'Ver projetos',
+    hero_contact: 'Entrar em contato',
     about_title_pre: 'Sobre ',
     about_title_post: 'mim',
     about_intro:
@@ -103,9 +107,9 @@ export const TRANSLATIONS: Record<'pt-BR' | 'en-GB', Record<TranslationKeys, str
     cert_badge_link: 'Credencial Oficial',
     cert_pdf_link: 'Visualizar PDF',
     projects_title: 'Meus Projetos',
-    projects_recent_title: 'Projetos Recentes',
+    projects_recent_title: 'Projetos em Destaque',
     projects_section_subtitle:
-      'Confira os projetos e soluções que venho desenvolvendo recentemente.',
+      'Catálogo digital e gestão para a Céu de Lavanda, backend e cloud no EnergiAI, e tecnologia aplicada à saúde com o Luma.',
     projects_grid_subtitle:
       'Explore todos os meus repositórios públicos no GitHub. Abaixo estão os projetos em que venho trabalhando, ordenados pelas atualizações mais recentes.',
     projects_view_all: 'Ver todos os projetos',
@@ -133,6 +137,8 @@ export const TRANSLATIONS: Record<'pt-BR' | 'en-GB', Record<TranslationKeys, str
     nav_contact: 'Contact',
     hero_subtitle: 'Developing scalable architectures for modern digital solutions.',
     hero_download_cv: 'Download CV',
+    hero_view_projects: 'View projects',
+    hero_contact: 'Get in touch',
     about_title_pre: 'About ',
     about_title_post: 'me',
     about_intro:
@@ -174,9 +180,9 @@ export const TRANSLATIONS: Record<'pt-BR' | 'en-GB', Record<TranslationKeys, str
     cert_badge_link: 'Official Credential',
     cert_pdf_link: 'View PDF',
     projects_title: 'My Projects',
-    projects_recent_title: 'Recent Projects',
+    projects_recent_title: 'Featured Projects',
     projects_section_subtitle:
-      'Check out the projects and solutions I have been developing recently.',
+      'Digital catalogue and business management for Céu de Lavanda, backend and cloud with EnergiAI, and healthcare technology with Luma.',
     projects_grid_subtitle:
       'Explore all my public repositories on GitHub. Below are the projects I have been working on, sorted by the most recent updates.',
     projects_view_all: 'View all projects',

@@ -67,7 +67,7 @@ const ContactCard = ({ platform, value, url, icon, index }: ContactCardProps) =>
             rel="noopener noreferrer"
             aria-label={t('contact_open_profile', { platform })}
             title={t('contact_open_profile', { platform })}
-            className="text-(--text-color)/30 transition-colors hover:text-(--primary-color)"
+            className="inline-flex min-h-11 min-w-11 items-center justify-center text-(--text-color)/60 transition-colors hover:text-(--primary-color)"
           >
             <ExternalLink className="h-5 w-5" />
           </a>
@@ -78,7 +78,7 @@ const ContactCard = ({ platform, value, url, icon, index }: ContactCardProps) =>
           <h3 className="text-sm font-medium tracking-wider text-(--text-color)/50 uppercase">
             {platform}
           </h3>
-          <p className="mt-1 font-mono text-xl font-bold text-(--title-color)">{value}</p>
+          <p className="mt-1 font-mono text-xl font-bold break-all text-(--title-color)">{value}</p>
         </div>
 
         {/* Actions */}
@@ -87,14 +87,14 @@ const ContactCard = ({ platform, value, url, icon, index }: ContactCardProps) =>
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 rounded-lg bg-(--primary-color) py-2.5 text-center text-sm font-bold text-white transition-all hover:brightness-110"
+            className="inline-flex min-h-11 flex-1 items-center justify-center rounded-lg bg-(--primary-color) py-2.5 text-center text-sm font-bold text-white transition-all hover:brightness-110"
           >
             {t('contact_visit_profile')}
           </a>
           <button
             onClick={handleCopy}
             aria-label={copied ? t('contact_copied_aria') : t('contact_copy_aria', { platform })}
-            className="flex min-w-[140px] items-center justify-center gap-2 rounded-lg border border-(--border-color) bg-(--bg-color-alt) px-4 py-2.5 text-sm font-semibold text-(--text-color) shadow-sm transition-all hover:bg-(--primary-color)/5"
+            className="flex min-h-11 min-w-[140px] items-center justify-center gap-2 rounded-lg border border-(--border-color) bg-(--bg-color-alt) px-4 py-2.5 text-sm font-semibold text-(--text-color) shadow-sm transition-all hover:bg-(--primary-color)/5"
           >
             <AnimatePresence mode="wait">
               {copied ? (

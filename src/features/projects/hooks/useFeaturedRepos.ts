@@ -1,40 +1,27 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { githubService } from '../services/github.service'
-import type { GithubRepo } from '../types/github.types'
+import { FEATURED_REPO_SNAPSHOTS } from '../data/featuredRepos'
 
-const RECENT_REPOS_COUNT = 3
-
-// Fetches the most recently updated public repos instead of a static list
 export const useFeaturedRepos = () => {
-  const [repos, setRepos] = useState<GithubRepo[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [repos, setRepos] = useState(FEATURED_REPO_SNAPSHOTS)
 
-  const fetchRecentRepos = useCallback(async () => {
-    try {
-      setLoading(true)
-      setError(null)
-
-      const allRepos = await githubService.fetchAllPublicRepos()
-
-      // Sort by most recently updated and take the top N
-      const recentRepos = allRepos
-        .sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime())
-        .slice(0, RECENT_REPOS_COUNT)
-
-      setRepos(recentRepos)
-    } catch (err) {
-      setError(
-        err instanceof Error ? err.message : 'Não foi possível carregar os projetos recentes.',
-      )
-    } finally {
-      setLoading(false)
+  useEffect(() => {
+    let active = true
+    Promise.allSettled(
+      FEATURED_REPO_SNAPSHOTS.map((repo) => githubService.fetchRepoByName(repo.name)),
+    ).then((results) => {
+      if (active) {
+        setRepos(
+          results.map((result, index) =>
+            result.status === 'fulfilled' ? result.value : FEATURED_REPO_SNAPSHOTS[index],
+          ),
+        )
+      }
+    })
+    return () => {
+      active = false
     }
   }, [])
 
-  useEffect(() => {
-    fetchRecentRepos()
-  }, [fetchRecentRepos])
-
-  return { repos, loading, error, retry: fetchRecentRepos }
+  return { repos }
 }

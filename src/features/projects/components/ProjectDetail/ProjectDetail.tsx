@@ -9,11 +9,13 @@ import ProjectDetailHeader from './ProjectDetailHeader'
 import ProjectDetailSkeleton from './ProjectDetailSkeleton'
 import { useLanguage } from '../../../../app/providers/LanguageContext'
 import type { TranslationKeys } from '../../../../shared/constants/translations'
+import { getProjectStory } from '../../data/projectStories'
+import ProjectCaseStudy from './ProjectCaseStudy'
 
 // High-level optimization: Lazy load the heavy markdown renderer
 const ReadmeViewer = lazy(() => import('./ReadmeViewer'))
 
-const ProjectDetail = () => {
+const GithubProjectDetail = () => {
   const { repoName } = useParams<{ repoName: string }>()
   const { repo, readme, loading, error, retry } = useProjectDetail(repoName ?? '')
   const { t } = useLanguage()
@@ -45,40 +47,39 @@ const ProjectDetail = () => {
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 py-32 sm:px-6 lg:px-12">
-      {/* Floating back button */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3, delay: 0.3 }}
-        className="fixed top-20 left-8 z-40"
-      >
-        <Link
-          to="/projects"
-          className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-(--bg-color)/80 px-5 py-3 text-sm font-semibold text-(--text-color) shadow-lg backdrop-blur-xl transition-all hover:border-(--primary-color)/30 hover:text-(--primary-color)"
+      <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, delay: 0.3 }}
+          className="inline-flex"
         >
-          <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-          {t('project_detail_back')}
-        </Link>
-      </motion.div>
+          <Link
+            to="/projects"
+            className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-(--bg-color)/80 px-5 py-3 text-sm font-semibold text-(--text-color) shadow-lg backdrop-blur-xl transition-all hover:border-(--primary-color)/30 hover:text-(--primary-color)"
+          >
+            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
+            {t('project_detail_back')}
+          </Link>
+        </motion.div>
 
-      {/* Floating GitHub button */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3, delay: 0.4 }}
-        className="fixed top-20 right-8 z-40"
-      >
-        <a
-          href={repo.html_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex items-center gap-2 rounded-full bg-(--primary-color) px-5 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:brightness-110"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, delay: 0.4 }}
+          className="inline-flex"
         >
-          {t('project_detail_view_github')}
-          <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-        </a>
-      </motion.div>
-
+          <a
+            href={repo.html_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 rounded-full bg-(--primary-color) px-5 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:brightness-110"
+          >
+            {t('project_detail_view_github')}
+            <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </a>
+        </motion.div>
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -110,6 +111,12 @@ const ProjectDetail = () => {
       </motion.div>
     </div>
   )
+}
+
+const ProjectDetail = () => {
+  const { repoName = '' } = useParams<{ repoName: string }>()
+  const story = getProjectStory(repoName)
+  return story ? <ProjectCaseStudy story={story} repoName={repoName} /> : <GithubProjectDetail />
 }
 
 export default ProjectDetail
