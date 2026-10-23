@@ -306,6 +306,50 @@ export const PROJECT_STORIES: Record<string, ProjectStory> = {
     stack: ['Java 21', 'Spring Boot', 'Oracle Database', 'OCI', 'Terraform', 'FastAPI', 'React'],
     screenshots: [
       {
+        src: '/images/projects/energiai-result.jpg',
+        width: 1404,
+        height: 1000,
+        caption: {
+          'pt-BR':
+            'Resultado calculado pelo modelo preditivo V2 no ambiente local, com consumo e hábitos fictícios de demonstração.',
+          'en-GB':
+            'Result calculated by the V2 predictive model locally, using fictional demonstration consumption and habits.',
+        },
+      },
+      {
+        src: '/images/projects/energiai-analysis.jpg',
+        width: 1404,
+        height: 1000,
+        caption: {
+          'pt-BR':
+            'Questionário de análise energética executado localmente, com seleção do tipo de imóvel.',
+          'en-GB':
+            'Energy analysis questionnaire running locally, showing property type selection.',
+        },
+      },
+      {
+        src: '/images/projects/energiai-dashboard.jpg',
+        width: 1404,
+        height: 1000,
+        caption: {
+          'pt-BR':
+            'Painel local com indicadores agregados de três análises fictícias, persistidas no banco H2.',
+          'en-GB':
+            'Local dashboard with aggregated indicators from three fictional analyses persisted in H2.',
+        },
+      },
+      {
+        src: '/images/projects/energiai-history.jpg',
+        width: 1390,
+        height: 990,
+        caption: {
+          'pt-BR':
+            'Histórico autenticado com três análises de demonstração registradas pelo fluxo real da aplicação local.',
+          'en-GB':
+            'Authenticated history showing three demonstration analyses recorded through the local application’s actual workflow.',
+        },
+      },
+      {
         src: '/images/projects/energiai.jpg',
         width: 1905,
         height: 888,
@@ -329,7 +373,7 @@ export const PROJECT_STORIES: Record<string, ProjectStory> = {
     links: [
       {
         url: 'https://energiai.vercel.app',
-        label: { 'pt-BR': 'Abrir demonstração', 'en-GB': 'Open demo' },
+        label: { 'pt-BR': 'Abrir apresentação', 'en-GB': 'Open introduction' },
       },
       {
         url: `${energiRepo}/docs/delivery/demo-script.md`,
@@ -376,9 +420,9 @@ export const PROJECT_STORIES: Record<string, ProjectStory> = {
           },
         ],
         outcome:
-          'A entrega documentada inclui autenticação, análise, histórico individual e dashboard. O modelo foi avaliado em dados sintéticos; seus resultados não comprovam economia real nem desempenho equivalente em dados reais. A tarifa é uma referência do MVP.',
+          'A entrega documentada inclui autenticação, análise, histórico individual e dashboard. O banco OCI da demonstração pública foi desativado; as capturas do fluxo autenticado foram feitas localmente com H2 e o modelo V2, usando dados fictícios. O modelo foi avaliado em dados sintéticos; seus resultados não comprovam economia real nem desempenho equivalente em dados reais. A tarifa é uma referência do MVP.',
         walkthrough: [
-          'Acessar a demonstração e criar ou utilizar uma conta própria.',
+          'Executar frontend, backend com o profile local (H2) e FastAPI com o modelo V2, seguindo o README; criar uma conta de demonstração local.',
           'Informar o consumo e as características de uso para solicitar uma análise.',
           'Examinar a classificação, as recomendações e a estimativa de custo; consultar o histórico individual.',
         ],
@@ -414,9 +458,9 @@ export const PROJECT_STORIES: Record<string, ProjectStory> = {
           },
         ],
         outcome:
-          'The documented delivery includes authentication, analysis, individual history and a dashboard. The model was evaluated on synthetic data; results do not demonstrate real savings or equivalent performance on real data. The tariff is an MVP reference.',
+          'The documented delivery includes authentication, analysis, individual history and a dashboard. The public demo’s OCI database has been deactivated; authenticated workflow screenshots were captured locally with H2 and the V2 model, using fictional data. The model was evaluated on synthetic data; results do not demonstrate real savings or equivalent performance on real data. The tariff is an MVP reference.',
         walkthrough: [
-          'Open the demo and register or use your own account.',
+          'Run the frontend, backend with the local H2 profile and FastAPI with the V2 model following the README, then register a local demonstration account.',
           'Enter consumption and usage characteristics to request an analysis.',
           'Review the classification, recommendations and cost estimate, then inspect the individual history.',
         ],

@@ -26,6 +26,15 @@ The responsive review used emulated viewport widths, not physical mobile devices
 - EnergiAI's analysis route remained on “Carregando sessão” during this capture. The new image shows the public explanation of the architecture, not an authenticated prediction or result.
 - Featured cards show up to two additional thumbnails and a screenshot count. Detail galleries use two columns on desktop and one on mobile, with full-size image links and bilingual captions.
 
+## EnergiAI local workflow — 2026-10-22
+
+- After the owner confirmed that the OCI database had been deleted, a local checkout of `develop` at `1a5b92f80a2ab6172687b99d13880ee501b5e7fe` was started without changing EnergiAI source files.
+- The isolated `portfolio-energi-demo` Compose project runs React/Vite, Spring Boot's `local` H2 profile and FastAPI with the repository's `modelo_energetico_v2.joblib` artifact (`energy-classifier-v2`). Frontend and backend ports are bound only to loopback; inference has no published host port. H2 data is temporary and disappears when the backend process stops.
+- A fictional local account and three analyses were created through the browser. Inputs (kWh / equipment / property / peak use / hours): `420 / 10 / CASA / true / 8`, `160 / 4 / APARTAMENTO / false / 2`, `280 / 8 / CASA / false / 4`.
+- The first result displayed “Modelo preditivo”, inefficient classification, index 83/100, probability 66% and reference cost R$315.00. The other two were classified efficient. Dashboard aggregates showed three analyses, R$215.00 mean cost and 286.67 kWh mean consumption.
+- Added questionnaire, result, history and dashboard captures (six EnergiAI images total). Captions identify local execution and fictional inputs. The case study now explains the deactivated public database and links to the public introduction, with local instructions for the full demonstration.
+- These are actual application/model outputs for fictional examples, not evidence of real customer savings or model performance on real-world data.
+
 ## Publication follow-up
 
 Production deployment, platform routing, externally cached link previews, real-device testing and Google Search Console indexation still need to be checked after release. Follow `search-console-checklist.md`. Local build checks do not prove that Google has indexed a page.

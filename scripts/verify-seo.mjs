@@ -70,6 +70,10 @@ test('project screenshot files are included in the production output', async () 
   for (const name of [
     'ceu-de-lavanda',
     'energiai',
+    'energiai-result',
+    'energiai-analysis',
+    'energiai-dashboard',
+    'energiai-history',
     'lavanda-flow-inventory',
     'lavanda-flow-item',
     'ceu-de-lavanda-collection',
