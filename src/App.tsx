@@ -3,10 +3,12 @@ import { Outlet } from 'react-router-dom'
 import Footer from './shared/components/Footer/Footer'
 import Navbar from './shared/components/Navbar/Navbar'
 import ScrollToTop from './shared/components/ScrollToTop/ScrollToTop'
+import PageSeo from './shared/seo/PageSeo'
 
 export default function App() {
   return (
     <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-transparent">
+      <PageSeo />
       <ScrollToTop />
       <Navbar />
       <main className="w-full flex-1">
