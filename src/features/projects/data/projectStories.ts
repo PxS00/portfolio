@@ -43,6 +43,27 @@ export const PROJECT_STORIES: Record<string, ProjectStory> = {
           'en-GB': 'Homepage of the published Céu de Lavanda catalogue.',
         },
       },
+      {
+        src: '/images/projects/ceu-de-lavanda-collection.jpg',
+        width: 1390,
+        height: 990,
+        caption: {
+          'pt-BR': 'Coleção publicada com categorias, busca, ordenação e filtros por inicial.',
+          'en-GB':
+            'Published collection with categories, search, sorting and initial-letter filters.',
+        },
+      },
+      {
+        src: '/images/projects/ceu-de-lavanda-product.jpg',
+        width: 1390,
+        height: 990,
+        caption: {
+          'pt-BR':
+            'Página da fragrância Acquaré, com informações comerciais ainda pendentes sinalizadas.',
+          'en-GB':
+            'Acquaré fragrance page, with pending commercial information clearly identified.',
+        },
+      },
     ],
     links: [
       {
@@ -155,6 +176,39 @@ export const PROJECT_STORIES: Record<string, ProjectStory> = {
           'en-GB': 'Details of a fictional item in the local demonstration environment.',
         },
       },
+      {
+        src: '/images/projects/lavanda-flow-dashboard.jpg',
+        width: 1280,
+        height: 720,
+        caption: {
+          'pt-BR':
+            'Painel operacional no ambiente local de demonstração, com indicadores calculados pelo sistema.',
+          'en-GB':
+            'Operational dashboard in the local demonstration environment, with indicators calculated by the system.',
+        },
+      },
+      {
+        src: '/images/projects/lavanda-flow-batches.jpg',
+        width: 1404,
+        height: 1000,
+        caption: {
+          'pt-BR':
+            'Lote e histórico auditável após entrada de 2.500 mL e saída de 100 mL por FEFO; dados fictícios.',
+          'en-GB':
+            'Batch and audit history after a 2,500 mL receipt and a 100 mL FEFO withdrawal; fictional data.',
+        },
+      },
+      {
+        src: '/images/projects/lavanda-flow-formulas.jpg',
+        width: 1404,
+        height: 1000,
+        caption: {
+          'pt-BR':
+            'Fórmula fictícia cadastrada no ambiente local para mostrar o módulo de produção; não representa uma receita comercial.',
+          'en-GB':
+            'Fictional formula registered locally to show the production module; it does not represent a commercial recipe.',
+        },
+      },
     ],
     links: [
       {
@@ -258,6 +312,17 @@ export const PROJECT_STORIES: Record<string, ProjectStory> = {
         caption: {
           'pt-BR': 'Página pública de apresentação do EnergiAI.',
           'en-GB': 'Public EnergiAI introduction page.',
+        },
+      },
+      {
+        src: '/images/projects/energiai-architecture.jpg',
+        width: 1390,
+        height: 990,
+        caption: {
+          'pt-BR':
+            'Apresentação pública do modelo preditivo e do fluxo entre frontend, Spring Boot e FastAPI.',
+          'en-GB':
+            'Public explanation of the predictive model and the flow between the frontend, Spring Boot and FastAPI.',
         },
       },
     ],

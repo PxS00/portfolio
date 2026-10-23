@@ -44,6 +44,29 @@ const ProjectCard = ({ repo, index = 0 }: ProjectCardProps) => {
             className="mb-5 aspect-video w-full rounded-xl border border-(--border-color) object-cover object-top"
           />
         )}
+        {story?.screenshots && story.screenshots.length > 1 && (
+          <div className="mb-5">
+            <div className="mb-2 grid grid-cols-2 gap-2" aria-hidden="true">
+              {story.screenshots.slice(1, 3).map((screenshot) => (
+                <img
+                  key={screenshot.src}
+                  src={screenshot.src}
+                  alt=""
+                  width={screenshot.width}
+                  height={screenshot.height}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-video w-full rounded-lg border border-(--border-color) object-cover object-top"
+                />
+              ))}
+            </div>
+            <p className="text-xs font-semibold text-(--primary-color)">
+              {language === 'pt-BR'
+                ? `Ver ${story.screenshots.length} telas do projeto`
+                : `View ${story.screenshots.length} project screenshots`}
+            </p>
+          </div>
+        )}
         <div className="mb-4 flex min-w-0 items-start justify-between gap-2">
           <div className="flex min-w-0 flex-1 items-center gap-3">
             <FolderGit2

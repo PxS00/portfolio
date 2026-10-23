@@ -72,6 +72,12 @@ test('project screenshot files are included in the production output', async () 
     'energiai',
     'lavanda-flow-inventory',
     'lavanda-flow-item',
+    'ceu-de-lavanda-collection',
+    'ceu-de-lavanda-product',
+    'lavanda-flow-dashboard',
+    'lavanda-flow-batches',
+    'lavanda-flow-formulas',
+    'energiai-architecture',
   ]) {
     const image = await readFile(`dist/images/projects/${name}.jpg`)
     assert.equal(image.readUInt16BE(0), 0xffd8, name)

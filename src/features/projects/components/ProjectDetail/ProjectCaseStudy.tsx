@@ -58,40 +58,47 @@ const ProjectCaseStudy = ({ story, repoName }: Props) => {
         </div>
       </header>
       {story.screenshots && (
-        <section
-          aria-label={pt ? 'Telas do projeto' : 'Project screenshots'}
-          className="mb-12 grid gap-6"
-        >
-          {story.screenshots.map((screenshot) => (
-            <figure
-              key={screenshot.src}
-              className="overflow-hidden rounded-2xl border border-(--border-color)"
-            >
-              <a
-                href={screenshot.src}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={
-                  pt
-                    ? `Ampliar: ${screenshot.caption[language]}`
-                    : `Enlarge: ${screenshot.caption[language]}`
-                }
+        <section aria-label={pt ? 'Telas do projeto' : 'Project screenshots'} className="mb-12">
+          <h2 className="mb-3 text-2xl font-bold text-(--title-color)">
+            {pt ? 'Telas do projeto' : 'Project screenshots'}
+          </h2>
+          <p className="mb-6 text-sm text-(--muted-color)">
+            {pt
+              ? 'Selecione uma imagem para ver em tamanho completo.'
+              : 'Select an image to view it at full size.'}
+          </p>
+          <div className="grid items-start gap-6 md:grid-cols-2">
+            {story.screenshots.map((screenshot) => (
+              <figure
+                key={screenshot.src}
+                className="overflow-hidden rounded-2xl border border-(--border-color)"
               >
-                <img
-                  src={screenshot.src}
-                  alt={screenshot.caption[language]}
-                  width={screenshot.width}
-                  height={screenshot.height}
-                  loading="lazy"
-                  decoding="async"
-                  className="h-auto w-full"
-                />
-              </a>
-              <figcaption className="bg-(--bg-color-alt) px-5 py-3 text-sm text-(--muted-color)">
-                {screenshot.caption[language]}
-              </figcaption>
-            </figure>
-          ))}
+                <a
+                  href={screenshot.src}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={
+                    pt
+                      ? `Ampliar: ${screenshot.caption[language]}`
+                      : `Enlarge: ${screenshot.caption[language]}`
+                  }
+                >
+                  <img
+                    src={screenshot.src}
+                    alt={screenshot.caption[language]}
+                    width={screenshot.width}
+                    height={screenshot.height}
+                    loading="lazy"
+                    decoding="async"
+                    className="aspect-[4/3] w-full bg-(--bg-color-alt) object-contain"
+                  />
+                </a>
+                <figcaption className="bg-(--bg-color-alt) px-5 py-3 text-sm text-(--muted-color)">
+                  {screenshot.caption[language]}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </section>
       )}
       <div className="grid gap-10 md:grid-cols-2">
