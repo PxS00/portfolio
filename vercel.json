@@ -1,9 +1,18 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
-    { "source": "/projects", "destination": "/projects/index.html" },
-    { "source": "/contact", "destination": "/contact/index.html" },
-    { "source": "/projects/lavanda-flow", "destination": "/projects/lavanda-flow/index.html" },
+    {
+      "source": "/projects",
+      "destination": "/projects/index.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact/index.html"
+    },
+    {
+      "source": "/projects/lavanda-flow",
+      "destination": "/projects/lavanda-flow/index.html"
+    },
     {
       "source": "/projects/energi-ai-g9-br-team-09",
       "destination": "/projects/energi-ai-g9-br-team-09/index.html"
@@ -12,7 +21,17 @@
       "source": "/projects/ceu-de-lavanda-catalog",
       "destination": "/projects/ceu-de-lavanda-catalog/index.html"
     },
-    { "source": "/projects/Luma", "destination": "/projects/Luma/index.html" },
-    { "source": "/projects/:repoName", "destination": "/spa.html" }
+    {
+      "source": "/projects/Luma",
+      "destination": "/projects/Luma/index.html"
+    },
+    {
+      "source": "/projects/alura-corporate-agent",
+      "destination": "/projects/alura-corporate-agent/index.html"
+    },
+    {
+      "source": "/projects/:repoName",
+      "destination": "/spa.html"
+    }
   ]
 }

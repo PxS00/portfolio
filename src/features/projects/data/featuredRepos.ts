@@ -24,6 +24,16 @@ export const FEATURED_REPO_SNAPSHOTS: GithubRepo[] = [
     default_branch: 'develop',
   },
   {
+    id: 1341028255,
+    name: 'alura-corporate-agent',
+    description: 'Assistente de conhecimento com RAG, Gemini e ChromaDB.',
+    html_url: 'https://github.com/PxS00/alura-corporate-agent',
+    language: 'Python',
+    updated_at: '2026-08-20T22:08:55Z',
+    fork: false,
+    default_branch: 'main',
+  },
+  {
     id: 1423601579,
     name: 'ceu-de-lavanda-catalog',
     description: null,

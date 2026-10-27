@@ -43,8 +43,8 @@ export function getPageMetadata(pathname: string, language: Language = 'en-GB'):
   } else if (path === '/projects') {
     title = pt ? 'Projetos de software | Lucas Rossoni' : 'Software projects | Lucas Rossoni'
     description = pt
-      ? 'Conheça Lavanda Flow, EnergiAI, o catálogo Céu de Lavanda e Luma: projetos, contribuições e decisões de engenharia de Lucas Rossoni.'
-      : 'Explore Lavanda Flow, EnergiAI, the Céu de Lavanda catalogue and Luma: projects, contributions and engineering decisions by Lucas Rossoni.'
+      ? 'Conheça Lavanda Flow, EnergiAI e o assistente com RAG: projetos, contribuições e decisões de engenharia de Lucas Rossoni.'
+      : 'Explore Lavanda Flow, EnergiAI and the RAG assistant: projects, contributions and engineering decisions by Lucas Rossoni.'
     index = true
   } else if (path === '/contact') {
     title = pt ? 'Contato | Lucas Rossoni' : 'Contact | Lucas Rossoni'
