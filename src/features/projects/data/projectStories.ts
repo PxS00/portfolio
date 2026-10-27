@@ -29,6 +29,130 @@ const energiRepo = 'https://github.com/PxS00/energi-ai-g9-br-team-09/blob/develo
 const lavandaRepo = 'https://github.com/PxS00/lavanda-flow/blob/main'
 
 export const PROJECT_STORIES: Record<string, ProjectStory> = {
+  'alura-corporate-agent': {
+    name: 'Assistente de conhecimento com RAG',
+    category: {
+      'pt-BR': 'IA aplicada · Challenge ONE',
+      'en-GB': 'Applied AI · ONE Challenge',
+    },
+    stack: ['Python', 'RAG', 'Gemini API', 'ChromaDB', 'Streamlit', 'pytest', 'Docker', 'OCI'],
+    screenshots: [
+      {
+        src: '/images/projects/rag-oci-1.jpg',
+        width: 1672,
+        height: 971,
+        caption: {
+          'pt-BR':
+            'Captura de execução na OCI: consulta à base corporativa fictícia com resposta e fonte.',
+          'en-GB':
+            'OCI execution capture: a query against fictional corporate documents with an answer and source.',
+        },
+      },
+      {
+        src: '/images/projects/rag-oci-2.jpg',
+        width: 1557,
+        height: 947,
+        caption: {
+          'pt-BR':
+            'Captura de execução na OCI: fallback quando a base não contém a informação solicitada.',
+          'en-GB':
+            'OCI execution capture: fallback when the requested information is absent from the knowledge base.',
+        },
+      },
+    ],
+    links: [
+      {
+        url: 'https://github.com/PxS00/alura-corporate-agent/blob/main/README.md',
+        label: {
+          'pt-BR': 'Como executar o projeto',
+          'en-GB': 'Project setup instructions',
+        },
+      },
+      {
+        url: 'https://github.com/PxS00/alura-corporate-agent/tree/main/docs/images',
+        label: {
+          'pt-BR': 'Documentação e evidências na OCI',
+          'en-GB': 'OCI documentation and evidence',
+        },
+      },
+    ],
+    copy: {
+      'pt-BR': {
+        summary:
+          'Assistente em Python que consulta documentos corporativos fictícios com RAG, busca semântica e respostas acompanhadas de fontes.',
+        context:
+          'Informações internas ficam dispersas em documentos de diferentes formatos. O projeto explora como consultar essa base em linguagem natural e indicar quando não há evidência suficiente para responder.',
+        role: 'Desenvolvimento do assistente para o Challenge AluraAgente — ONE IA for Tech, da ingestão documental à interface e implantação na OCI.',
+        contributions: [
+          'Ingestão, normalização e divisão de documentos em trechos com sobreposição e metadados de origem.',
+          'Geração de embeddings com Gemini e persistência no ChromaDB para busca semântica.',
+          'Integração do LLM com contexto recuperado, referências às fontes e fallback para ausência de contexto relevante.',
+          'Interface Streamlit, testes com pytest, containerização Docker e implantação na OCI Compute.',
+        ],
+        decisions: [
+          {
+            title: 'Recuperação antes da geração',
+            description:
+              'A busca filtra os trechos por distância semântica e seleciona o resultado mais relevante antes de chamar o LLM.',
+          },
+          {
+            title: 'Resposta rastreável',
+            description:
+              'A interface apresenta referências aos documentos utilizados. Quando não há contexto relevante, retorna uma mensagem explícita de ausência de informação.',
+          },
+          {
+            title: 'Implantação reproduzível',
+            description:
+              'Docker empacota a aplicação e o índice vetorial é persistido no ChromaDB. O README documenta a execução local e a implantação na OCI Compute.',
+          },
+        ],
+        outcome:
+          'Aplicação acadêmica concluída, com pipeline RAG, interface Streamlit, testes automatizados e evidências de implantação na OCI. A demonstração utiliza documentos fictícios e permite verificar respostas com fontes e o fallback quando a informação está ausente.',
+        walkthrough: [
+          'Executar o projeto conforme o README e indexar a base documental fictícia.',
+          'Perguntar sobre uma política presente nos documentos e consultar a fonte da resposta.',
+          'Perguntar sobre algo ausente na base e verificar o fallback.',
+        ],
+      },
+      'en-GB': {
+        summary:
+          'A Python assistant that queries fictional corporate documents using RAG, semantic search and answers accompanied by source references.',
+        context:
+          'Internal information is spread across documents in different formats. This project explores natural-language queries with an explicit response when the evidence is insufficient.',
+        role: 'Developed the assistant for the AluraAgente — ONE IA for Tech Challenge, from document ingestion to the interface and OCI deployment.',
+        contributions: [
+          'Document ingestion, normalisation and overlapping chunks with source metadata.',
+          'Gemini embeddings persisted in ChromaDB for semantic search.',
+          'LLM integration with retrieved context, source references and fallback for insufficient relevant context.',
+          'Streamlit interface, pytest tests, Docker packaging and OCI Compute deployment.',
+        ],
+        decisions: [
+          {
+            title: 'Retrieve before generating',
+            description:
+              'Semantic distance filters retrieved chunks and selects the strongest match before calling the LLM.',
+          },
+          {
+            title: 'Traceable answers',
+            description:
+              'The interface references the source documents and explicitly reports when no relevant context is available.',
+          },
+          {
+            title: 'Reproducible deployment',
+            description:
+              'Docker packages the application and ChromaDB persists its vector index. The README documents local setup and OCI Compute deployment.',
+          },
+        ],
+        outcome:
+          'Completed academic application with a RAG pipeline, Streamlit interface, automated tests and OCI deployment evidence. The demonstration uses fictional documents to show sourced answers and fallback when information is absent.',
+        walkthrough: [
+          'Run the project following the README and index the fictional documents.',
+          'Ask about a policy present in the documents and inspect its source.',
+          'Ask about information absent from the base and check the fallback.',
+        ],
+      },
+    },
+  },
   'ceu-de-lavanda-catalog': {
     name: 'Catálogo Céu de Lavanda',
     category: { 'pt-BR': 'Freelance · Catálogo digital', 'en-GB': 'Freelance · Digital catalogue' },
@@ -379,6 +503,13 @@ export const PROJECT_STORIES: Record<string, ProjectStory> = {
     ],
     links: [
       {
+        url: 'https://github.com/No-Country-simulation/g9-br-team-09/pull/122#pullrequestreview-4821791044',
+        label: {
+          'pt-BR': 'Minha revisão de dados e modelagem',
+          'en-GB': 'My data and modelling review',
+        },
+      },
+      {
         url: 'https://energiai.vercel.app',
         label: { 'pt-BR': 'Abrir apresentação', 'en-GB': 'Open introduction' },
       },
@@ -407,7 +538,7 @@ export const PROJECT_STORIES: Record<string, ProjectStory> = {
           'Segurança da API e isolamento das análises por usuário autenticado.',
           'Configuração da OCI e IAM, provisionamento com Terraform e deploy do backend, com automação de CI/CD.',
           'Organização e acompanhamento de issues e pull requests durante a entrega em equipe.',
-          'Colaboração nas revisões dos modelos com a equipe de Data Science e apoio técnico à preparação do Demo Day.',
+          'Revisão dos dados e do pipeline de modelagem: identifiquei falhas na normalização e recomendei validações de valores nulos, tipos inválidos, NaN e infinito, com testes de regressão.',
         ],
         decisions: [
           {
@@ -445,7 +576,7 @@ export const PROJECT_STORIES: Record<string, ProjectStory> = {
           'Implemented API security and analysis isolation for authenticated users.',
           'Configured OCI and IAM, provisioned infrastructure with Terraform and deployed the backend with CI/CD automation.',
           'Organised and tracked issues and pull requests throughout the team delivery.',
-          'Collaborated with Data Science on model reviews and provided technical support for Demo Day preparation.',
+          'Reviewed data and the modelling pipeline, identifying normalisation risks and recommending validation and regression tests for nulls, invalid types, NaN and infinity.',
         ],
         decisions: [
           {

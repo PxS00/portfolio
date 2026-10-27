@@ -62,7 +62,8 @@ export const TRANSLATIONS: Record<'pt-BR' | 'en-GB', Record<TranslationKeys, str
     nav_home: 'Menu',
     nav_projects: 'Projetos',
     nav_contact: 'Contato',
-    hero_subtitle: 'Desenvolvendo arquiteturas escaláveis para soluções digitais modernas.',
+    hero_subtitle:
+      'Desenvolvendo arquiteturas escaláveis para soluções digitais modernas, com backend e integração de inteligência artificial.',
     hero_download_cv: 'Baixar currículo',
     hero_view_projects: 'Ver projetos',
     hero_contact: 'Entrar em contato',
@@ -109,7 +110,7 @@ export const TRANSLATIONS: Record<'pt-BR' | 'en-GB', Record<TranslationKeys, str
     projects_title: 'Meus Projetos',
     projects_recent_title: 'Projetos em Destaque',
     projects_section_subtitle:
-      'Catálogo digital e gestão para a Céu de Lavanda, backend e cloud no EnergiAI, e tecnologia aplicada à saúde com o Luma.',
+      'Gestão para a Céu de Lavanda, backend e cloud no EnergiAI, e consulta a documentos com IA e RAG.',
     projects_grid_subtitle:
       'Explore todos os meus repositórios públicos no GitHub. Abaixo estão os projetos em que venho trabalhando, ordenados pelas atualizações mais recentes.',
     projects_view_all: 'Ver todos os projetos',
@@ -135,7 +136,8 @@ export const TRANSLATIONS: Record<'pt-BR' | 'en-GB', Record<TranslationKeys, str
     nav_home: 'Home',
     nav_projects: 'Projects',
     nav_contact: 'Contact',
-    hero_subtitle: 'Developing scalable architectures for modern digital solutions.',
+    hero_subtitle:
+      'Developing scalable architectures for modern digital solutions, with backend development and AI integration.',
     hero_download_cv: 'Download CV',
     hero_view_projects: 'View projects',
     hero_contact: 'Get in touch',
@@ -182,7 +184,7 @@ export const TRANSLATIONS: Record<'pt-BR' | 'en-GB', Record<TranslationKeys, str
     projects_title: 'My Projects',
     projects_recent_title: 'Featured Projects',
     projects_section_subtitle:
-      'Digital catalogue and business management for Céu de Lavanda, backend and cloud with EnergiAI, and healthcare technology with Luma.',
+      'Business management for Céu de Lavanda, backend and cloud with EnergiAI, and AI-powered document queries with RAG.',
     projects_grid_subtitle:
       'Explore all my public repositories on GitHub. Below are the projects I have been working on, sorted by the most recent updates.',
     projects_view_all: 'View all projects',

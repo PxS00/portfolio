@@ -11,6 +11,7 @@ const paths = [
   '/projects/energi-ai-g9-br-team-09',
   '/projects/ceu-de-lavanda-catalog',
   '/projects/Luma',
+  '/projects/alura-corporate-agent',
 ]
 const outputFile = (path) => `dist/${path === '/' ? '' : `${path.slice(1)}/`}index.html`
 
@@ -82,6 +83,8 @@ test('project screenshot files are included in the production output', async () 
     'lavanda-flow-batches',
     'lavanda-flow-formulas',
     'energiai-architecture',
+    'rag-oci-1',
+    'rag-oci-2',
   ]) {
     const image = await readFile(`dist/images/projects/${name}.jpg`)
     assert.equal(image.readUInt16BE(0), 0xffd8, name)
